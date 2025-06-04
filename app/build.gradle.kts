@@ -6,6 +6,10 @@ plugins {
 android {
     namespace = "com.villalobos.caballoapp"
     compileSdk = 35
+    
+    viewBinding{
+        enable = true
+    }
 
     defaultConfig {
         applicationId = "com.villalobos.caballoapp"
