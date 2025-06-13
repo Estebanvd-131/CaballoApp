@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var btnSalir: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
 
 
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         btnSalir = enlace.btnSalir
 
 
-        super.onCreate(savedInstanceState)
+
 
         btnIniciar.setOnClickListener {
             btnIniciar(it)}

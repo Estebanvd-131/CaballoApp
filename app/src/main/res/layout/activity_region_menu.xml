@@ -1,10 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegionMenu">
+    android:background="#FFFFFF">
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#A95628">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="SEMIOLOGIA MUSCULAR DE CABALLO CRIOLLO"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgCaballo"
+                android:layout_width="224dp"
+                android:layout_height="167dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/miologiaequinocompleto"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+            <TextView
+                android:id="@+id/tvSelecciona"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Selecciona algún músculo"
+                android:textColor="#F3D4C0"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgCaballo" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSelecciona">
+
+                <Button
+                    android:id="@+id/btnRegionCabeza"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:backgroundTint="#F3D4C0"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="REGIÓN DE LA CABEZA"
+                    android:textColor="#A95628" />
+
+                <Button
+                    android:id="@+id/btnRegionCuello"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:backgroundTint="#F3D4C0"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="REGIÓN DEL CUELLO"
+                    android:textColor="#A95628" />
+
+                <Button
+                    android:id="@+id/btnRegionTronco"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:backgroundTint="#F3D4C0"
+
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="REGIÓN DEL TRONCO"
+                    android:textColor="#A95628" />
+
+                <Button
+                    android:id="@+id/btnRegionToracica"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:backgroundTint="#F3D4C0"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="REGIÓN DE MIEMBROS TORÁCICOS"
+                    android:textColor="#A95628" />
+
+                <Button
+                    android:id="@+id/btnRegionPelvica"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:backgroundTint="#F3D4C0"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="REGIÓN PÉLVICA"
+                    android:textColor="#A95628" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
