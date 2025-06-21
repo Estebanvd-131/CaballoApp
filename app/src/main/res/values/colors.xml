@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#FF9E9E9E</color>
+    <color name="cafe_rojizo">#A95628</color>
+    <color name="cafe_barro">#806443</color>
+    <color name="cafe_oscuro">#352208</color>
+    <color name="gris_button">#F4F2F2</color>
 </resources>

@@ -5,87 +5,110 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A95628"
+    android:background="#ffffff"
     tools:context=".MainActivity">
+
+
+    <!-- com.google.android.material.button.MaterialButton es una biblioteca para distintas versiones de material design -->
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="300dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/cafe_barro"
         android:gravity="center"
-        android:text="SEMIOLOGÍA MUSCULAR CABALLO"
-        android:textColor="@android:color/white"
+        android:text="MIOLOGÍA MUSCULAR
+        CABALLO"
+        android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgCaballo"
-        android:layout_width="223dp"
-        android:layout_height="182dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="161dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_corners"
+        android:scaleType="centerCrop"
         android:src="@drawable/cabezacaballo"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnIniciar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="@color/cafe_barro"
         android:text="INICIAR"
-        android:textColor="#A95628"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        app:cornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgCaballo" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAccesibilidad"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="@color/gris_button"
         android:text="ACCESIBILIDAD"
         android:textColor="#A95628"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnIniciar" />
+        app:layout_constraintTop_toBottomOf="@+id/btnIniciar"
+        app:strokeWidth="2dp"
+        app:strokeColor="@color/cafe_barro"
+        app:cornerRadius="5dp"/>
+    <!-- El strokeWidth es para el tamaño del borde, el strokeColor es para el color del borde , el cornerRadius es para el borde redondeado  -->
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnCreditos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="@color/gris_button"
         android:text="CRÉDITOS"
         android:textColor="#A95628"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAccesibilidad" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAccesibilidad"
+        app:strokeWidth="2dp"
+        app:strokeColor="@color/cafe_barro"
+        app:cornerRadius="5dp"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSalir"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="@color/cafe_oscuro"
         android:text="SALIR"
-        android:textColor="#A95628"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCreditos" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCreditos"
+        app:cornerRadius="5dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
