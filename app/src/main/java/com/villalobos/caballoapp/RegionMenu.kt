@@ -7,8 +7,6 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.villalobos.caballoapp.databinding.ActivityRegionMenuBinding
 
-
-//
 class RegionMenu : AppCompatActivity() {
 
     lateinit var btnRegionCabeza: Button
@@ -27,54 +25,64 @@ class RegionMenu : AppCompatActivity() {
         btnRegionToracica = enlace.btnRegionToracica
         btnRegionPelvica = enlace.btnRegionPelvica
 
-
-
+        // Configurar listeners para cada región
         btnRegionCabeza.setOnClickListener {
-            btnRegionCabeza(it)
+            irARegion(TipoRegion.CABEZA.id)
         }
+        
         btnRegionCuello.setOnClickListener {
-            btnRegionCuello(it)
+            irARegion(TipoRegion.CUELLO.id)
         }
 
         btnRegionTronco.setOnClickListener {
-            btnRegionTronco(it)
+            irARegion(TipoRegion.TRONCO.id)
         }
+        
         btnRegionToracica.setOnClickListener {
-            btnRegionToracica(it)}
+            irARegion(TipoRegion.MIEMBROS_TORACICOS.id)
+        }
 
         btnRegionPelvica.setOnClickListener {
-            btnRegionPelvica(it)
+            irARegion(TipoRegion.MIEMBROS_PELVICOS.id)
         }
 
         setContentView(enlace.root)
-
-
-
     }
 
-    fun btnRegionCabeza(view: View){
-        val op = Intent(this, RegionCabeza:: class.java)
-        startActivity(op)
-    }
-    fun btnRegionCuello(view: View){
-        val op = Intent(this, RegionCuello:: class.java)
-        startActivity(op)
-    }
-
-    fun btnRegionTronco(view: View){
-        val op = Intent(this, RegionTronco:: class.java)
-        startActivity(op)
-    }
-    fun btnRegionToracica(view: View){
-        val op = Intent(this, RegionToracica:: class.java)
-        startActivity(op)
+    // Función para ir a la región seleccionada
+    private fun irARegion(regionId: Int) {
+        val intent = when (regionId) {
+            1 -> Intent(this, RegionCabeza::class.java)
+            2 -> Intent(this, RegionCuello::class.java)
+            3 -> Intent(this, RegionTronco::class.java)
+            4 -> Intent(this, RegionToracica::class.java)
+            5 -> Intent(this, RegionPelvica::class.java)
+            else -> return
+        }
+        
+        // Pasar el ID de la región a la actividad
+        intent.putExtra("REGION_ID", regionId)
+        startActivity(intent)
     }
 
-    fun btnRegionPelvica(view: View){
-        val op = Intent(this, RegionPelvica:: class.java)
-        startActivity(op)
+    // Funciones originales mantenidas por compatibilidad
+    fun btnRegionCabeza(view: View) {
+        irARegion(TipoRegion.CABEZA.id)
+    }
+    
+    fun btnRegionCuello(view: View) {
+        irARegion(TipoRegion.CUELLO.id)
     }
 
+    fun btnRegionTronco(view: View) {
+        irARegion(TipoRegion.TRONCO.id)
+    }
+    
+    fun btnRegionToracica(view: View) {
+        irARegion(TipoRegion.MIEMBROS_TORACICOS.id)
+    }
 
-
+    fun btnRegionPelvica(view: View) {
+        irARegion(TipoRegion.MIEMBROS_PELVICOS.id)
+    }
 }

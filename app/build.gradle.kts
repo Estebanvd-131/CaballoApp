@@ -7,13 +7,13 @@ android {
     namespace = "com.villalobos.caballoapp"
     compileSdk = 35
     
-    viewBinding{
+    viewBinding {
         enable = true
     }
 
     defaultConfig {
         applicationId = "com.villalobos.caballoapp"
-        minSdk = 21
+        minSdk = 24
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -46,6 +46,13 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    
+    // SharedPreferences for simple data storage
+    implementation("androidx.preference:preference-ktx:1.2.1")
+    
+    // ViewPager2 for tutorial slides
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

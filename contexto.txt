@@ -1,0 +1,160 @@
+Desarrollar y evaluar una aplicación móvil interactiva, de acceso libre y científicamente fundamentada, como herramienta pedagógica para el estudio de la miología y biomecánica funcional del Caballo Criollo Colombiano, dirigida a estudiantes y profesionales de medicina veterinaria.
+
+1.2 Objetivos Específicos
+
+Compilar y estructurar la información anatómica y biomecánica de la miología del Caballo Criollo Colombiano a partir de fuentes primarias y secundarias.1
+Diseñar y producir un conjunto de ilustraciones digitales originales de la musculatura equina, basadas en la técnica de body painting sobre ejemplares vivos, para garantizar la precisión visual y el enfoque en la raza específica.1
+Desarrollar una aplicación móvil funcional para la plataforma Android utilizando el lenguaje de programación Kotlin y la arquitectura MVVM, que presente de manera interactiva la información anatómica.1
+Implementar una interfaz de usuario intuitiva que permita la exploración por regiones corporales y la selección de músculos individuales para acceder a detalles sobre su origen, inserción y función biomecánica.1
+Evaluar cuantitativamente la usabilidad percibida de la aplicación mediante la implementación del cuestionario estandarizado System Usability Scale (SUS) en una cohorte de estudiantes de medicina veterinaria.
+Evaluar cualitativamente el impacto de la aplicación en la motivación y la percepción del aprendizaje de los estudiantes a través de encuestas diseñadas para este fin.
+Analizar la efectividad de la colaboración interdisciplinaria entre medicina veterinaria e ingeniería de sistemas como modelo para el desarrollo de herramientas de tecnología educativa en el ámbito de la salud animal.1
+
+2.0 Alcance
+
+El presente proyecto de investigación se delimita de manera precisa para garantizar su viabilidad y la profundidad del análisis. El alcance se define en tres áreas principales: contenido, tecnología y población de estudio.
+Contenido Anatómico: El foco temático de la aplicación se centrará exclusivamente en la miología superficial y profunda del Caballo Criollo Colombiano. La base de datos de contenido se construirá a partir de la información detallada en el documento "MIOLOGÍA EN CABALLO CRIOLLO COLOMBIANO", que incluye el nombre, origen, inserción y biomecánica de cada músculo.1 No se abordará el desarrollo de contenido exhaustivo para otros sistemas anatómicos como el osteológico, nervioso o circulatorio, aunque se harán las referencias óseas indispensables para la correcta descripción del origen e inserción de las estructuras musculares.
+Plataforma Tecnológica: El desarrollo del software se limitará a la creación de una aplicación nativa para el sistema operativo Android. Esta decisión se basa en la amplia penetración de mercado de dicho sistema, lo que maximiza la accesibilidad potencial para el público objetivo. No se contempla el desarrollo de versiones para otros sistemas operativos como iOS, ni la creación de una aplicación web, durante el marco temporal de esta tesis.
+
+
+Población de Estudio: La fase de evaluación empírica de la aplicación se llevará a cabo con una muestra específica y accesible de usuarios. Los participantes serán estudiantes de pregrado de la Facultad de Medicina Veterinaria de la Universidad Santiago de Cali. Este grupo representa el usuario final principal para el cual se diseña la herramienta, permitiendo una evaluación relevante de su usabilidad e impacto pedagógico en un contexto académico real.
+Idioma: Tanto el contenido de la aplicación móvil (etiquetas, descripciones, interfaz) como los instrumentos de evaluación (cuestionarios y encuestas) se desarrollarán y presentarán íntegramente en idioma español, para asegurar la claridad y la comprensión por parte de la población objetivo en el contexto nacional y regional.
+Estas delimitaciones permitirán alcanzar resultados significativos dentro del tiempo y recursos disponibles, asegurando una implementación viable y evaluable
+
+3.0 Metas
+Metas del Proyecto
+A continuación, se presentan las metas que se desean alcanzar con el desarrollo de la aplicación:
+Diseñar una aplicación adaptable a las necesidades de los estudiantes, que contribuya a mejorar la eficiencia en sus metodologías de estudio.
+
+
+Incorporar características de accesibilidad inclusiva, especialmente dirigidas a personas con deficiencias visuales, como el daltonismo.
+
+
+Facilitar el acceso inmediato a información anatómica compleja, mediante una interfaz intuitiva e interactiva que permita la consulta con un solo clic.
+
+
+Evidenciar la eficacia del trabajo interdisciplinario, articulando los saberes de las facultades de Ingeniería y Medicina para el desarrollo de soluciones educativas innovadoras.
+
+
+
+
+
+
+
+4.0 Justificación
+
+La presente investigación se justifica por su capacidad para abordar de manera sinérgica una brecha identificada en el mercado de herramientas educativas digitales, una necesidad pedagógica creciente en la educación superior y una demanda de mayor relevancia clínica en la formación de los futuros profesionales de la medicina veterinaria. El proyecto no solo propone la creación de un producto, sino la validación de un modelo educativo innovador, accesible y especializado.
+
+4.1 El Vacío en las Herramientas Educativas Digitales (Brecha de Mercado)
+
+El panorama actual de aplicaciones móviles para el estudio de la anatomía equina presenta una dicotomía que limita su adopción efectiva por parte de los estudiantes. Por un lado, existen plataformas de alta gama como IMAIOS vet-Anatomy, que ofrecen un contenido exhaustivo y multimodal (ilustraciones, radiografías, CT, MRI) para múltiples especies.2 Sin embargo, su modelo de negocio se basa en suscripciones anuales con un costo elevado (hasta €99.99 o $124.99 anuales) 2, lo que representa una barrera económica significativa para el estudiantado. Reseñas de usuarios indican que este costo es particularmente difícil de justificar para quienes solo necesitan el contenido de una especie, como la equina.3 Adicionalmente, un análisis detallado de su oferta revela que el contenido de miología ilustrada está notablemente más desarrollado para especies como el canino que para el equino, dejando una necesidad específica insatisfecha.2
+Por otro lado, el mercado ofrece aplicaciones de pago único o de menor costo, como 3D Horse Anatomy de Biosphera (aprox. $33.99) 7 y
+Horse Anatomy: Equine 3D de Real Bodywork (aprox. $6.99).9 Aunque más accesibles económicamente, estas herramientas son objeto de críticas recurrentes por parte de los usuarios, incluyendo estudiantes de veterinaria, quienes reportan problemas significativos de usabilidad, como interfaces "difíciles de maniobrar" y "torpes" (
+kludgy), errores técnicos que impiden el funcionamiento de la app, y contenido anatómico incompleto o impreciso.8
+Este proyecto nace precisamente para resolver el problema planteado en su concepción: "las aplicaciones interactivas para el estudio de la miología equina son limitadas y poco accesibles, pues la mayoría requieren pago".1 Al proponer una herramienta de alta calidad, científicamente fundamentada y de acceso gratuito, se busca democratizar el acceso a un recurso de aprendizaje vital.
+Más allá de la accesibilidad, el proyecto introduce una ventaja competitiva clave: la especialización. Mientras que todas las aplicaciones comerciales existentes adoptan un enfoque genérico hacia "el caballo", este proyecto se centra en el Caballo Criollo Colombiano.1 Esta especificidad, lejos de ser una limitación, constituye un diferenciador único que llena un nicho desatendido. La generalización de las otras apps ignora las particularidades morfológicas y biomecánicas de razas con gran importancia cultural, económica y deportiva en regiones específicas. Por lo tanto, esta tesis argumenta que la aplicación no solo responde a una necesidad nacional, sino que establece un precedente para el desarrollo de herramientas educativas adaptadas a contextos locales y raciales.
+
+4.2 Innovación Pedagógica en la Era Digital (Necesidad Pedagógica)
+
+La educación veterinaria, al igual que otras disciplinas de las ciencias de la salud, se encuentra en un proceso de transición desde modelos de enseñanza pasivos, basados en la memorización, hacia paradigmas de aprendizaje activo y centrado en el estudiante.11 Las Tecnologías de la Información y la Comunicación (TIC) son un catalizador fundamental en este cambio, ofreciendo nuevas formas de presentar y interactuar con el conocimiento.13
+La literatura académica respalda de forma creciente la eficacia del aprendizaje móvil (m-learning), la interactividad y la gamificación para mejorar la participación, la motivación y los resultados del aprendizaje de los estudiantes.15 Un precedente de gran relevancia es el estudio sobre la aplicación
+Actionbound, que utiliza un formato de "búsqueda del tesoro" o geocaching para enseñar casos clínicos de neurología veterinaria. Dicho estudio no solo demostró una alta aceptación por parte de los estudiantes, quienes calificaron la experiencia como "excelente a buena", sino que también encontró que el aprendizaje activo y al aire libre podía mejorar significativamente el rendimiento en comparación con el estudio tradicional en casa.17 La interactividad propuesta en nuestra aplicación, que permite a los usuarios "tocar distintas zonas del cuerpo para acceder a esta información" 1, se alinea directamente con estos principios de aprendizaje activo y exploratorio.
+Asimismo, el desarrollo de esta aplicación móvil responde a una necesidad contextual surgida en el entorno educativo post-pandemia. La acelerada transición a la educación en línea ha generado en los estudiantes una documentada "fatiga del aprendizaje online de escritorio" (desk-based online learning fatigue).17 Las aplicaciones móviles, por su naturaleza flexible, asincrónica y desvinculada del ordenador de escritorio, ofrecen una modalidad de estudio que complementa y alivia las desventajas de la enseñanza virtual tradicional. Proporcionan un recurso que el estudiante puede utilizar en cualquier momento y lugar, fomentando un aprendizaje más autónomo y adaptado a sus propios ritmos.15
+
+4.3 Relevancia Clínica y Profesional (Demanda de Aplicabilidad)
+
+El estudio de la anatomía no debe ser un ejercicio académico aislado, sino la base sólida sobre la cual se construye la competencia clínica. La propuesta de esta aplicación trasciende la anatomía descriptiva para adentrarse en la anatomía funcional. La inclusión sistemática de la biomecánica de cada músculo 1 es una característica definitoria que eleva el valor pedagógico y profesional de la herramienta.
+La literatura científica en biomecánica equina subraya de manera consistente que un entendimiento profundo del sistema musculoesquelético y su funcionamiento es indispensable para la práctica veterinaria moderna.20 Este conocimiento es crucial para la optimización del rendimiento en caballos atletas, el diagnóstico preciso de cojeras, la planificación de programas de rehabilitación efectivos y la prevención de lesiones asociadas al ejercicio.20 Al integrar la función biomecánica en la descripción de cada músculo, la aplicación deja de ser una herramienta para aprender "qué es" una estructura y se convierte en un recurso para comprender "qué hace" y "por qué es importante" en el contexto del movimiento y la salud del animal.
+Esta transición de lo descriptivo a lo funcional amplía drásticamente el público objetivo y la vida útil de la aplicación. No solo es relevante para estudiantes de primer año que cursan anatomía básica, sino que se convierte en una herramienta de consulta valiosa para cursos avanzados de clínica, cirugía, zootecnia y fisioterapia, así como para profesionales ya en ejercicio que necesiten repasar conceptos para el diagnóstico o la comunicación con los propietarios de los animales.20 Por lo tanto, la justificación del proyecto radica en su potencial para impactar positivamente a lo largo de toda la trayectoria formativa y profesional del médico veterinario.
+
+5.0 Antecedentes y Estado del Arte
+
+Para contextualizar la contribución de este proyecto, es esencial analizar el estado actual de la tecnología educativa en anatomía veterinaria, los paradigmas pedagógicos que la sustentan y los fundamentos científicos del contenido que se pretende impartir.
+
+5.1 Panorama de las Aplicaciones Móviles para la Anatomía Veterinaria
+
+El mercado de herramientas digitales para el aprendizaje de la anatomía equina puede clasificarse en tres categorías principales, cada una con sus propias fortalezas y debilidades.
+Atlas Premium de Suscripción: Esta categoría está dominada por IMAIOS vet-Anatomy. Su principal fortaleza reside en la alta calidad de sus imágenes, su enfoque multimodal (incluyendo Rayos X, CT y MRI) y su contenido multi-especie.2 Sin embargo, su modelo de negocio, basado en suscripciones anuales de alto costo (p. ej., $124.99/año) 4, representa una barrera de acceso significativa, como lo confirman reseñas de usuarios que lo consideran poco factible para uso personal o estudiantil.4 Además, a pesar de su amplitud, se ha identificado que su contenido de miología equina ilustrada es menos exhaustivo que el de otras especies como la canina, lo que representa un vacío específico en el mercado.2
+Aplicaciones 3D de Pago Único: Herramientas como 3D Horse Anatomy (Biosphera) y Horse Anatomy: Equine 3D (Real Bodywork) ofrecen modelos tridimensionales interactivos por un pago único, más asequible para los estudiantes.9 No obstante, su valor educativo se ve comprometido por deficiencias técnicas y de usabilidad. Las reseñas de usuarios en las tiendas de aplicaciones denuncian interfaces poco intuitivas, dificultad para manipular los modelos y seleccionar estructuras, e inestabilidad del software.8 Un estudiante de veterinaria llegó a calificar una de estas apps como "absolutamente terrible" y solicitó un reembolso debido a su pobre diseño y contenido incompleto.10 Estas críticas subrayan que la accesibilidad económica no es suficiente si la calidad y la fiabilidad son deficientes.
+Recursos Gratuitos y Complementarios: Existen diversas aplicaciones gratuitas como Huesos UdeA o Diccionario Veterinario, pero su alcance es muy limitado.27 Suelen centrarse en un único sistema (p. ej., osteología), una sola especie (frecuentemente el canino), o en proporcionar terminología básica, sin ofrecer la profundidad necesaria para un estudio comprensivo de la miología equina.
+La siguiente tabla sintetiza este análisis comparativo, destacando el nicho único que el presente proyecto pretende ocupar.
+Tabla 1: Análisis Comparativo de Aplicaciones de Anatomía Equina
+| Característica | IMAIOS vet-Anatomy | 3D Horse Anatomy (Biosphera) | Horse Anatomy: Equine 3D (Real Bodywork) | App Propuesta |
+| :--- | :--- | :--- | :--- | :--- |
+| Desarrollador | IMAIOS SAS | Biosphera | Real Bodywork | Equipo de Tesis (U. Santiago de Cali) |
+| Modelo de Costo | Suscripción Anual ($124.99) 4 | Pago Único ($33.99) 10 | Pago Único ($6.99) 9 | Gratuito |
+
+| Plataforma(s) | iOS, Android, Web 2 | iOS, Android, Desktop 10 | iOS, Android, Windows 9 | Android |
+
+| Enfoque Principal | General (Multi-especie), Radiología 2 | Anatomía 3D General 26 | Anatomía 3D General 9 | Miología y Biomecánica Funcional |
+
+| Especie/Raza | Caballo (Genérico) | Caballo (Genérico) | Caballo (Genérico) | Caballo Criollo Colombiano |
+| Limitaciones | Costo prohibitivo, miología equina ilustrada limitada 2 | Usabilidad deficiente, contenido incompleto, inestabilidad 10 | Errores técnicos, usabilidad deficiente 9 | Limitado a miología y Android |
+
+5.2 Paradigmas Emergentes en la Educación Veterinaria: m-Learning e Interactividad
+
+La enseñanza de la anatomía, una disciplina tradicionalmente dependiente de la disección de cadáveres y el estudio de atlas impresos, está experimentando una profunda renovación gracias a la tecnología.12 La literatura académica apoya firmemente la transición hacia metodologías de aprendizaje activo que promueven una mayor participación y una comprensión más profunda por parte del estudiante.11 El aprendizaje móvil (
+m-learning) emerge como una modalidad particularmente efectiva, ofreciendo flexibilidad, acceso ubicuo a los recursos y la capacidad de adaptar el estudio al ritmo individual.15
+Diversos estudios han validado el uso de tecnologías para complementar o, en ciertos contextos, reemplazar los métodos tradicionales. El uso de videos de disección narrados, por ejemplo, ha demostrado ser altamente valorado por los estudiantes para solidificar su conocimiento, especialmente cuando el acceso a laboratorios es limitado.31 De manera similar, la creación de modelos 3D a partir del escaneo de especímenes anatómicos reales ha probado ser una herramienta eficaz para la enseñanza.33 El método propuesto en esta tesis, que consiste en digitalizar ilustraciones basadas en la pintura corporal sobre animales vivos, se inscribe en esta tendencia de crear recursos digitales fieles a la realidad anatómica.
+Un concepto clave en la innovación pedagógica es la gamificación, que consiste en aplicar elementos de diseño de juegos a contextos no lúdicos para aumentar la motivación y el compromiso. El estudio sobre la aplicación Actionbound en neurología veterinaria es un ejemplo paradigmático de su éxito.17 Al transformar el aprendizaje de casos clínicos en una "búsqueda del tesoro" interactiva y móvil, los investigadores lograron no solo una alta satisfacción estudiantil, sino también una mejora en el rendimiento académico.18 Este proyecto, aunque no es un juego en sentido estricto, incorpora principios de interactividad y exploración que resuenan con la filosofía de la gamificación, buscando hacer del aprendizaje un proceso más atractivo y menos pasivo.
+
+5.3 Fundamentos de la Miología y Biomecánica Equina
+
+La relevancia del contenido de la aplicación se fundamenta en la importancia crítica de la anatomía funcional para la ciencia veterinaria. La miología, el estudio de los músculos, no puede disociarse de la biomecánica, que analiza las fuerzas y los principios mecánicos que gobiernan el movimiento de los seres vivos.20 Comprender cómo un músculo se contrae (fisiología) y qué efecto tiene esa contracción en el esqueleto (biomecánica) es esencial para interpretar la locomoción normal y patológica del caballo.
+La investigación en biomecánica equina ha demostrado ser fundamental para múltiples aplicaciones prácticas. Permite identificar ineficiencias en la marcha para optimizar el rendimiento deportivo, detectar signos tempranos de tensión para prevenir lesiones, y diseñar programas de rehabilitación específicos que restablezcan la función normal.20 El análisis biomecánico se utiliza para evaluar el ajuste de la silla de montar, la influencia del jinete, y como herramienta diagnóstica en casos de cojera.20 La inclusión de la función biomecánica de cada músculo en la aplicación 1 asegura que el conocimiento adquirido por el usuario sea directamente aplicable a escenarios clínicos y de manejo del rendimiento, consolidando la conexión entre la ciencia básica y la práctica profesional.
+
+6.0 Metodología
+
+El proyecto se estructura en un diseño de investigación de desarrollo y evaluación, ejecutado a través de tres fases metodológicas secuenciales y claramente definidas. Este enfoque garantiza tanto el rigor en la creación del producto tecnológico como la validez en la medición de su impacto.
+
+6.1 Fase I: Curación y Creación de Contenido (Meses 1-5)
+
+Esta fase inicial se centra en la recopilación, validación y creación de todos los activos textuales y visuales que conformarán la base de conocimiento de la aplicación.
+Recopilación y Validación de Datos Textuales: El núcleo de la información anatómica se extraerá del documento "MIOLOGÍA EN CABALLO CRIOLLO COLOMBIANO".1 Se creará una base de datos estructurada que contendrá, para cada músculo, los campos de: nombre, origen, inserción y biomecánica. Para asegurar la precisión científica, esta información será sometida a un proceso de validación cruzada con textos de referencia en anatomía veterinaria, como "Anatomia de los animales domesticos" de König & Liebich (2014) y Sisson & Grossman (1975), citados como bibliografía base del proyecto.1
+Generación de Activos Visuales: Se seguirá el innovador proceso descrito en el material de origen.1 Se aplicará la técnica de
+body painting sobre ejemplares vivos de Caballo Criollo Colombiano, utilizando una mezcla segura y no tóxica de témpera y maicena para delinear visualmente los grupos musculares. Se capturarán fotografías de alta resolución desde múltiples ángulos. Estas fotografías servirán como la referencia principal para la creación de un conjunto completo de ilustraciones digitales vectoriales. Las ilustraciones se organizarán por regiones anatómicas (cabeza, cuello, tronco, miembros torácicos y pélvicos) para facilitar su integración en la aplicación. Este método asegura una alta fidelidad anatómica y un enfoque específico en la morfología de la raza estudiada.
+
+6.2 Fase II: Desarrollo Técnico de la Aplicación (Meses 4-10)
+
+Esta fase comprende la construcción del software, desde la arquitectura subyacente hasta la interfaz de usuario final.
+Arquitectura y Tecnología: La aplicación se desarrollará como un software nativo para la plataforma Android. El lenguaje de programación seleccionado es Kotlin, el lenguaje moderno y oficialmente soportado por Google para el desarrollo en Android. Se implementará la arquitectura de software Model-View-ViewModel (MVVM).1 Esta elección arquitectónica es deliberada, ya que promueve la separación de la lógica de negocio de la interfaz de usuario, resultando en un código más limpio, fácil de probar, escalar y mantener a lo largo del tiempo.
+Implementación de Funcionalidades Clave:
+Base de Datos Local: La información textual y las referencias a las imágenes se almacenarán en una base de datos local en el dispositivo del usuario, utilizando la librería Room de Android Jetpack. Esto permitirá que la aplicación funcione de manera offline una vez instalada, aumentando su usabilidad en entornos sin conectividad a internet.
+Visor Anatómico Interactivo: Se desarrollará la pantalla principal que mostrará las ilustraciones del caballo. Esta interfaz permitirá al usuario realizar gestos de zoom y paneo para explorar los detalles. Las áreas correspondientes a cada músculo en las ilustraciones serán mapeadas como zonas interactivas (hotspots).
+Mecanismo de Interactividad: Al tocar una de estas zonas interactivas, la aplicación ejecutará una acción, como resaltar el músculo seleccionado y mostrar una ventana emergente o una nueva pantalla con toda la información detallada: nombre, origen, inserción, función biomecánica y, si aplica, una vista aislada del músculo.1
+Sistema de Navegación: Se implementará una estructura de navegación intuitiva, probablemente mediante un menú o pestañas, que permita al usuario filtrar la vista por regiones corporales (p. ej., "Miembro Pélvico", "Tronco"), facilitando el acceso rápido a la información deseada.
+
+6.3 Fase III: Evaluación de la Usabilidad e Impacto Pedagógico (Meses 10-12)
+
+Esta fase final aplica un diseño de investigación de métodos mixtos para evaluar rigurosamente la aplicación desarrollada.
+Diseño del Estudio y Participantes: Se empleará un diseño de estudio descriptivo de corte transversal. Se reclutará una muestra por conveniencia de N=30 participantes, compuesta por estudiantes de pregrado del programa de Medicina Veterinaria de la Universidad Santiago de Cali que estén cursando o hayan cursado recientemente la asignatura de Anatomía Veterinaria.
+Procedimiento de Evaluación:
+Se obtendrá el consentimiento informado de todos los participantes, asegurando la confidencialidad y el uso anónimo de sus datos.
+Se proporcionará a cada participante un enlace para descargar e instalar la versión estable (v1.0) de la aplicación en su dispositivo móvil Android personal.
+Se dará a los participantes un período de dos semanas para utilizar la aplicación de forma libre, con la instrucción de explorar todas sus características y contenidos como si fuera una herramienta de estudio complementaria.
+Al concluir el período de prueba, se enviará a los participantes un enlace a un formulario en línea que contendrá los dos instrumentos de medición.
+Instrumentos de Medición:
+Cuestionario Cuantitativo - System Usability Scale (SUS): Para medir la usabilidad percibida de la aplicación, se utilizará la versión estándar del SUS. Este es un cuestionario validado y considerado un estándar en la industria para evaluar la usabilidad de sistemas de software.36 Consiste en 10 afirmaciones con una escala de respuesta tipo Likert de 5 puntos. El resultado es una puntuación global de 0 a 100. Una puntuación por encima de 68 se considera superior a la media, mientras que puntuaciones por encima de 80.8 se califican como "Excelentes" y se asocian con una alta probabilidad de recomendación.36
+Tabla 2: Cuestionario System Usability Scale (SUS)
+| Ítem | Afirmación |
+| :--- | :--- |
+| 1 | Creo que me gustaría usar esta aplicación con frecuencia. |
+| 2 | Encontré esta aplicación innecesariamente compleja. |
+| 3 | Pensé que la aplicación era fácil de usar. |
+| 4 | Creo que necesitaría el apoyo de una persona técnica para poder usar esta aplicación. |
+| 5 | Encontré que las diversas funciones de esta aplicación estaban bien integradas. |
+| 6 | Pensé que había demasiada inconsistencia en esta aplicación. |
+| 7 | Me imagino que la mayoría de la gente aprendería a usar esta aplicación muy rápidamente. |
+| 8 | Encontré la aplicación muy engorrosa de usar. |
+| 9 | Me sentí muy seguro/a usando la aplicación. |
+| 10 | Necesité aprender muchas cosas antes de poder empezar a usar esta aplicación. |
+Fuente: Basado en la formulación estándar del SUS.36
+
+
+
+2.  **Cuestionario Cualitativo - Percepción del Aprendizaje y Motivación:** Se diseñará un segundo cuestionario con una combinación de preguntas de escala Likert y preguntas abiertas para explorar las percepciones de los estudiantes sobre aspectos pedagógicos. Las áreas a evaluar incluirán: a) la utilidad percibida de la aplicación como herramienta de estudio complementaria a las clases teóricas y prácticas; b) el impacto en su motivación e interés por el estudio de la anatomía; c) la claridad, precisión y calidad del contenido textual y visual; y d) un espacio para comentarios abiertos y sugerencias de mejora.
+
+
+Análisis de Datos:
+Análisis Cuantitativo (SUS): Las respuestas al SUS se puntuarán siguiendo el método estandarizado: para los ítems impares, se resta 1 a la puntuación; para los ítems pares, se resta la puntuación de 5. La suma de estos valores se multiplica por 2.5 para obtener la puntuación SUS individual.36 Se calculará la puntuación media, la desviación estándar y el rango para la muestra completa. Estos resultados se interpretarán utilizando los benchmarks establecidos en la literatura.37
+Análisis Cualitativo: Las respuestas a las preguntas abiertas del segundo cuestionario se analizarán utilizando un enfoque de análisis temático. Se codificarán las respuestas para identificar temas, patrones y conceptos recurrentes relacionados con la experiencia de aprendizaje, la utilidad y las áreas de mejora.

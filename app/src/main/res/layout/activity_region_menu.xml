@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@color/light_background">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -18,21 +18,34 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#A95628">
+            android:background="@color/light_background">
 
-            <TextView
-                android:id="@+id/tvTitle"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/headerCard"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:gravity="center"
-                android:text="SEMIOLOGIA MUSCULAR DE CABALLO CRIOLLO"
-                android:textColor="@android:color/white"
-                android:textSize="24sp"
-                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="@color/primary_brown"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="ANATOMÍA MUSCULAR EQUINA"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:padding="16dp" />
+
+            </androidx.cardview.widget.CardView>
 
             <ImageView
                 android:id="@+id/imgCaballo"
@@ -42,7 +55,7 @@
                 android:src="@drawable/miologiaequinocompleto"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/headerCard" />
 
             <TextView
                 android:id="@+id/tvSelecciona"
@@ -74,11 +87,11 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
-                    android:backgroundTint="#F3D4C0"
+                    android:backgroundTint="@color/warm_cream"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:text="REGIÓN DE LA CABEZA"
-                    android:textColor="#A95628" />
+                    android:textColor="@color/text_primary" />
 
                 <Button
                     android:id="@+id/btnRegionCuello"
@@ -87,11 +100,11 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
-                    android:backgroundTint="#F3D4C0"
+                    android:backgroundTint="@color/warm_cream"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:text="REGIÓN DEL CUELLO"
-                    android:textColor="#A95628" />
+                    android:textColor="@color/text_primary" />
 
                 <Button
                     android:id="@+id/btnRegionTronco"
@@ -100,12 +113,11 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
-                    android:backgroundTint="#F3D4C0"
-
+                    android:backgroundTint="@color/warm_cream"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:text="REGIÓN DEL TRONCO"
-                    android:textColor="#A95628" />
+                    android:textColor="@color/text_primary" />
 
                 <Button
                     android:id="@+id/btnRegionToracica"
@@ -114,11 +126,11 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
-                    android:backgroundTint="#F3D4C0"
+                    android:backgroundTint="@color/warm_cream"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:text="REGIÓN DE MIEMBROS TORÁCICOS"
-                    android:textColor="#A95628" />
+                    android:textColor="@color/text_primary" />
 
                 <Button
                     android:id="@+id/btnRegionPelvica"
@@ -127,11 +139,11 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
-                    android:backgroundTint="#F3D4C0"
+                    android:backgroundTint="@color/warm_cream"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:text="REGIÓN PÉLVICA"
-                    android:textColor="#A95628" />
+                    android:textColor="@color/text_primary" />
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
