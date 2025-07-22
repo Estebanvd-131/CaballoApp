@@ -1,11 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
+    <!-- Colores Normales -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#FF9E9E9E</color>
-    <color name="cafe_rojizo">#A95628</color>
-    <color name="cafe_barro">#806443</color>
-    <color name="cafe_oscuro">#352208</color>
-    <color name="cafe_claro">#a0887e</color>
-    <color name="gris_button">#F4F2F2</color>
+    <color name="reddish_brown">#A95628</color>
+    <color name="mud_brown">#806443</color>
+    <color name="dark_brown">#352208</color>
+    <color name="light_brown">#a0887e</color>
+    <color name="gray_button">#F4F2F2</color>
+
+
+    <!--Color Deuteranopia -->
+    <color name="blue_Deuteranopia">#1510f0</color>
+    <color name="blueLight_Deuteranopia">#b9d8f8</color>
+
+    <!--Color Protanopia -->
+    <color name="blue_Protanopia">#0003c7</color>
+    <color name="blueLight_Protanopia">#bce4fe</color>
+
+    <!--Color Tritanopia -->
+    <color name="red_Tritanopia">#cd0402</color>"
+    <color name="redLight_Tritanopia">#ffe8e1</color>
+
+    <!-- Paleta de colores marrón/café para anatomía veterinaria -->
+    <color name="primary_brown">#8B4513</color>           <!-- Marrón principal (como en la imagen) -->
+    <color name="secondary_brown">#A0522D</color>         <!-- Marrón secundario -->
+    <color name="accent_light_brown">#CD853F</color>      <!-- Marrón claro para acentos -->
+    <color name="elegant_gray">#696969</color>            <!-- Gris elegante -->
+    <color name="light_background">#F5F5DC</color>        <!-- Beige muy claro para fondos -->
+    <color name="warm_cream">#F5DEB3</color>              <!-- Crema cálido -->
+
+    <!-- Variaciones de la paleta principal -->
+    <color name="primary_brown_light">#D2691E</color>     <!-- Marrón claro -->
+    <color name="primary_brown_dark">#654321</color>      <!-- Marrón muy oscuro -->
+    <color name="secondary_brown_light">#DEB887</color>   <!-- Marrón beige claro -->
+    <color name="secondary_brown_dark">#8B4513</color>    <!-- Marrón oscuro -->
+
+    <!-- Colores funcionales -->
+    <color name="text_primary">#2F1B14</color>            <!-- Texto principal -->
+    <color name="text_secondary">#8B7355</color>          <!-- Texto secundario -->
+    <color name="text_dark">#2F1B14</color>               <!-- Texto oscuro (alias) -->
+    <color name="surface_color">#FEFEFE</color>           <!-- Color de superficie -->
+    <color name="card_background">#FFFFFF</color>         <!-- Fondo de tarjetas -->
+    <color name="divider_color">#D3C7B8</color>           <!-- Color divisores -->
+
+    <!-- Colores de estado -->
+    <color name="success_green">#228B22</color>           <!-- Verde éxito -->
+    <color name="warning_orange">#FF8C00</color>          <!-- Naranja advertencia -->
+    <color name="error_red">#DC143C</color>               <!-- Rojo error -->
+    <color name="info_blue">#4682B4</color>               <!-- Azul información -->
+
+    <!-- Colores específicos para mantener compatibilidad -->
+    <color name="primary_blue">#8B4513</color>            <!-- Alias al marrón principal -->
+    <color name="primary_blue_dark">#654321</color>       <!-- Alias al marrón muy oscuro -->
+    <color name="secondary_green">#A0522D</color>         <!-- Alias al marrón secundario -->
+    <color name="secondary_green_light">#D2691E</color>   <!-- Alias al marrón claro -->
+    <color name="accent_sky_blue">#CD853F</color>         <!-- Alias al marrón acento -->
+    <color name="warm_orange">#FF8C00</color>             <!-- Naranja cálido -->
+
+
+
+
 </resources>

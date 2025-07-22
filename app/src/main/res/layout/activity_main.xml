@@ -23,7 +23,7 @@
             android:layout_width="300dp"
             android:layout_height="150dp"
             android:layout_marginBottom="20dp"
-            android:background="@color/cafe_claro"
+            android:background="@color/light_brown"
             android:gravity="center"
             android:text="ANATOMIA MUSCULAR\nCABALLO CRIOLLO"
             android:textColor="@color/white"
@@ -63,7 +63,7 @@
         android:layout_width="match_parent" android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp" android:backgroundTint="@color/cafe_barro"
+        android:layout_marginBottom="16dp" android:backgroundTint="@color/mud_brown"
         android:text="INICIAR"
         android:textColor="#ffffff"
         android:textSize="20sp"
@@ -78,12 +78,12 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/gris_button"
+        android:backgroundTint="@color/gray_button"
         android:text="ACCESIBILIDAD"
         android:textColor="#A95628"
         android:textSize="20sp"
         app:cornerRadius="5dp"
-        app:strokeColor="@color/cafe_barro"
+        app:strokeColor="@color/mud_brown"
         app:strokeWidth="2dp" />
 
     <com.google.android.material.button.MaterialButton
@@ -93,12 +93,12 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/gris_button"
+        android:backgroundTint="@color/gray_button"
         android:text="CRÉDITOS"
         android:textColor="#A95628"
         android:textSize="20sp"
         app:cornerRadius="5dp"
-        app:strokeColor="@color/cafe_barro"
+        app:strokeColor="@color/mud_brown"
         app:strokeWidth="2dp" />
 
     <com.google.android.material.button.MaterialButton
@@ -107,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/cafe_oscuro"
+        android:backgroundTint="@color/dark_brown"
         android:text="SALIR"
         android:textColor="@color/white"
         android:textSize="20sp"
