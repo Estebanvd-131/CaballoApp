@@ -1,0 +1,174 @@
+[
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/layout_activity_region_cabeza.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/layout/activity_region_cabeza.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.villalobos.caballoapp-main-6:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/drawable-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/drawable_circle_background.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/drawable/circle_background.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/layout_activity_region_menu.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/layout/activity_region_menu.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/drawable_miologiaequinocompleto.png.flat",
+        "source": "com.villalobos.caballoapp-main-6:/drawable/miologiaequinocompleto.png"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/drawable_torsoequino.jpg.flat",
+        "source": "com.villalobos.caballoapp-main-6:/drawable/torsoequino.jpg"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/layout_activity_region_cuello.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/layout/activity_region_cuello.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.villalobos.caballoapp-main-6:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.villalobos.caballoapp-main-6:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/layout_activity_region_tronco.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/layout/activity_region_tronco.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/layout_activity_detalle_musculo.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/layout/activity_detalle_musculo.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/drawable_cuello_y_torax.png.flat",
+        "source": "com.villalobos.caballoapp-main-6:/drawable/cuello_y_torax.png"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/layout_activity_region_toracica.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/layout/activity_region_toracica.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/drawable_planta_casco.png.flat",
+        "source": "com.villalobos.caballoapp-main-6:/drawable/planta_casco.png"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.villalobos.caballoapp-main-6:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/xml_backup_rules.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/drawable_ic_arrow_right.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/drawable/ic_arrow_right.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/layout_activity_tutorial.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/layout/activity_tutorial.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/drawable_flanco_torax.png.flat",
+        "source": "com.villalobos.caballoapp-main-6:/drawable/flanco_torax.png"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.villalobos.caballoapp-main-6:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/layout_item_musculo.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/layout/item_musculo.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/drawable_grupa_miembro_posterior.png.flat",
+        "source": "com.villalobos.caballoapp-main-6:/drawable/grupa_miembro_posterior.png"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/xml_data_extraction_rules.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.villalobos.caballoapp-main-6:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/layout_activity_main.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/drawable_cabeza_lateral.png.flat",
+        "source": "com.villalobos.caballoapp-main-6:/drawable/cabeza_lateral.png"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.villalobos.caballoapp-main-6:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.villalobos.caballoapp-main-6:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/layout_fragment_tutorial_paso.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/layout/fragment_tutorial_paso.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.villalobos.caballoapp-main-6:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/drawable_miembro_distal.png.flat",
+        "source": "com.villalobos.caballoapp-main-6:/drawable/miembro_distal.png"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/layout_activity_accesibilidad.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/layout/activity_accesibilidad.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/drawable_hombro_miembro_anterior.png.flat",
+        "source": "com.villalobos.caballoapp-main-6:/drawable/hombro_miembro_anterior.png"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/drawable_pecho_ventral.png.flat",
+        "source": "com.villalobos.caballoapp-main-6:/drawable/pecho_ventral.png"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/drawable_grupa_lateral.png.flat",
+        "source": "com.villalobos.caballoapp-main-6:/drawable/grupa_lateral.png"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/layout_activity_creditos.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/layout/activity_creditos.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.villalobos.caballoapp-main-6:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/drawable_circle_shape.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/drawable/circle_shape.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-debug-4:/layout_activity_region_pelvica.xml.flat",
+        "source": "com.villalobos.caballoapp-main-6:/layout/activity_region_pelvica.xml"
+    }
+]

@@ -1,0 +1,201 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.villalobos.caballoapp"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+9        android:targetSdkVersion="35" />
+10
+11    <permission
+11-->[androidx.core:core:1.16.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c5143b14d1e7d69459edf832c314b32f\transformed\core-1.16.0\AndroidManifest.xml:22:5-24:47
+12        android:name="com.villalobos.caballoapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+12-->[androidx.core:core:1.16.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c5143b14d1e7d69459edf832c314b32f\transformed\core-1.16.0\AndroidManifest.xml:23:9-81
+13        android:protectionLevel="signature" />
+13-->[androidx.core:core:1.16.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c5143b14d1e7d69459edf832c314b32f\transformed\core-1.16.0\AndroidManifest.xml:24:9-44
+14
+15    <uses-permission android:name="com.villalobos.caballoapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+15-->[androidx.core:core:1.16.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c5143b14d1e7d69459edf832c314b32f\transformed\core-1.16.0\AndroidManifest.xml:26:5-97
+15-->[androidx.core:core:1.16.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c5143b14d1e7d69459edf832c314b32f\transformed\core-1.16.0\AndroidManifest.xml:26:22-94
+16
+17    <application
+17-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:5:5-54:19
+18        android:allowBackup="true"
+18-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:6:9-35
+19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+19-->[androidx.core:core:1.16.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c5143b14d1e7d69459edf832c314b32f\transformed\core-1.16.0\AndroidManifest.xml:28:18-86
+20        android:dataExtractionRules="@xml/data_extraction_rules"
+20-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:7:9-65
+21        android:extractNativeLibs="false"
+22        android:fullBackupContent="@xml/backup_rules"
+22-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:8:9-54
+23        android:icon="@mipmap/ic_launcher"
+23-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:9:9-43
+24        android:label="@string/app_name"
+24-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:10:9-41
+25        android:roundIcon="@mipmap/ic_launcher_round"
+25-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:11:9-54
+26        android:supportsRtl="true"
+26-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:12:9-35
+27        android:theme="@style/Theme.CaballoApp" >
+27-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:13:9-48
+28        <activity
+28-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:15:9-17:40
+29            android:name="com.villalobos.caballoapp.TutorialActivity"
+29-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:16:13-45
+30            android:exported="false" />
+30-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:17:13-37
+31        <activity
+31-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:18:9-20:40
+32            android:name="com.villalobos.caballoapp.DetalleMusculo"
+32-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:19:13-43
+33            android:exported="false" />
+33-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:20:13-37
+34        <activity
+34-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:21:9-23:40
+35            android:name="com.villalobos.caballoapp.RegionPelvica"
+35-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:22:13-42
+36            android:exported="false" />
+36-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:23:13-37
+37        <activity
+37-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:24:9-26:40
+38            android:name="com.villalobos.caballoapp.RegionToracica"
+38-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:25:13-43
+39            android:exported="false" />
+39-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:26:13-37
+40        <activity
+40-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:27:9-29:40
+41            android:name="com.villalobos.caballoapp.RegionCabeza"
+41-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:28:13-41
+42            android:exported="false" />
+42-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:29:13-37
+43        <activity
+43-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:30:9-32:40
+44            android:name="com.villalobos.caballoapp.RegionTronco"
+44-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:31:13-41
+45            android:exported="false" />
+45-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:32:13-37
+46        <activity
+46-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:33:9-35:40
+47            android:name="com.villalobos.caballoapp.RegionCuello"
+47-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:34:13-41
+48            android:exported="false" />
+48-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:35:13-37
+49        <activity
+49-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:36:9-38:40
+50            android:name="com.villalobos.caballoapp.Creditos"
+50-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:37:13-37
+51            android:exported="false" />
+51-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:38:13-37
+52        <activity
+52-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:39:9-41:40
+53            android:name="com.villalobos.caballoapp.Accesibilidad"
+53-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:40:13-42
+54            android:exported="false" />
+54-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:41:13-37
+55        <activity
+55-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:42:9-44:40
+56            android:name="com.villalobos.caballoapp.RegionMenu"
+56-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:43:13-39
+57            android:exported="false" />
+57-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:44:13-37
+58        <activity
+58-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:45:9-53:20
+59            android:name="com.villalobos.caballoapp.MainActivity"
+59-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:46:13-41
+60            android:exported="true" >
+60-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:47:13-36
+61            <intent-filter>
+61-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:48:13-52:29
+62                <action android:name="android.intent.action.MAIN" />
+62-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:49:17-69
+62-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:49:25-66
+63
+64                <category android:name="android.intent.category.LAUNCHER" />
+64-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:51:17-77
+64-->C:\CaballoApp-main\app\src\main\AndroidManifest.xml:51:27-74
+65            </intent-filter>
+66        </activity>
+67
+68        <provider
+68-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\a6d66e9640c554fb80b94e1b63a5f0fa\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+69            android:name="androidx.startup.InitializationProvider"
+69-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\a6d66e9640c554fb80b94e1b63a5f0fa\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+70            android:authorities="com.villalobos.caballoapp.androidx-startup"
+70-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\a6d66e9640c554fb80b94e1b63a5f0fa\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+71            android:exported="false" >
+71-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\a6d66e9640c554fb80b94e1b63a5f0fa\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+72            <meta-data
+72-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\a6d66e9640c554fb80b94e1b63a5f0fa\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+73                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+73-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\a6d66e9640c554fb80b94e1b63a5f0fa\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+74                android:value="androidx.startup" />
+74-->[androidx.emoji2:emoji2:1.3.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\a6d66e9640c554fb80b94e1b63a5f0fa\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+75            <meta-data
+75-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\cf40763b35bc3043b96648c5d4c826e1\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+76                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+76-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\cf40763b35bc3043b96648c5d4c826e1\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+77                android:value="androidx.startup" />
+77-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\cf40763b35bc3043b96648c5d4c826e1\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+78            <meta-data
+78-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+79                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+79-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+80                android:value="androidx.startup" />
+80-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+81        </provider>
+82
+83        <uses-library
+83-->[androidx.window:window:1.0.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c387c20dcb440e165587ae344ee0a11d\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
+84            android:name="androidx.window.extensions"
+84-->[androidx.window:window:1.0.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c387c20dcb440e165587ae344ee0a11d\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
+85            android:required="false" />
+85-->[androidx.window:window:1.0.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c387c20dcb440e165587ae344ee0a11d\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
+86        <uses-library
+86-->[androidx.window:window:1.0.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c387c20dcb440e165587ae344ee0a11d\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
+87            android:name="androidx.window.sidecar"
+87-->[androidx.window:window:1.0.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c387c20dcb440e165587ae344ee0a11d\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
+88            android:required="false" />
+88-->[androidx.window:window:1.0.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c387c20dcb440e165587ae344ee0a11d\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
+89
+90        <receiver
+90-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+91            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+91-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+92            android:directBootAware="false"
+92-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+93            android:enabled="true"
+93-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+94            android:exported="true"
+94-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+95            android:permission="android.permission.DUMP" >
+95-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+96            <intent-filter>
+96-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+97                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+97-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+97-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+98            </intent-filter>
+99            <intent-filter>
+99-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+100                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+100-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+100-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+101            </intent-filter>
+102            <intent-filter>
+102-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+103                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+103-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+103-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+104            </intent-filter>
+105            <intent-filter>
+105-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+106                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+106-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+106-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ASUS\.gradle\caches\8.10.2\transforms\c2ea1eaefb3a6e95aff7445a4d58a365\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
+107            </intent-filter>
+108        </receiver>
+109    </application>
+110
+111</manifest>

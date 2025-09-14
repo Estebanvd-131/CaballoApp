@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent_light_brown">#CD853F</color>
+    <color name="accent_sky_blue">#CD853F</color>
+    <color name="achromatopsia_black">#2F4F4F</color>
+    <color name="achromatopsia_button_text">#2F4F4F</color>
+    <color name="achromatopsia_dark_gray">#696969</color>
+    <color name="achromatopsia_light_gray">#D3D3D3</color>
+    <color name="achromatopsia_medium_gray">#A9A9A9</color>
+    <color name="achromatopsia_white">#FFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="deuteranopia_accent">#F0E68C</color>
+    <color name="deuteranopia_background">#F8F8FF</color>
+    <color name="deuteranopia_button_text">#FFFFFF</color>
+    <color name="deuteranopia_error">#F08080</color>
+    <color name="deuteranopia_info">#B0C4DE</color>
+    <color name="deuteranopia_primary">#8FBC8F</color>
+    <color name="deuteranopia_secondary">#BC8F8F</color>
+    <color name="deuteranopia_success">#98FB98</color>
+    <color name="deuteranopia_text_primary">#2F4F4F</color>
+    <color name="deuteranopia_text_secondary">#696969</color>
+    <color name="deuteranopia_warning">#FFD700</color>
+    <color name="divider_color">#D3C7B8</color>
+    <color name="elegant_gray">#696969</color>
+    <color name="error_red">#DC143C</color>
+    <color name="info_blue">#4682B4</color>
+    <color name="light_background">#F5F5DC</color>
+    <color name="primary_blue">#8B4513</color>
+    <color name="primary_blue_dark">#654321</color>
+    <color name="primary_brown">#8B4513</color>
+    <color name="primary_brown_dark">#654321</color>
+    <color name="primary_brown_light">#D2691E</color>
+    <color name="protanopia_accent">#DEB887</color>
+    <color name="protanopia_background">#FAFAFA</color>
+    <color name="protanopia_button_text">#FFFFFF</color>
+    <color name="protanopia_error">#CD5C5C</color>
+    <color name="protanopia_info">#87CEEB</color>
+    <color name="protanopia_primary">#5D8AA8</color>
+    <color name="protanopia_secondary">#A0826D</color>
+    <color name="protanopia_success">#90EE90</color>
+    <color name="protanopia_text_primary">#2F4F4F</color>
+    <color name="protanopia_text_secondary">#696969</color>
+    <color name="protanopia_warning">#FFB347</color>
+    <color name="secondary_brown">#A0522D</color>
+    <color name="secondary_brown_dark">#8B4513</color>
+    <color name="secondary_brown_light">#DEB887</color>
+    <color name="secondary_green">#A0522D</color>
+    <color name="secondary_green_light">#D2691E</color>
+    <color name="success_green">#228B22</color>
+    <color name="surface_color">#FEFEFE</color>
+    <color name="text_dark">#2F1B14</color>
+    <color name="text_primary">#2F1B14</color>
+    <color name="text_secondary">#8B7355</color>
+    <color name="tritanopia_accent">#FFE4B5</color>
+    <color name="tritanopia_background">#FFFAF0</color>
+    <color name="tritanopia_button_text">#2F4F4F</color>
+    <color name="tritanopia_error">#FFA07A</color>
+    <color name="tritanopia_info">#E6E6FA</color>
+    <color name="tritanopia_primary">#DDA0DD</color>
+    <color name="tritanopia_secondary">#F4A460</color>
+    <color name="tritanopia_success">#AFEEEE</color>
+    <color name="tritanopia_text_primary">#2F4F4F</color>
+    <color name="tritanopia_text_secondary">#696969</color>
+    <color name="tritanopia_warning">#FFDEAD</color>
+    <color name="warm_cream">#F5DEB3</color>
+    <color name="warm_orange">#FF8C00</color>
+    <color name="warning_orange">#FF8C00</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">CaballoApp</string>
+    <style name="Base.Theme.CaballoApp" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="ButtonExit" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/primary_brown</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+    <style name="ButtonPrimary" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/primary_brown</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+    <style name="ButtonSecondary" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/card_background</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+    <style name="ButtonTertiary" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/accent_light_brown</item>
+        <item name="android:textColor">@color/accent_light_brown</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+    <style name="ButtonVeterinary" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/accent_light_brown</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+    <style name="SubtitleText">
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+    <style name="Theme.CaballoApp" parent="Base.Theme.CaballoApp"/>
+    <style name="TitleText">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+</resources>

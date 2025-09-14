@@ -1,0 +1,54 @@
+[
+    {
+        "merged": "com.villalobos.caballoapp-mergeReleaseResources-3:/layout/activity_region_tronco.xml",
+        "source": "com.villalobos.caballoapp-main-5:/layout/activity_region_tronco.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-mergeReleaseResources-3:/layout/activity_region_menu.xml",
+        "source": "com.villalobos.caballoapp-main-5:/layout/activity_region_menu.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-mergeReleaseResources-3:/layout/activity_tutorial.xml",
+        "source": "com.villalobos.caballoapp-main-5:/layout/activity_tutorial.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-mergeReleaseResources-3:/layout/activity_region_cabeza.xml",
+        "source": "com.villalobos.caballoapp-main-5:/layout/activity_region_cabeza.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-mergeReleaseResources-3:/layout/activity_region_pelvica.xml",
+        "source": "com.villalobos.caballoapp-main-5:/layout/activity_region_pelvica.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-mergeReleaseResources-3:/layout/activity_main.xml",
+        "source": "com.villalobos.caballoapp-main-5:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-mergeReleaseResources-3:/layout/activity_accesibilidad.xml",
+        "source": "com.villalobos.caballoapp-main-5:/layout/activity_accesibilidad.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-mergeReleaseResources-3:/layout/item_musculo.xml",
+        "source": "com.villalobos.caballoapp-main-5:/layout/item_musculo.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-mergeReleaseResources-3:/layout/activity_region_toracica.xml",
+        "source": "com.villalobos.caballoapp-main-5:/layout/activity_region_toracica.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-mergeReleaseResources-3:/layout/fragment_tutorial_paso.xml",
+        "source": "com.villalobos.caballoapp-main-5:/layout/fragment_tutorial_paso.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-mergeReleaseResources-3:/layout/activity_region_cuello.xml",
+        "source": "com.villalobos.caballoapp-main-5:/layout/activity_region_cuello.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-mergeReleaseResources-3:/layout/activity_detalle_musculo.xml",
+        "source": "com.villalobos.caballoapp-main-5:/layout/activity_detalle_musculo.xml"
+    },
+    {
+        "merged": "com.villalobos.caballoapp-mergeReleaseResources-3:/layout/activity_creditos.xml",
+        "source": "com.villalobos.caballoapp-main-5:/layout/activity_creditos.xml"
+    }
+]

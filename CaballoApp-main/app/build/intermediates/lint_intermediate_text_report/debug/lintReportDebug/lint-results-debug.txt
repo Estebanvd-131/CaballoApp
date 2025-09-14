@@ -1,0 +1,726 @@
+C:\CaballoApp-main\app\src\main\res\layout\activity_detalle_musculo.xml:86: Warning: This HorizontalScrollView should use android:layout_height="wrap_content" [ScrollViewSize]
+                android:layout_height="match_parent"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_detalle_musculo.xml:91: Warning: This ImageView should use android:layout_width="wrap_content" [ScrollViewSize]
+                    android:layout_width="match_parent"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ScrollViewSize":
+   ScrollView children must set their layout_width or layout_height attributes
+   to wrap_content rather than fill_parent or match_parent in the scrolling
+   dimension.
+
+C:\CaballoApp-main\gradle\libs.versions.toml:2: Warning: A newer version of com.android.application than 8.8.0 is available: 8.13.0. (There is also a newer version of 8.8.𝑥 available, if upgrading to 8.13.0 is difficult: 8.8.2) [AndroidGradlePluginVersion]
+agp = "8.8.0"
+      ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:2: Warning: A newer version of com.android.application than 8.8.0 is available: 8.13.0. (There is also a newer version of 8.8.𝑥 available, if upgrading to 8.13.0 is difficult: 8.8.2) [AndroidGradlePluginVersion]
+agp = "8.8.0"
+      ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:2: Warning: A newer version of com.android.application than 8.8.0 is available: 8.13.0. (There is also a newer version of 8.8.𝑥 available, if upgrading to 8.13.0 is difficult: 8.8.2) [AndroidGradlePluginVersion]
+agp = "8.8.0"
+      ~~~~~~~
+
+   Explanation for issues of type "AndroidGradlePluginVersion":
+   This detector looks for usage of the Android Gradle Plugin where the
+   version you are using is not the current stable release. Using older
+   versions is fine, and there are cases where you deliberately want to stick
+   with an older version. However, you may simply not be aware that a more
+   recent version is available, and that is what this lint check helps find.
+
+C:\CaballoApp-main\app\build.gradle.kts:54: Warning: A newer version of androidx.viewpager2:viewpager2 than 1.0.0 is available: 1.1.0 [GradleDependency]
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:4: Warning: A newer version of androidx.core:core-ktx than 1.16.0 is available: 1.17.0 [GradleDependency]
+coreKtx = "1.16.0"
+          ~~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:4: Warning: A newer version of androidx.core:core-ktx than 1.16.0 is available: 1.17.0 [GradleDependency]
+coreKtx = "1.16.0"
+          ~~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:4: Warning: A newer version of androidx.core:core-ktx than 1.16.0 is available: 1.17.0 [GradleDependency]
+coreKtx = "1.16.0"
+          ~~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:6: Warning: A newer version of androidx.test.ext:junit than 1.2.1 is available: 1.3.0 [GradleDependency]
+junitVersion = "1.2.1"
+               ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:6: Warning: A newer version of androidx.test.ext:junit than 1.2.1 is available: 1.3.0 [GradleDependency]
+junitVersion = "1.2.1"
+               ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:6: Warning: A newer version of androidx.test.ext:junit than 1.2.1 is available: 1.3.0 [GradleDependency]
+junitVersion = "1.2.1"
+               ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:7: Warning: A newer version of androidx.test.espresso:espresso-core than 3.6.1 is available: 3.7.0 [GradleDependency]
+espressoCore = "3.6.1"
+               ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:7: Warning: A newer version of androidx.test.espresso:espresso-core than 3.6.1 is available: 3.7.0 [GradleDependency]
+espressoCore = "3.6.1"
+               ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:7: Warning: A newer version of androidx.test.espresso:espresso-core than 3.6.1 is available: 3.7.0 [GradleDependency]
+espressoCore = "3.6.1"
+               ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:8: Warning: A newer version of androidx.appcompat:appcompat than 1.7.0 is available: 1.7.1 [GradleDependency]
+appcompat = "1.7.0"
+            ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:8: Warning: A newer version of androidx.appcompat:appcompat than 1.7.0 is available: 1.7.1 [GradleDependency]
+appcompat = "1.7.0"
+            ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:8: Warning: A newer version of androidx.appcompat:appcompat than 1.7.0 is available: 1.7.1 [GradleDependency]
+appcompat = "1.7.0"
+            ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:9: Warning: A newer version of com.google.android.material:material than 1.12.0 is available: 1.13.0 [GradleDependency]
+material = "1.12.0"
+           ~~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:9: Warning: A newer version of com.google.android.material:material than 1.12.0 is available: 1.13.0 [GradleDependency]
+material = "1.12.0"
+           ~~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:9: Warning: A newer version of com.google.android.material:material than 1.12.0 is available: 1.13.0 [GradleDependency]
+material = "1.12.0"
+           ~~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:10: Warning: A newer version of androidx.activity:activity than 1.10.1 is available: 1.11.0 [GradleDependency]
+activity = "1.10.1"
+           ~~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:10: Warning: A newer version of androidx.activity:activity than 1.10.1 is available: 1.11.0 [GradleDependency]
+activity = "1.10.1"
+           ~~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:10: Warning: A newer version of androidx.activity:activity than 1.10.1 is available: 1.11.0 [GradleDependency]
+activity = "1.10.1"
+           ~~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:12: Warning: A newer version of androidx.room:room-compiler than 2.6.1 is available: 2.8.0 [GradleDependency]
+room = "2.6.1"
+       ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:12: Warning: A newer version of androidx.room:room-compiler than 2.6.1 is available: 2.8.0 [GradleDependency]
+room = "2.6.1"
+       ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:12: Warning: A newer version of androidx.room:room-compiler than 2.6.1 is available: 2.8.0 [GradleDependency]
+room = "2.6.1"
+       ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:12: Warning: A newer version of androidx.room:room-ktx than 2.6.1 is available: 2.8.0 [GradleDependency]
+room = "2.6.1"
+       ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:12: Warning: A newer version of androidx.room:room-ktx than 2.6.1 is available: 2.8.0 [GradleDependency]
+room = "2.6.1"
+       ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:12: Warning: A newer version of androidx.room:room-ktx than 2.6.1 is available: 2.8.0 [GradleDependency]
+room = "2.6.1"
+       ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:12: Warning: A newer version of androidx.room:room-runtime than 2.6.1 is available: 2.8.0 [GradleDependency]
+room = "2.6.1"
+       ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:12: Warning: A newer version of androidx.room:room-runtime than 2.6.1 is available: 2.8.0 [GradleDependency]
+room = "2.6.1"
+       ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:12: Warning: A newer version of androidx.room:room-runtime than 2.6.1 is available: 2.8.0 [GradleDependency]
+room = "2.6.1"
+       ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:13: Warning: A newer version of androidx.lifecycle:lifecycle-livedata-ktx than 2.8.7 is available: 2.9.3 [GradleDependency]
+lifecycle = "2.8.7"
+            ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:13: Warning: A newer version of androidx.lifecycle:lifecycle-livedata-ktx than 2.8.7 is available: 2.9.3 [GradleDependency]
+lifecycle = "2.8.7"
+            ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:13: Warning: A newer version of androidx.lifecycle:lifecycle-livedata-ktx than 2.8.7 is available: 2.9.3 [GradleDependency]
+lifecycle = "2.8.7"
+            ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:13: Warning: A newer version of androidx.lifecycle:lifecycle-runtime-ktx than 2.8.7 is available: 2.9.3 [GradleDependency]
+lifecycle = "2.8.7"
+            ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:13: Warning: A newer version of androidx.lifecycle:lifecycle-runtime-ktx than 2.8.7 is available: 2.9.3 [GradleDependency]
+lifecycle = "2.8.7"
+            ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:13: Warning: A newer version of androidx.lifecycle:lifecycle-runtime-ktx than 2.8.7 is available: 2.9.3 [GradleDependency]
+lifecycle = "2.8.7"
+            ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:13: Warning: A newer version of androidx.lifecycle:lifecycle-viewmodel-ktx than 2.8.7 is available: 2.9.3 [GradleDependency]
+lifecycle = "2.8.7"
+            ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:13: Warning: A newer version of androidx.lifecycle:lifecycle-viewmodel-ktx than 2.8.7 is available: 2.9.3 [GradleDependency]
+lifecycle = "2.8.7"
+            ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:13: Warning: A newer version of androidx.lifecycle:lifecycle-viewmodel-ktx than 2.8.7 is available: 2.9.3 [GradleDependency]
+lifecycle = "2.8.7"
+            ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:14: Warning: A newer version of androidx.navigation:navigation-fragment-ktx than 2.8.4 is available: 2.9.4 [GradleDependency]
+navigation = "2.8.4"
+             ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:14: Warning: A newer version of androidx.navigation:navigation-fragment-ktx than 2.8.4 is available: 2.9.4 [GradleDependency]
+navigation = "2.8.4"
+             ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:14: Warning: A newer version of androidx.navigation:navigation-fragment-ktx than 2.8.4 is available: 2.9.4 [GradleDependency]
+navigation = "2.8.4"
+             ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:14: Warning: A newer version of androidx.navigation:navigation-ui-ktx than 2.8.4 is available: 2.9.4 [GradleDependency]
+navigation = "2.8.4"
+             ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:14: Warning: A newer version of androidx.navigation:navigation-ui-ktx than 2.8.4 is available: 2.9.4 [GradleDependency]
+navigation = "2.8.4"
+             ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:14: Warning: A newer version of androidx.navigation:navigation-ui-ktx than 2.8.4 is available: 2.9.4 [GradleDependency]
+navigation = "2.8.4"
+             ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:15: Warning: A newer version of androidx.fragment:fragment-ktx than 1.8.5 is available: 1.8.9 [GradleDependency]
+fragment = "1.8.5"
+           ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:15: Warning: A newer version of androidx.fragment:fragment-ktx than 1.8.5 is available: 1.8.9 [GradleDependency]
+fragment = "1.8.5"
+           ~~~~~~~
+C:\CaballoApp-main\gradle\libs.versions.toml:15: Warning: A newer version of androidx.fragment:fragment-ktx than 1.8.5 is available: 1.8.9 [GradleDependency]
+fragment = "1.8.5"
+           ~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+C:\CaballoApp-main\app\src\main\res\layout\fragment_tutorial_paso.xml:84: Warning: Use app:drawableStartCompat instead of android:drawableStart [UseCompatTextViewDrawableXml from androidx.appcompat]
+                    android:drawableStart="@android:drawable/btn_star_big_on"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\fragment_tutorial_paso.xml:95: Warning: Use app:drawableStartCompat instead of android:drawableStart [UseCompatTextViewDrawableXml from androidx.appcompat]
+                    android:drawableStart="@android:drawable/btn_star_big_on"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\fragment_tutorial_paso.xml:106: Warning: Use app:drawableStartCompat instead of android:drawableStart [UseCompatTextViewDrawableXml from androidx.appcompat]
+                    android:drawableStart="@android:drawable/btn_star_big_on"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\fragment_tutorial_paso.xml:116: Warning: Use app:drawableStartCompat instead of android:drawableStart [UseCompatTextViewDrawableXml from androidx.appcompat]
+                    android:drawableStart="@android:drawable/btn_star_big_on"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UseCompatTextViewDrawableXml":
+   TextView uses android: compound drawable attributes instead of app: ones
+
+   Vendor: Android Open Source Project
+   Identifier: androidx.appcompat
+   Feedback: https://issuetracker.google.com/issues/new?component=460343
+
+C:\CaballoApp-main\app\src\main\java\com\villalobos\caballoapp\AdaptadorMusculos.kt:43: Warning: It will always be more efficient to use more specific change events if you can. Rely on notifyDataSetChanged as a last resort. [NotifyDataSetChanged]
+        notifyDataSetChanged()
+        ~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "NotifyDataSetChanged":
+   The RecyclerView adapter's onNotifyDataSetChanged method does not specify
+   what about the data set has changed, forcing any observers to assume that
+   all existing items and structure may no longer be valid. `LayoutManager`s
+   will be forced to fully rebind and relayout all visible views.
+
+C:\CaballoApp-main\app\src\main\res\drawable-v24: Warning: This folder configuration (v24) is unnecessary; minSdkVersion is 24. Merge all the resources in this folder into drawable. [ObsoleteSdkInt]
+
+   Explanation for issues of type "ObsoleteSdkInt":
+   This check flags version checks that are not necessary, because the
+   minSdkVersion (or surrounding known API level) is already at least as high
+   as the version checked for.
+
+   Similarly, it also looks for resources in -vNN folders, such as values-v14
+   where the version qualifier is less than or equal to the minSdkVersion,
+   where the contents should be merged into the best folder.
+
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:8: Warning: Possible overdraw: Root element paints background @color/light_background with a theme that also paints a background (inferred theme is @style/Theme.CaballoApp) [Overdraw]
+    android:background="@color/light_background"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_detalle_musculo.xml:7: Warning: Possible overdraw: Root element paints background @color/light_background with a theme that also paints a background (inferred theme is @style/Theme.CaballoApp) [Overdraw]
+    android:background="@color/light_background"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_main.xml:8: Warning: Possible overdraw: Root element paints background @color/light_background with a theme that also paints a background (inferred theme is @style/Theme.CaballoApp) [Overdraw]
+    android:background="@color/light_background"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_cabeza.xml:8: Warning: Possible overdraw: Root element paints background @color/light_background with a theme that also paints a background (inferred theme is @style/Theme.CaballoApp) [Overdraw]
+    android:background="@color/light_background"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_cuello.xml:8: Warning: Possible overdraw: Root element paints background @color/light_background with a theme that also paints a background (inferred theme is @style/Theme.CaballoApp) [Overdraw]
+    android:background="@color/light_background"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_menu.xml:6: Warning: Possible overdraw: Root element paints background @color/light_background with a theme that also paints a background (inferred theme is @style/Theme.CaballoApp) [Overdraw]
+    android:background="@color/light_background">
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_pelvica.xml:8: Warning: Possible overdraw: Root element paints background @color/light_background with a theme that also paints a background (inferred theme is @style/Theme.CaballoApp) [Overdraw]
+    android:background="@color/light_background"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_toracica.xml:8: Warning: Possible overdraw: Root element paints background @color/light_background with a theme that also paints a background (inferred theme is @style/Theme.CaballoApp) [Overdraw]
+    android:background="@color/light_background"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_tronco.xml:8: Warning: Possible overdraw: Root element paints background @color/light_background with a theme that also paints a background (inferred theme is @style/Theme.CaballoApp) [Overdraw]
+    android:background="@color/light_background"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_tutorial.xml:7: Warning: Possible overdraw: Root element paints background @color/light_background with a theme that also paints a background (inferred theme is @style/Theme.CaballoApp) [Overdraw]
+    android:background="@color/light_background"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "Overdraw":
+   If you set a background drawable on a root view, then you should use a
+   custom theme where the theme background is null. Otherwise, the theme
+   background will be painted first, only to have your custom background
+   completely cover it; this is called "overdraw".
+
+   NOTE: This detector relies on figuring out which layouts are associated
+   with which activities based on scanning the Java code, and it's currently
+   doing that using an inexact pattern matching algorithm. Therefore, it can
+   incorrectly conclude which activity the layout is associated with and then
+   wrongly complain that a background-theme is hidden.
+
+   If you want your custom background on multiple pages, then you should
+   consider making a custom theme with your custom background and just using
+   that theme instead of a root element background.
+
+   Of course it's possible that your custom drawable is translucent and you
+   want it to be mixed with the background. However, you will get better
+   performance if you pre-mix the background with your drawable and use that
+   resulting image or color as a custom theme background instead.
+
+C:\CaballoApp-main\app\src\main\res\values\colors.xml:16: Warning: The resource R.color.primary_brown_light appears to be unused [UnusedResources]
+    <color name="primary_brown_light">#D2691E</color>     <!-- Marrón claro -->
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\values\colors.xml:17: Warning: The resource R.color.primary_brown_dark appears to be unused [UnusedResources]
+    <color name="primary_brown_dark">#654321</color>      <!-- Marrón muy oscuro -->
+           ~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\values\colors.xml:18: Warning: The resource R.color.secondary_brown_light appears to be unused [UnusedResources]
+    <color name="secondary_brown_light">#DEB887</color>   <!-- Marrón beige claro -->
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\values\colors.xml:19: Warning: The resource R.color.secondary_brown_dark appears to be unused [UnusedResources]
+    <color name="secondary_brown_dark">#8B4513</color>    <!-- Marrón oscuro -->
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\values\colors.xml:37: Warning: The resource R.color.primary_blue_dark appears to be unused [UnusedResources]
+    <color name="primary_blue_dark">#654321</color>       <!-- Alias al marrón muy oscuro -->
+           ~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\values\colors.xml:38: Warning: The resource R.color.secondary_green appears to be unused [UnusedResources]
+    <color name="secondary_green">#A0522D</color>         <!-- Alias al marrón secundario -->
+           ~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\values\colors.xml:39: Warning: The resource R.color.secondary_green_light appears to be unused [UnusedResources]
+    <color name="secondary_green_light">#D2691E</color>   <!-- Alias al marrón claro -->
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\values\colors.xml:40: Warning: The resource R.color.accent_sky_blue appears to be unused [UnusedResources]
+    <color name="accent_sky_blue">#CD853F</color>         <!-- Alias al marrón acento -->
+           ~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\drawable\flanco_torax.png: Warning: The resource R.drawable.flanco_torax appears to be unused [UnusedResources]
+C:\CaballoApp-main\app\src\main\res\drawable\ic_arrow_right.xml:2: Warning: The resource R.drawable.ic_arrow_right appears to be unused [UnusedResources]
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+^
+C:\CaballoApp-main\app\src\main\res\drawable\miembro_distal.png: Warning: The resource R.drawable.miembro_distal appears to be unused [UnusedResources]
+C:\CaballoApp-main\app\src\main\res\drawable\pecho_ventral.png: Warning: The resource R.drawable.pecho_ventral appears to be unused [UnusedResources]
+C:\CaballoApp-main\app\src\main\res\drawable\planta_casco.png: Warning: The resource R.drawable.planta_casco appears to be unused [UnusedResources]
+C:\CaballoApp-main\app\src\main\res\values\themes.xml:54: Warning: The resource R.style.ButtonVeterinary appears to be unused [UnusedResources]
+    <style name="ButtonVeterinary" parent="Widget.Material3.Button">
+           ~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\values\themes.xml:63: Warning: The resource R.style.ButtonTertiary appears to be unused [UnusedResources]
+    <style name="ButtonTertiary" parent="Widget.Material3.Button.OutlinedButton">
+           ~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UnusedResources":
+   Unused resources make applications larger and slow down builds.
+
+
+   The unused resource check can ignore tests. If you want to include
+   resources that are only referenced from tests, consider packaging them in a
+   test source set instead.
+
+   You can include test sources in the unused resource check by setting the
+   system property lint.unused-resources.include-tests =true, and to exclude
+   them (usually for performance reasons), use
+   lint.unused-resources.exclude-tests =true.
+   ,
+
+C:\CaballoApp-main\app\src\main\res\drawable\cabeza_lateral.png: Warning: Found bitmap drawable res/drawable/cabeza_lateral.png in densityless folder [IconLocation]
+C:\CaballoApp-main\app\src\main\res\drawable\cuello_y_torax.png: Warning: Found bitmap drawable res/drawable/cuello_y_torax.png in densityless folder [IconLocation]
+C:\CaballoApp-main\app\src\main\res\drawable\flanco_torax.png: Warning: Found bitmap drawable res/drawable/flanco_torax.png in densityless folder [IconLocation]
+C:\CaballoApp-main\app\src\main\res\drawable\grupa_lateral.png: Warning: Found bitmap drawable res/drawable/grupa_lateral.png in densityless folder [IconLocation]
+C:\CaballoApp-main\app\src\main\res\drawable\grupa_miembro_posterior.png: Warning: Found bitmap drawable res/drawable/grupa_miembro_posterior.png in densityless folder [IconLocation]
+C:\CaballoApp-main\app\src\main\res\drawable\hombro_miembro_anterior.png: Warning: Found bitmap drawable res/drawable/hombro_miembro_anterior.png in densityless folder [IconLocation]
+C:\CaballoApp-main\app\src\main\res\drawable\miembro_distal.png: Warning: Found bitmap drawable res/drawable/miembro_distal.png in densityless folder [IconLocation]
+C:\CaballoApp-main\app\src\main\res\drawable\miologiaequinocompleto.png: Warning: Found bitmap drawable res/drawable/miologiaequinocompleto.png in densityless folder [IconLocation]
+C:\CaballoApp-main\app\src\main\res\drawable\pecho_ventral.png: Warning: Found bitmap drawable res/drawable/pecho_ventral.png in densityless folder [IconLocation]
+C:\CaballoApp-main\app\src\main\res\drawable\planta_casco.png: Warning: Found bitmap drawable res/drawable/planta_casco.png in densityless folder [IconLocation]
+C:\CaballoApp-main\app\src\main\res\drawable\torsoequino.jpg: Warning: Found bitmap drawable res/drawable/torsoequino.jpg in densityless folder [IconLocation]
+
+   Explanation for issues of type "IconLocation":
+   The res/drawable folder is intended for density-independent graphics such
+   as shapes defined in XML. For bitmaps, move it to drawable-mdpi and
+   consider providing higher and lower resolution versions in drawable-ldpi,
+   drawable-hdpi and drawable-xhdpi. If the icon really is density independent
+   (for example a solid color) you can place it in drawable-nodpi.
+
+   https://developer.android.com/guide/practices/screens_support.html
+
+C:\CaballoApp-main\app\src\main\res\layout\activity_detalle_musculo.xml:40: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+        <Button
+         ~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_detalle_musculo.xml:51: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+        <Button
+         ~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_tutorial.xml:102: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+        <Button
+         ~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_tutorial.xml:114: Warning: Buttons in button bars should be borderless; use style="?android:attr/buttonBarButtonStyle" (and ?android:attr/buttonBarStyle on the parent) [ButtonStyle]
+        <Button
+         ~~~~~~
+
+   Explanation for issues of type "ButtonStyle":
+   Button bars typically use a borderless style for the buttons. Set the
+   style="?android:attr/buttonBarButtonStyle" attribute on each of the
+   buttons, and set style="?android:attr/buttonBarStyle" on the parent layout
+
+   https://d.android.com/r/studio-ui/designer/material/dialogs
+
+C:\CaballoApp-main\app\build.gradle.kts:51: Warning: Use version catalog instead [UseTomlInstead]
+    implementation("androidx.preference:preference-ktx:1.2.1")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\build.gradle.kts:54: Warning: Use version catalog instead [UseTomlInstead]
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UseTomlInstead":
+   If your project is using a libs.versions.toml file, you should place all
+   Gradle dependencies in the TOML file. This lint check looks for version
+   declarations outside of the TOML file and suggests moving them (and in the
+   IDE, provides a quickfix to performing the operation automatically).
+
+C:\CaballoApp-main\app\src\main\java\com\villalobos\caballoapp\DetalleMusculo.kt:203: Warning: Custom view `ImageView` has setOnTouchListener called on it but does not override performClick [ClickableViewAccessibility]
+            enlace.imgMusculoDetalle.setOnTouchListener { _, event ->
+            ^
+C:\CaballoApp-main\app\src\main\java\com\villalobos\caballoapp\DetalleMusculo.kt:203: Warning: onTouch lambda should call View#performClick when a click is detected [ClickableViewAccessibility]
+            enlace.imgMusculoDetalle.setOnTouchListener { _, event ->
+                                                        ^
+
+   Explanation for issues of type "ClickableViewAccessibility":
+   If a View that overrides onTouchEvent or uses an OnTouchListener does not
+   also implement performClick and call it when clicks are detected, the View
+   may not handle accessibility actions properly. Logic handling the click
+   actions should ideally be placed in View#performClick as some accessibility
+   services invoke performClick when a click action should occur.
+
+C:\CaballoApp-main\app\src\main\res\layout\activity_detalle_musculo.xml:89: Warning: Missing contentDescription attribute on image [ContentDescription]
+                <ImageView
+                 ~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_main.xml:79: Warning: Missing contentDescription attribute on image [ContentDescription]
+        <ImageView
+         ~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_cabeza.xml:54: Warning: Missing contentDescription attribute on image [ContentDescription]
+            <ImageView
+             ~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_cuello.xml:54: Warning: Missing contentDescription attribute on image [ContentDescription]
+            <ImageView
+             ~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_menu.xml:50: Warning: Missing contentDescription attribute on image [ContentDescription]
+            <ImageView
+             ~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_pelvica.xml:54: Warning: Missing contentDescription attribute on image [ContentDescription]
+            <ImageView
+             ~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_toracica.xml:54: Warning: Missing contentDescription attribute on image [ContentDescription]
+            <ImageView
+             ~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_tronco.xml:54: Warning: Missing contentDescription attribute on image [ContentDescription]
+            <ImageView
+             ~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\fragment_tutorial_paso.xml:21: Warning: Missing contentDescription attribute on image [ContentDescription]
+        <ImageView
+         ~~~~~~~~~
+
+   Explanation for issues of type "ContentDescription":
+   Non-textual widgets like ImageViews and ImageButtons should use the
+   contentDescription attribute to specify a textual description of the widget
+   such that screen readers and other accessibility tools can adequately
+   describe the user interface.
+
+   Note that elements in application screens that are purely decorative and do
+   not provide any content or enable a user action should not have
+   accessibility content descriptions. In this case, set their descriptions to
+   @null. If your app's minSdkVersion is 16 or higher, you can instead set
+   these graphical elements' android:importantForAccessibility attributes to
+   no.
+
+   Note that for text fields, you should not set both the hint and the
+   contentDescription attributes since the hint will never be shown. Just set
+   the hint.
+
+   https://developer.android.com/guide/topics/ui/accessibility/apps#special-cases
+
+C:\CaballoApp-main\app\src\main\java\com\villalobos\caballoapp\AccesibilityHelper.kt:167: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                view.text = "$indicator $regionText"
+                            ~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\java\com\villalobos\caballoapp\AccesibilityHelper.kt:251: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            textView.text = "$indicator $muscleText"
+                            ~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\java\com\villalobos\caballoapp\AdaptadorMusculos.kt:30: Warning: Number formatting does not take into account locale settings. Consider using String.format instead. [SetTextI18n]
+        holder.tvNumero.text = musculo.hotspotNumero.toString()
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\java\com\villalobos\caballoapp\DetalleMusculo.kt:303: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            enlace.tvModoVista.text = "Vista Regional"
+                                       ~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\java\com\villalobos\caballoapp\DetalleMusculo.kt:334: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            enlace.tvModoVista.text = "Vista Enfocada - Pellizca para zoom"
+                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\java\com\villalobos\caballoapp\TutorialActivity.kt:155: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            enlace.tvPasoActual.text = "${pasoActual + 1}/${pasosTutorial.size}"
+                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\java\com\villalobos\caballoapp\TutorialActivity.kt:155: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            enlace.tvPasoActual.text = "${pasoActual + 1}/${pasosTutorial.size}"
+                                          ~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\java\com\villalobos\caballoapp\TutorialActivity.kt:165: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                enlace.btnSiguiente.text = "¡Comenzar!"
+                                            ~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\java\com\villalobos\caballoapp\TutorialActivity.kt:167: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                enlace.btnSiguiente.text = "Siguiente →"
+                                            ~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\java\com\villalobos\caballoapp\TutorialPasoFragment.kt:63: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                        text = "• $caracteristica"
+                               ~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "SetTextI18n":
+   When calling TextView#setText
+   * Never call Number#toString() to format numbers; it will not handle
+   fraction separators and locale-specific digits properly. Consider using
+   String#format with proper format specifications (%d or %f) instead.
+   * Do not pass a string literal (e.g. "Hello") to display text. Hardcoded
+   text can not be properly translated to other languages. Consider using
+   Android resource strings instead.
+   * Do not build messages by concatenating text chunks. Such messages can not
+   be properly translated.
+
+   https://developer.android.com/guide/topics/resources/localization.html
+
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:38: Warning: Hardcoded string "CONFIGURACIÓN DE ACCESIBILIDAD", should use @string resource [HardcodedText]
+                android:text="CONFIGURACIÓN DE ACCESIBILIDAD"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:47: Warning: Hardcoded string "Personaliza la experiencia visual", should use @string resource [HardcodedText]
+                android:text="Personaliza la experiencia visual"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:87: Warning: Hardcoded string "ADAPTACIÓN PARA DALTONISMO", should use @string resource [HardcodedText]
+                        android:text="ADAPTACIÓN PARA DALTONISMO"
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:97: Warning: Hardcoded string "Selecciona el modo de colores que mejor se adapte a tu visión:", should use @string resource [HardcodedText]
+                        android:text="Selecciona el modo de colores que mejor se adapte a tu visión:"
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:121: Warning: Hardcoded string "Colores Estándar", should use @string resource [HardcodedText]
+                                android:text="Colores Estándar"
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:140: Warning: Hardcoded string "Protanopia (Dificultad con rojos)", should use @string resource [HardcodedText]
+                                android:text="Protanopia (Dificultad con rojos)"
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:158: Warning: Hardcoded string "Deuteranopia (Dificultad con verdes)", should use @string resource [HardcodedText]
+                                android:text="Deuteranopia (Dificultad con verdes)"
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:176: Warning: Hardcoded string "Tritanopia (Dificultad con azules/amarillos)", should use @string resource [HardcodedText]
+                                android:text="Tritanopia (Dificultad con azules/amarillos)"
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:195: Warning: Hardcoded string "Vista previa:", should use @string resource [HardcodedText]
+                            android:text="Vista previa:"
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:235: Warning: Hardcoded string "DESACTIVAR DALTONISMO", should use @string resource [HardcodedText]
+                        android:text="DESACTIVAR DALTONISMO"
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:264: Warning: Hardcoded string "PERSONALIZACIÓN DE TEMA", should use @string resource [HardcodedText]
+                        android:text="PERSONALIZACIÓN DE TEMA"
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:273: Warning: Hardcoded string "Personaliza los colores principales de la aplicación:", should use @string resource [HardcodedText]
+                        android:text="Personaliza los colores principales de la aplicación:"
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:297: Warning: Hardcoded string "Color Principal", should use @string resource [HardcodedText]
+                                android:text="Color Principal"
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:314: Warning: Hardcoded string "Cambiar", should use @string resource [HardcodedText]
+                                android:text="Cambiar"
+                                ~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:339: Warning: Hardcoded string "Color Secundario", should use @string resource [HardcodedText]
+                                android:text="Color Secundario"
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:356: Warning: Hardcoded string "Cambiar", should use @string resource [HardcodedText]
+                                android:text="Cambiar"
+                                ~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:381: Warning: Hardcoded string "Color de Texto", should use @string resource [HardcodedText]
+                                android:text="Color de Texto"
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:398: Warning: Hardcoded string "Cambiar", should use @string resource [HardcodedText]
+                                android:text="Cambiar"
+                                ~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:409: Warning: Hardcoded string "RESTABLECER VALORES PREDETERMINADOS", should use @string resource [HardcodedText]
+                        android:text="RESTABLECER VALORES PREDETERMINADOS"
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:435: Warning: Hardcoded string "Tutorial de la Aplicación", should use @string resource [HardcodedText]
+                        android:text="Tutorial de la Aplicación"
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:444: Warning: Hardcoded string "Vuelve a ver el tutorial interactivo para familiarizarte con todas las funciones de CaballoApp.", should use @string resource [HardcodedText]
+                        android:text="Vuelve a ver el tutorial interactivo para familiarizarte con todas las funciones de CaballoApp."
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:453: Warning: Hardcoded string "🎓 REINICIAR TUTORIAL", should use @string resource [HardcodedText]
+                        android:text="🎓 REINICIAR TUTORIAL"
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:474: Warning: Hardcoded string "CANCELAR", should use @string resource [HardcodedText]
+                    android:text="CANCELAR"
+                    ~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_accesibilidad.xml:484: Warning: Hardcoded string "GUARDAR", should use @string resource [HardcodedText]
+                    android:text="GUARDAR"
+                    ~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_detalle_musculo.xml:18: Warning: Hardcoded string "Músculo Orbicular de los Párpados", should use @string resource [HardcodedText]
+        android:text="Músculo Orbicular de los Párpados"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_detalle_musculo.xml:47: Warning: Hardcoded string "Vista Regional", should use @string resource [HardcodedText]
+            android:text="Vista Regional"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_detalle_musculo.xml:58: Warning: Hardcoded string "Vista Enfocada", should use @string resource [HardcodedText]
+            android:text="Vista Enfocada"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_detalle_musculo.xml:111: Warning: Hardcoded string "Vista Regional", should use @string resource [HardcodedText]
+        android:text="Vista Regional"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_detalle_musculo.xml:140: Warning: Hardcoded string "Origen:", should use @string resource [HardcodedText]
+                android:text="Origen:"
+                ~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_detalle_musculo.xml:150: Warning: Hardcoded string "Porción orbital: borde orbitario. Porción palpebral: ligamento palpebral.", should use @string resource [HardcodedText]
+                android:text="Porción orbital: borde orbitario. Porción palpebral: ligamento palpebral."
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_detalle_musculo.xml:159: Warning: Hardcoded string "Inserción:", should use @string resource [HardcodedText]
+                android:text="Inserción:"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_detalle_musculo.xml:169: Warning: Hardcoded string "Forma un anillo alrededor del ojo, las fibras musculares se insertan en la piel", should use @string resource [HardcodedText]
+                android:text="Forma un anillo alrededor del ojo, las fibras musculares se insertan en la piel"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_detalle_musculo.xml:178: Warning: Hardcoded string "Función:", should use @string resource [HardcodedText]
+                android:text="Función:"
+                ~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_detalle_musculo.xml:188: Warning: Hardcoded string "Cierre del ojo, protección, parpadeo", should use @string resource [HardcodedText]
+                android:text="Cierre del ojo, protección, parpadeo"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_detalle_musculo.xml:204: Warning: Hardcoded string "VOLVER", should use @string resource [HardcodedText]
+        android:text="VOLVER"
+        ~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_main.xml:36: Warning: Hardcoded string "ANATOMÍA MUSCULARnCABALLO CRIOLLO", should use @string resource [HardcodedText]
+                android:text="ANATOMÍA MUSCULAR\nCABALLO CRIOLLO"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_main.xml:52: Warning: Hardcoded string "Anatomía Veterinaria USC", should use @string resource [HardcodedText]
+                android:text="Anatomía Veterinaria USC"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_main.xml:113: Warning: Hardcoded string "INICIAR EXPLORACIÓN", should use @string resource [HardcodedText]
+                android:text="INICIAR EXPLORACIÓN" />
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_main.xml:122: Warning: Hardcoded string "ACCESIBILIDAD", should use @string resource [HardcodedText]
+                android:text="ACCESIBILIDAD" />
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_main.xml:131: Warning: Hardcoded string "CRÉDITOS", should use @string resource [HardcodedText]
+                android:text="CRÉDITOS" />
+                ~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_main.xml:139: Warning: Hardcoded string "SALIR", should use @string resource [HardcodedText]
+                android:text="SALIR" />
+                ~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_cabeza.xml:30: Warning: Hardcoded string "REGIÓN DE LA CABEZA", should use @string resource [HardcodedText]
+            android:text="REGIÓN DE LA CABEZA"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_cabeza.xml:72: Warning: Hardcoded string "Selecciona un músculo", should use @string resource [HardcodedText]
+        android:text="Selecciona un músculo"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_cabeza.xml:85: Warning: Hardcoded string "Selecciona un músculo de la lista para ver sus detalles", should use @string resource [HardcodedText]
+        android:text="Selecciona un músculo de la lista para ver sus detalles"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_cuello.xml:30: Warning: Hardcoded string "REGIÓN DEL CUELLO", should use @string resource [HardcodedText]
+            android:text="REGIÓN DEL CUELLO"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_cuello.xml:72: Warning: Hardcoded string "Selecciona un músculo", should use @string resource [HardcodedText]
+        android:text="Selecciona un músculo"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_cuello.xml:85: Warning: Hardcoded string "Selecciona un músculo de la lista para ver sus detalles", should use @string resource [HardcodedText]
+        android:text="Selecciona un músculo de la lista para ver sus detalles"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_menu.xml:42: Warning: Hardcoded string "ANATOMÍA MUSCULAR EQUINA", should use @string resource [HardcodedText]
+                    android:text="ANATOMÍA MUSCULAR EQUINA"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_menu.xml:65: Warning: Hardcoded string "Selecciona algún músculo", should use @string resource [HardcodedText]
+                android:text="Selecciona algún músculo"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_menu.xml:93: Warning: Hardcoded string "REGIÓN DE LA CABEZA", should use @string resource [HardcodedText]
+                    android:text="REGIÓN DE LA CABEZA"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_menu.xml:106: Warning: Hardcoded string "REGIÓN DEL CUELLO", should use @string resource [HardcodedText]
+                    android:text="REGIÓN DEL CUELLO"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_menu.xml:119: Warning: Hardcoded string "REGIÓN DEL TRONCO", should use @string resource [HardcodedText]
+                    android:text="REGIÓN DEL TRONCO"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_menu.xml:132: Warning: Hardcoded string "REGIÓN DE MIEMBROS TORÁCICOS", should use @string resource [HardcodedText]
+                    android:text="REGIÓN DE MIEMBROS TORÁCICOS"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_menu.xml:145: Warning: Hardcoded string "REGIÓN PÉLVICA", should use @string resource [HardcodedText]
+                    android:text="REGIÓN PÉLVICA"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_pelvica.xml:30: Warning: Hardcoded string "REGIÓN PÉLVICA", should use @string resource [HardcodedText]
+            android:text="REGIÓN PÉLVICA"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_pelvica.xml:72: Warning: Hardcoded string "Selecciona un músculo", should use @string resource [HardcodedText]
+        android:text="Selecciona un músculo"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_pelvica.xml:85: Warning: Hardcoded string "Selecciona un músculo de la lista para ver sus detalles", should use @string resource [HardcodedText]
+        android:text="Selecciona un músculo de la lista para ver sus detalles"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_toracica.xml:30: Warning: Hardcoded string "REGIÓN TORÁCICA", should use @string resource [HardcodedText]
+            android:text="REGIÓN TORÁCICA"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_toracica.xml:72: Warning: Hardcoded string "Selecciona un músculo", should use @string resource [HardcodedText]
+        android:text="Selecciona un músculo"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_toracica.xml:85: Warning: Hardcoded string "Selecciona un músculo de la lista para ver sus detalles", should use @string resource [HardcodedText]
+        android:text="Selecciona un músculo de la lista para ver sus detalles"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_tronco.xml:30: Warning: Hardcoded string "REGIÓN DEL TRONCO", should use @string resource [HardcodedText]
+            android:text="REGIÓN DEL TRONCO"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_tronco.xml:72: Warning: Hardcoded string "Selecciona un músculo", should use @string resource [HardcodedText]
+        android:text="Selecciona un músculo"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_region_tronco.xml:85: Warning: Hardcoded string "Selecciona un músculo de la lista para ver sus detalles", should use @string resource [HardcodedText]
+        android:text="Selecciona un músculo de la lista para ver sus detalles"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_tutorial.xml:29: Warning: Hardcoded string "Tutorial CaballoApp", should use @string resource [HardcodedText]
+            android:text="Tutorial CaballoApp"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_tutorial.xml:41: Warning: Hardcoded string "1/6", should use @string resource [HardcodedText]
+            android:text="1/6"
+            ~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_tutorial.xml:53: Warning: Hardcoded string "Saltar", should use @string resource [HardcodedText]
+            android:text="Saltar"
+            ~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_tutorial.xml:109: Warning: Hardcoded string "← Anterior", should use @string resource [HardcodedText]
+            android:text="← Anterior"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\activity_tutorial.xml:121: Warning: Hardcoded string "Siguiente →", should use @string resource [HardcodedText]
+            android:text="Siguiente →"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\fragment_tutorial_paso.xml:52: Warning: Hardcoded string "Bienvenido a CaballoApp", should use @string resource [HardcodedText]
+                android:text="Bienvenido a CaballoApp"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\fragment_tutorial_paso.xml:65: Warning: Hardcoded string "Aprende anatomía muscular del Caballo Criollo Colombiano de forma interactiva y gratuita.", should use @string resource [HardcodedText]
+                android:text="Aprende anatomía muscular del Caballo Criollo Colombiano de forma interactiva y gratuita."
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\fragment_tutorial_paso.xml:81: Warning: Hardcoded string "• Exploración por regiones anatómicas", should use @string resource [HardcodedText]
+                    android:text="• Exploración por regiones anatómicas"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\fragment_tutorial_paso.xml:92: Warning: Hardcoded string "• Información detallada de cada músculo", should use @string resource [HardcodedText]
+                    android:text="• Información detallada de cada músculo"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\fragment_tutorial_paso.xml:103: Warning: Hardcoded string "• Búsqueda rápida y favoritos", should use @string resource [HardcodedText]
+                    android:text="• Búsqueda rápida y favoritos"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\fragment_tutorial_paso.xml:113: Warning: Hardcoded string "• Funciona sin conexión a internet", should use @string resource [HardcodedText]
+                    android:text="• Funciona sin conexión a internet"
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\item_musculo.xml:28: Warning: Hardcoded string "1", should use @string resource [HardcodedText]
+            android:text="1"
+            ~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\item_musculo.xml:43: Warning: Hardcoded string "Nombre del Músculo", should use @string resource [HardcodedText]
+                android:text="Nombre del Músculo"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\CaballoApp-main\app\src\main\res\layout\item_musculo.xml:53: Warning: Hardcoded string "Descripción del músculo", should use @string resource [HardcodedText]
+                android:text="Descripción del músculo"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "HardcodedText":
+   Hardcoding text attributes directly in layout files is bad for several
+   reasons:
+
+   * When creating configuration variations (for example for landscape or
+   portrait) you have to repeat the actual text (and keep it up to date when
+   making changes)
+
+   * The application cannot be translated to other languages by just adding
+   new translations for existing string resources.
+
+   There are quickfixes to automatically extract this hardcoded string into a
+   resource lookup.
+
+0 errors, 197 warnings
