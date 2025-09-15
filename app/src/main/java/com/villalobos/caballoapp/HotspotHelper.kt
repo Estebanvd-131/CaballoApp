@@ -3,7 +3,6 @@ package com.villalobos.caballoapp
 import android.content.Context
 import android.util.TypedValue
 import android.view.View
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.core.view.setPadding
@@ -40,11 +39,11 @@ object HotspotHelper {
         ).toInt()
 
         musculos.forEach { musculo ->
-            val btn = ImageButton(context).apply {
+            val btn = View(context).apply {
                 id = View.generateViewId()
-                setBackgroundResource(android.R.color.transparent)
-                // Aumentar área táctil con padding
-                setPadding(8)
+                // Hacer completamente invisible
+                background = null
+                setBackgroundColor(android.graphics.Color.TRANSPARENT)
                 // Para accesibilidad
                 contentDescription = "Hotspot ${musculo.nombre}"
                 setOnClickListener { onClick(musculo) }

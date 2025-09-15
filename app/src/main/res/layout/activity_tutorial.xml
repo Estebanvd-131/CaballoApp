@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_background"
+    android:background="@drawable/gradient_background"
     tools:context=".TutorialActivity">
 
     <!-- Header con indicador de progreso -->
@@ -20,6 +20,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btnBackTutorial"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="←"
+            android:textColor="@color/text_primary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvTutorialTitulo"
@@ -53,6 +64,18 @@
             android:text="Saltar"
             android:textColor="@android:color/white"
             android:textSize="12sp" />
+            
+        <ImageButton
+            android:id="@+id/btnHome"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Ir al menú principal"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_home"
+            android:tint="@color/primary_brown" />
 
     </LinearLayout>
 

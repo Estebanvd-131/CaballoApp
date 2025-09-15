@@ -52,6 +52,9 @@ class TutorialPasoFragment : Fragment() {
             binding.tvDescripcionPaso.text = paso.descripcion
             binding.imgPasoTutorial.setImageResource(paso.imagen)
 
+            // Animar la imagen del tutorial
+            ImageAnimationHelper.animateTutorialImage(binding.imgPasoTutorial)
+
             // Configurar características si las tiene
             if (paso.mostrarCaracteristicas && paso.caracteristicas.isNotEmpty()) {
                 binding.layoutCaracteristicas.visibility = View.VISIBLE

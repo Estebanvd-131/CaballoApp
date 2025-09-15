@@ -1,11 +1,19 @@
 package com.villalobos.caballoapp
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.drawable.GradientDrawable
+import android.util.Log
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+
+// TAG para los logs
+private const val TAG = "AccesibilityHelper"
 
 /**
  * Clase de utilidad para soporte de accesibilidad y daltonismo
@@ -20,6 +28,9 @@ object AccesibilityHelper {
     private const val KEY_TEXT_SCALE = "text_scale"
     private const val KEY_SCREEN_READER_ENABLED = "screen_reader_enabled"
     private const val KEY_ALTERNATIVE_DESCRIPTIONS = "alternative_descriptions"
+    private const val KEY_PRIMARY_COLOR = "primary_color"
+    private const val KEY_SECONDARY_COLOR = "secondary_color"
+    private const val KEY_TEXT_COLOR = "text_color"
 
     /**
      * Tipos de daltonismo soportados
@@ -52,7 +63,10 @@ object AccesibilityHelper {
         val showTextIndicators: Boolean = false,
         val textScale: TextScale = TextScale.NORMAL,
         val screenReaderEnabled: Boolean = false,
-        val alternativeDescriptions: Boolean = true
+        val alternativeDescriptions: Boolean = true,
+        val primaryColor: Int = -1, // -1 means use default
+        val secondaryColor: Int = -1, // -1 means use default
+        val textColor: Int = -1 // -1 means use default
     )
 
     /**
@@ -66,11 +80,14 @@ object AccesibilityHelper {
         val textScaleOrdinal = prefs.getInt(KEY_TEXT_SCALE, 1) // Default to NORMAL
         val screenReaderEnabled = prefs.getBoolean(KEY_SCREEN_READER_ENABLED, false)
         val alternativeDescriptions = prefs.getBoolean(KEY_ALTERNATIVE_DESCRIPTIONS, true)
+        val primaryColor = prefs.getInt(KEY_PRIMARY_COLOR, -1)
+        val secondaryColor = prefs.getInt(KEY_SECONDARY_COLOR, -1)
+        val textColor = prefs.getInt(KEY_TEXT_COLOR, -1)
 
-        val colorblindType = ColorblindType.values().getOrElse(colorblindTypeOrdinal) { 
-            ColorblindType.NONE 
+        val colorblindType = ColorblindType.values().getOrElse(colorblindTypeOrdinal) {
+            ColorblindType.NONE
         }
-        
+
         val textScale = TextScale.values().getOrElse(textScaleOrdinal) {
             TextScale.NORMAL
         }
@@ -81,7 +98,10 @@ object AccesibilityHelper {
             showTextIndicators = textIndicators,
             textScale = textScale,
             screenReaderEnabled = screenReaderEnabled,
-            alternativeDescriptions = alternativeDescriptions
+            alternativeDescriptions = alternativeDescriptions,
+            primaryColor = primaryColor,
+            secondaryColor = secondaryColor,
+            textColor = textColor
         )
     }
 
@@ -97,6 +117,9 @@ object AccesibilityHelper {
             putInt(KEY_TEXT_SCALE, config.textScale.ordinal)
             putBoolean(KEY_SCREEN_READER_ENABLED, config.screenReaderEnabled)
             putBoolean(KEY_ALTERNATIVE_DESCRIPTIONS, config.alternativeDescriptions)
+            putInt(KEY_PRIMARY_COLOR, config.primaryColor)
+            putInt(KEY_SECONDARY_COLOR, config.secondaryColor)
+            putInt(KEY_TEXT_COLOR, config.textColor)
             apply()
         }
     }
@@ -130,6 +153,19 @@ object AccesibilityHelper {
      */
     fun getAccessibleColor(context: Context, originalColorRes: Int): Int {
         val config = getAccessibilityConfig(context)
+
+        // First check if custom colors are set
+        val customColor = when (originalColorRes) {
+            R.color.primary_brown -> if (config.primaryColor != -1) config.primaryColor else null
+            R.color.secondary_brown -> if (config.secondaryColor != -1) config.secondaryColor else null
+            R.color.text_primary, R.color.text_dark -> if (config.textColor != -1) config.textColor else null
+            else -> null
+        }
+
+        if (customColor != null) {
+            return customColor
+        }
+
         val originalColor = ContextCompat.getColor(context, originalColorRes)
 
         return when (config.colorblindType) {
@@ -246,48 +282,80 @@ object AccesibilityHelper {
 
     /**
      * Ajustes específicos para protanopia (dificultad con rojos)
+     * Paleta optimizada para distinguir colores en protanopia
      */
     private fun adjustForProtanopia(context: Context, colorRes: Int): Int {
         return when (colorRes) {
-            R.color.primary_brown -> ContextCompat.getColor(context, R.color.elegant_gray)
-            R.color.secondary_brown -> ContextCompat.getColor(context, R.color.accent_light_brown)
-            R.color.error_red -> ContextCompat.getColor(context, R.color.elegant_gray)
+            R.color.primary_brown -> ContextCompat.getColor(context, R.color.protanopia_primary)
+            R.color.secondary_brown -> ContextCompat.getColor(context, R.color.protanopia_secondary)
+            R.color.accent_light_brown -> ContextCompat.getColor(context, R.color.protanopia_accent)
+            R.color.success_green -> ContextCompat.getColor(context, R.color.protanopia_success)
+            R.color.error_red -> ContextCompat.getColor(context, R.color.protanopia_error)
+            R.color.warning_orange -> ContextCompat.getColor(context, R.color.protanopia_warning)
+            R.color.info_blue -> ContextCompat.getColor(context, R.color.protanopia_info)
+            R.color.text_primary -> ContextCompat.getColor(context, R.color.protanopia_text_primary)
+            R.color.text_secondary -> ContextCompat.getColor(context, R.color.protanopia_text_secondary)
+            R.color.light_background -> ContextCompat.getColor(context, R.color.protanopia_background)
             else -> ContextCompat.getColor(context, colorRes)
         }
     }
 
     /**
      * Ajustes específicos para deuteranopia (dificultad con verdes)
+     * Paleta optimizada para distinguir colores en deuteranopia
      */
     private fun adjustForDeuteranopia(context: Context, colorRes: Int): Int {
         return when (colorRes) {
-            R.color.success_green -> ContextCompat.getColor(context, R.color.info_blue)
+            R.color.primary_brown -> ContextCompat.getColor(context, R.color.deuteranopia_primary)
+            R.color.secondary_brown -> ContextCompat.getColor(context, R.color.deuteranopia_secondary)
+            R.color.accent_light_brown -> ContextCompat.getColor(context, R.color.deuteranopia_accent)
+            R.color.success_green -> ContextCompat.getColor(context, R.color.deuteranopia_success)
+            R.color.error_red -> ContextCompat.getColor(context, R.color.deuteranopia_error)
+            R.color.warning_orange -> ContextCompat.getColor(context, R.color.deuteranopia_warning)
+            R.color.info_blue -> ContextCompat.getColor(context, R.color.deuteranopia_info)
+            R.color.text_primary -> ContextCompat.getColor(context, R.color.deuteranopia_text_primary)
+            R.color.text_secondary -> ContextCompat.getColor(context, R.color.deuteranopia_text_secondary)
+            R.color.light_background -> ContextCompat.getColor(context, R.color.deuteranopia_background)
             else -> ContextCompat.getColor(context, colorRes)
         }
     }
 
     /**
-     * Ajustes específicos para tritanopia (dificultad con azules)
+     * Ajustes específicos para tritanopia (dificultad con azules/amarillos)
+     * Paleta optimizada para distinguir colores en tritanopia
      */
     private fun adjustForTritanopia(context: Context, colorRes: Int): Int {
         return when (colorRes) {
-            R.color.info_blue -> ContextCompat.getColor(context, R.color.elegant_gray)
+            R.color.primary_brown -> ContextCompat.getColor(context, R.color.tritanopia_primary)
+            R.color.secondary_brown -> ContextCompat.getColor(context, R.color.tritanopia_secondary)
+            R.color.accent_light_brown -> ContextCompat.getColor(context, R.color.tritanopia_accent)
+            R.color.success_green -> ContextCompat.getColor(context, R.color.tritanopia_success)
+            R.color.error_red -> ContextCompat.getColor(context, R.color.tritanopia_error)
+            R.color.warning_orange -> ContextCompat.getColor(context, R.color.tritanopia_warning)
+            R.color.info_blue -> ContextCompat.getColor(context, R.color.tritanopia_info)
+            R.color.text_primary -> ContextCompat.getColor(context, R.color.tritanopia_text_primary)
+            R.color.text_secondary -> ContextCompat.getColor(context, R.color.tritanopia_text_secondary)
+            R.color.light_background -> ContextCompat.getColor(context, R.color.tritanopia_background)
             else -> ContextCompat.getColor(context, colorRes)
         }
     }
 
     /**
      * Ajustes para acromatopsia (visión en escala de grises)
+     * Paleta en escala de grises con buen contraste
      */
     private fun adjustForAchromatopsia(context: Context, colorRes: Int): Int {
         return when (colorRes) {
-            R.color.primary_brown -> ContextCompat.getColor(context, R.color.elegant_gray)
-            R.color.secondary_brown -> ContextCompat.getColor(context, R.color.text_secondary)
-            R.color.accent_light_brown -> ContextCompat.getColor(context, R.color.light_background)
-            R.color.success_green -> ContextCompat.getColor(context, R.color.elegant_gray)
-            R.color.error_red -> ContextCompat.getColor(context, R.color.black)
-            R.color.warning_orange -> ContextCompat.getColor(context, R.color.text_secondary)
-            R.color.info_blue -> ContextCompat.getColor(context, R.color.elegant_gray)
+            R.color.primary_brown -> ContextCompat.getColor(context, R.color.achromatopsia_dark_gray)
+            R.color.secondary_brown -> ContextCompat.getColor(context, R.color.achromatopsia_medium_gray)
+            R.color.accent_light_brown -> ContextCompat.getColor(context, R.color.achromatopsia_light_gray)
+            R.color.success_green -> ContextCompat.getColor(context, R.color.achromatopsia_dark_gray)
+            R.color.error_red -> ContextCompat.getColor(context, R.color.achromatopsia_black)
+            R.color.warning_orange -> ContextCompat.getColor(context, R.color.achromatopsia_medium_gray)
+            R.color.info_blue -> ContextCompat.getColor(context, R.color.achromatopsia_dark_gray)
+            R.color.text_primary -> ContextCompat.getColor(context, R.color.achromatopsia_black)
+            R.color.text_secondary -> ContextCompat.getColor(context, R.color.achromatopsia_dark_gray)
+            R.color.light_background -> ContextCompat.getColor(context, R.color.achromatopsia_white)
             else -> ContextCompat.getColor(context, colorRes)
         }
     }
@@ -540,4 +608,421 @@ object AccesibilityHelper {
             }
         }
     }
-} 
+
+    /**
+     * Aplica gradiente de fondo según el tipo de daltonismo
+     */
+    fun applyBackgroundGradient(context: Context, view: View, colorblindType: ColorblindType) {
+        try {
+            // EN MODO DALTONISMO USAR FONDO BLANCO, NO DEGRADADOS
+            val background = when (colorblindType) {
+                ColorblindType.NONE -> {
+                    // En modo normal, mantener el gradiente café original
+                    ContextCompat.getDrawable(context, R.drawable.gradient_background)
+                }
+                else -> {
+                    // Para cualquier modo de daltonismo, usar fondo blanco sólido
+                    val whiteDrawable = GradientDrawable()
+                    whiteDrawable.setColor(ContextCompat.getColor(context, R.color.white))
+                    whiteDrawable
+                }
+            }
+
+            view.background = background
+
+            Log.d(TAG, "Fondo aplicado: ${colorblindType.displayName}")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error aplicando fondo: ${e.message}")
+        }
+    }
+
+    /**
+     * Aplica los colores de accesibilidad a toda la aplicación
+     * Este método debe llamarse cuando cambia la configuración de accesibilidad
+     */
+    fun applyAccessibilityColorsToApp(context: Context) {
+        val config = getAccessibilityConfig(context)
+
+        // Obtener la actividad actual
+        val activity = (context as? android.app.Activity) ?: return
+
+        try {
+            // Aplicar gradiente de fondo según el tipo de daltonismo
+            applyBackgroundGradient(context, activity.window.decorView, config.colorblindType)
+
+            // Aplicar colores específicos según el tipo de daltonismo configurado
+            applySpecificColorblindColors(context, activity.window.decorView, config.colorblindType)
+
+            // Aplicar colores a toda la vista de manera más agresiva
+            applyAccessibilityColorsToView(context, activity.window.decorView)
+
+            // Forzar redibujado completo de la vista
+            activity.window.decorView.invalidate()
+            
+            // Forzar actualización del layout
+            activity.window.decorView.requestLayout()
+            
+            // Aplicar colores nuevamente después de un pequeño delay para asegurar persistencia
+            android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
+                applySpecificColorblindColors(context, activity.window.decorView, config.colorblindType)
+                activity.window.decorView.invalidate()
+                Log.d(TAG, "Colores de accesibilidad aplicados agresivamente: ${config.colorblindType.displayName}")
+            }, 100)
+        } catch (e: Exception) {
+            Log.e(TAG, "Error aplicando colores de accesibilidad: ${e.message}")
+        }
+    }
+
+    /**
+     * Aplica colores de accesibilidad recursivamente a una vista y sus hijos
+     */
+    private fun applyAccessibilityColorsToView(context: Context, view: View) {
+        try {
+            if (view is TextView) {
+                // Aplicar color de texto accesible
+                val textColor = getAccessibleColor(context, R.color.text_primary)
+                view.setTextColor(textColor)
+                
+                // Aplicar escala de texto
+                applyTextScale(context, view)
+            }
+            
+            if (view is com.google.android.material.button.MaterialButton) {
+                // Aplicar colores a botones
+                val backgroundColor = getAccessibleColor(context, R.color.primary_brown)
+                view.backgroundTintList = android.content.res.ColorStateList.valueOf(backgroundColor)
+                
+                val textColor = getAccessibleColor(context, R.color.white)
+                view.setTextColor(textColor)
+            }
+            
+            if (view is androidx.cardview.widget.CardView) {
+                // Aplicar color de fondo a tarjetas
+                val cardColor = getAccessibleColor(context, R.color.white)
+                view.setCardBackgroundColor(cardColor)
+            }
+            
+            if (view is android.widget.ImageView) {
+                // EN MODO DALTONISMO ESTÁ PROHIBIDO TOCAR LAS IMÁGENES
+                // Eliminar cualquier filtro o tinte de imágenes
+                view.clearColorFilter()
+                
+                // Asegurar que las imágenes no tengan fondo ni bordes en modo daltonismo
+                val config = getAccessibilityConfig(context)
+                if (config.colorblindType != ColorblindType.NONE) {
+                    view.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+                }
+            }
+            
+            // Aplicar color de fondo si la vista tiene un fondo de color
+            if (view.background is android.graphics.drawable.ColorDrawable) {
+                val backgroundDrawable = view.background as android.graphics.drawable.ColorDrawable
+                val backgroundColor = getAccessibleColor(context, backgroundDrawable.color)
+                view.setBackgroundColor(backgroundColor)
+            }
+            
+            // Aplicar recursivamente a hijos
+            if (view is android.view.ViewGroup) {
+                for (i in 0 until view.childCount) {
+                    applyAccessibilityColorsToView(context, view.getChildAt(i))
+                }
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Error aplicando colores a vista: ${e.message}")
+        }
+    }
+
+    /**
+     * Notifica a todas las actividades para que actualicen sus colores
+     * Esto debería llamarse después de guardar la configuración de accesibilidad
+     */
+    fun notifyAppColorChange(context: Context) {
+        try {
+            // También aplicar colores a la actividad actual inmediatamente
+            applyAccessibilityColorsToApp(context)
+        } catch (e: Exception) {
+            Log.e(TAG, "Error notificando cambio de colores: ${e.message}")
+        }
+    }
+
+    /**
+     * Método para que actividades que no pueden extender AccessibilityActivity apliquen accesibilidad
+     * Debe llamarse en onCreate() y onResume() de cada actividad
+     */
+    fun applyAccessibilityToActivity(activity: AppCompatActivity) {
+        ErrorHandler.safeExecute(
+            context = activity,
+            errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
+            errorMessage = "Error al aplicar configuración de accesibilidad"
+        ) {
+            applyAccessibilityColorsToApp(activity)
+        }
+    }
+    
+
+    /**
+     * Reinicia la aplicación para aplicar completamente los cambios de colores
+     * Esto asegura que todas las actividades se recarguen con los nuevos colores
+     */
+    fun restartAppForColorChanges(context: Context) {
+        try {
+            // Forzar la aplicación de la configuración antes de reiniciar
+            applyAccessibilityColorsToApp(context)
+            
+            val intent = Intent(context, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+            
+            if (context is android.app.Activity) {
+                context.finishAffinity()
+            }
+            
+            Log.d(TAG, "Aplicación reiniciada para aplicar cambios de colores")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error reiniciando aplicación: ${e.message}")
+        }
+    }
+
+    /**
+     * Aplica colores de protanopia inmediatamente a una actividad
+     */
+    fun adjustForProtanopia(context: Context, activity: Activity) {
+        try {
+            // Guardar temporalmente configuración de protanopia para que los colores persistan
+            val protanopiaConfig = getAccessibilityConfig(context).copy(colorblindType = ColorblindType.PROTANOPIA)
+            saveAccessibilityConfig(context, protanopiaConfig)
+
+            // Aplicar gradiente de protanopia
+            applyBackgroundGradient(context, activity.window.decorView, ColorblindType.PROTANOPIA)
+
+            // Aplicar colores de protanopia a toda la actividad
+            applySpecificColorblindColors(context, activity.window.decorView, ColorblindType.PROTANOPIA)
+
+            // Forzar redibujado de todas las vistas
+            refreshAllViews(activity.window.decorView)
+
+            Log.d(TAG, "Colores de protanopia aplicados inmediatamente")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error aplicando colores de protanopia: ${e.message}")
+        }
+    }
+
+    /**
+     * Aplica colores de deuteranopia inmediatamente a una actividad
+     */
+    fun adjustForDeuteranopia(context: Context, activity: Activity) {
+        try {
+            // Guardar temporalmente configuración de deuteranopia para que los colores persistan
+            val deuteranopiaConfig = getAccessibilityConfig(context).copy(colorblindType = ColorblindType.DEUTERANOPIA)
+            saveAccessibilityConfig(context, deuteranopiaConfig)
+
+            // Aplicar gradiente de deuteranopia
+            applyBackgroundGradient(context, activity.window.decorView, ColorblindType.DEUTERANOPIA)
+
+            // Aplicar colores de deuteranopia a toda la actividad
+            applySpecificColorblindColors(context, activity.window.decorView, ColorblindType.DEUTERANOPIA)
+
+            // Forzar redibujado de todas las vistas
+            refreshAllViews(activity.window.decorView)
+
+            Log.d(TAG, "Colores de deuteranopia aplicados inmediatamente")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error aplicando colores de deuteranopia: ${e.message}")
+        }
+    }
+
+    /**
+     * Aplica colores de tritanopia inmediatamente a una actividad
+     */
+    fun adjustForTritanopia(context: Context, activity: Activity) {
+        try {
+            // Guardar temporalmente configuración de tritanopia para que los colores persistan
+            val tritanopiaConfig = getAccessibilityConfig(context).copy(colorblindType = ColorblindType.TRITANOPIA)
+            saveAccessibilityConfig(context, tritanopiaConfig)
+
+            // Aplicar gradiente de tritanopia
+            applyBackgroundGradient(context, activity.window.decorView, ColorblindType.TRITANOPIA)
+
+            // Aplicar colores de tritanopia a toda la actividad
+            applySpecificColorblindColors(context, activity.window.decorView, ColorblindType.TRITANOPIA)
+
+            // Forzar redibujado de todas las vistas
+            refreshAllViews(activity.window.decorView)
+
+            Log.d(TAG, "Colores de tritanopia aplicados inmediatamente")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error aplicando colores de tritanopia: ${e.message}")
+        }
+    }
+
+    /**
+     * Aplica colores de acromatopsia inmediatamente a una actividad
+     */
+    fun adjustForAchromatopsia(context: Context, activity: Activity) {
+        try {
+            // Guardar temporalmente configuración de acromatopsia para que los colores persistan
+            val achromatopsiaConfig = getAccessibilityConfig(context).copy(colorblindType = ColorblindType.ACHROMATOPSIA)
+            saveAccessibilityConfig(context, achromatopsiaConfig)
+
+            // Aplicar gradiente de acromatopsia
+            applyBackgroundGradient(context, activity.window.decorView, ColorblindType.ACHROMATOPSIA)
+
+            // Aplicar colores de acromatopsia a toda la actividad
+            applySpecificColorblindColors(context, activity.window.decorView, ColorblindType.ACHROMATOPSIA)
+
+            // Forzar redibujado de todas las vistas
+            refreshAllViews(activity.window.decorView)
+
+            Log.d(TAG, "Colores de acromatopsia aplicados inmediatamente")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error aplicando colores de acromatopsia: ${e.message}")
+        }
+    }
+
+    /**
+     * Restaura los colores originales inmediatamente a una actividad
+     */
+    fun restoreOriginalColors(context: Context) {
+        try {
+            // Guardar temporalmente configuración normal para que los colores persistan
+            val normalConfig = getAccessibilityConfig(context).copy(colorblindType = ColorblindType.NONE)
+            saveAccessibilityConfig(context, normalConfig)
+
+            // Aplicar gradiente normal
+            applyBackgroundGradient(context, (context as Activity).window.decorView, ColorblindType.NONE)
+
+            // Aplicar colores normales
+            applySpecificColorblindColors(context, (context as Activity).window.decorView, ColorblindType.NONE)
+
+            // Forzar redibujado de todas las vistas
+            refreshAllViews((context as Activity).window.decorView)
+
+            Log.d(TAG, "Colores originales restaurados inmediatamente")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error restaurando colores originales: ${e.message}")
+        }
+    }
+
+    /**
+     * Refresca todas las vistas para que los cambios de color sean visibles inmediatamente
+     */
+    private fun refreshAllViews(view: View) {
+        try {
+            // Invalidar la vista actual
+            view.invalidate()
+            
+            // Si es un ViewGroup, refrescar todos los hijos recursivamente
+            if (view is android.view.ViewGroup) {
+                for (i in 0 until view.childCount) {
+                    refreshAllViews(view.getChildAt(i))
+                }
+            }
+            
+            // Forzar un redibujado inmediato
+            view.postInvalidate()
+        } catch (e: Exception) {
+            Log.e(TAG, "Error refrescando vistas: ${e.message}")
+        }
+    }
+
+    /**
+     * Aplica colores específicos para un tipo de daltonismo
+     */
+    fun applySpecificColorblindColors(context: Context, view: View, colorblindType: ColorblindType) {
+        try {
+            if (view is TextView) {
+                // Aplicar color de texto según el tipo de daltonismo
+                val textColor = when (colorblindType) {
+                    ColorblindType.NONE -> ContextCompat.getColor(context, R.color.text_primary)
+                    ColorblindType.PROTANOPIA -> ContextCompat.getColor(context, R.color.protanopia_text_primary)
+                    ColorblindType.DEUTERANOPIA -> ContextCompat.getColor(context, R.color.deuteranopia_text_primary)
+                    ColorblindType.TRITANOPIA -> ContextCompat.getColor(context, R.color.tritanopia_text_primary)
+                    ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_black)
+                }
+                view.setTextColor(textColor)
+            }
+            
+            if (view is com.google.android.material.button.MaterialButton) {
+                // Aplicar colores específicos para botones según el tipo de daltonismo
+                val (backgroundColor, textColor, strokeColor) = when (colorblindType) {
+                    ColorblindType.NONE -> Triple(
+                        ContextCompat.getColor(context, R.color.primary_brown),
+                        ContextCompat.getColor(context, R.color.white),
+                        ContextCompat.getColor(context, R.color.secondary_brown)
+                    )
+                    ColorblindType.PROTANOPIA -> Triple(
+                        ContextCompat.getColor(context, R.color.protanopia_primary),
+                        ContextCompat.getColor(context, R.color.protanopia_button_text),
+                        ContextCompat.getColor(context, R.color.protanopia_secondary)
+                    )
+                    ColorblindType.DEUTERANOPIA -> Triple(
+                        ContextCompat.getColor(context, R.color.deuteranopia_primary),
+                        ContextCompat.getColor(context, R.color.deuteranopia_button_text),
+                        ContextCompat.getColor(context, R.color.deuteranopia_secondary)
+                    )
+                    ColorblindType.TRITANOPIA -> Triple(
+                        ContextCompat.getColor(context, R.color.tritanopia_primary),
+                        ContextCompat.getColor(context, R.color.tritanopia_button_text),
+                        ContextCompat.getColor(context, R.color.tritanopia_secondary)
+                    )
+                    ColorblindType.ACHROMATOPSIA -> Triple(
+                        ContextCompat.getColor(context, R.color.achromatopsia_medium_gray),
+                        ContextCompat.getColor(context, R.color.achromatopsia_button_text),
+                        ContextCompat.getColor(context, R.color.achromatopsia_dark_gray)
+                    )
+                }
+                
+                view.backgroundTintList = android.content.res.ColorStateList.valueOf(backgroundColor)
+                view.setTextColor(textColor)
+                view.strokeColor = android.content.res.ColorStateList.valueOf(strokeColor)
+                view.strokeWidth = 3 // Hacer los bordes más visibles
+            }
+            
+            if (view is androidx.cardview.widget.CardView) {
+                // Aplicar color de fondo a tarjetas según el tipo de daltonismo
+                val cardColor = when (colorblindType) {
+                    ColorblindType.NONE -> ContextCompat.getColor(context, R.color.white)
+                    ColorblindType.PROTANOPIA -> ContextCompat.getColor(context, R.color.protanopia_background)
+                    ColorblindType.DEUTERANOPIA -> ContextCompat.getColor(context, R.color.deuteranopia_background)
+                    ColorblindType.TRITANOPIA -> ContextCompat.getColor(context, R.color.tritanopia_background)
+                    ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_white)
+                }
+                view.setCardBackgroundColor(cardColor)
+            }
+            
+            if (view is android.widget.ImageView) {
+                // EN MODO DALTONISMO ESTÁ PROHIBIDO TOCAR LAS IMÁGENES
+                // Eliminar cualquier filtro o tinte de imágenes
+                view.clearColorFilter()
+                
+                // Asegurar que las imágenes no tengan fondo ni bordes en modo daltonismo
+                if (colorblindType != ColorblindType.NONE) {
+                    view.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+                }
+            }
+            
+            // Aplicar color de fondo si la vista tiene un fondo de color SOLO SI NO ES UN GRADIENTE O SHAPE
+            // (Los gradientes se aplican por separado en applyBackgroundGradient)
+            if (view.background is android.graphics.drawable.ColorDrawable) {
+                val backgroundDrawable = view.background as android.graphics.drawable.ColorDrawable
+                val backgroundColor = when (colorblindType) {
+                    ColorblindType.NONE -> backgroundDrawable.color
+                    ColorblindType.PROTANOPIA -> ContextCompat.getColor(context, R.color.protanopia_background)
+                    ColorblindType.DEUTERANOPIA -> ContextCompat.getColor(context, R.color.deuteranopia_background)
+                    ColorblindType.TRITANOPIA -> ContextCompat.getColor(context, R.color.tritanopia_background)
+                    ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_white)
+                }
+                view.setBackgroundColor(backgroundColor)
+            }
+            
+            // Aplicar recursivamente a hijos
+            if (view is android.view.ViewGroup) {
+                for (i in 0 until view.childCount) {
+                    applySpecificColorblindColors(context, view.getChildAt(i), colorblindType)
+                }
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Error aplicando colores específicos: ${e.message}")
+        }
+    }
+}

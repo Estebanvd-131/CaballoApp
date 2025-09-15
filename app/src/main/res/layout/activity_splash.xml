@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".SplashActivity">
+
+    <!-- Contenedor principal con elementos ordenados verticalmente -->
+    <LinearLayout
+        android:id="@+id/mainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Título CaballoApp -->
+        <TextView
+            android:id="@+id/tvAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:shadowColor="@color/secondary_brown"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4"
+            android:text="CaballoApp"
+            android:textColor="@android:color/white"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <!-- Imagen de caballo -->
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="Logo CaballoApp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/miologiaequinocompleto" />
+
+        <!-- Logo USC -->
+        <ImageView
+            android:id="@+id/ivLogoUSC"
+            android:layout_width="180dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="16dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="Logo USC"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logousc" />
+
+        <!-- Logo Informa -->
+        <ImageView
+            android:id="@+id/ivLogoInforma"
+            android:layout_width="180dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="16dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="Logo Informa"
+            android:scaleType="fitCenter"
+            android:src="@drawable/informa_logo" />
+
+        <!-- Logo Equusnova -->
+        <ImageView
+            android:id="@+id/ivLogoEquusnova"
+            android:layout_width="180dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="24dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="Logo Equusnova"
+            android:scaleType="fitCenter"
+            android:src="@drawable/equusnova_logo" />
+
+        <!-- Tagline -->
+        <TextView
+            android:id="@+id/tvTagline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Anatomía Muscular Equina"
+            android:textColor="@color/warm_cream"
+            android:textSize="16sp"
+            android:textStyle="italic" />
+
+        <!-- Contenedor de loading -->
+        <LinearLayout
+            android:id="@+id/loadingContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- ProgressBar circular -->
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:indeterminateTint="@color/warm_cream"
+                android:indeterminateTintMode="src_in" />
+
+            <!-- Texto de carga -->
+            <TextView
+                android:id="@+id/tvLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Cargando..."
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Versión de la app (esquina inferior derecha) -->
+    <TextView
+        android:id="@+id/tvVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="v1.0"
+        android:textColor="@color/warm_cream"
+        android:textSize="12sp"
+        android:alpha="0.7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Créditos (esquina inferior izquierda) -->
+    <TextView
+        android:id="@+id/tvCredits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Desarrollado para\nMedicina Veterinaria"
+        android:textColor="@color/warm_cream"
+        android:textSize="10sp"
+        android:alpha="0.6"
+        android:gravity="start"
+        android:lineSpacingExtra="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

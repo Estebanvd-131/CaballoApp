@@ -4,18 +4,23 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.villalobos.caballoapp.databinding.ActivityRegionCuelloBinding
 import com.villalobos.caballoapp.HotspotHelper
 
-class RegionCuello : AppCompatActivity() {
+class RegionCuello : BaseNavigationActivity() {
 
     private lateinit var enlace: ActivityRegionCuelloBinding
     private lateinit var adaptadorMusculos: AdaptadorMusculos
     private var musculos: List<Musculo> = emptyList()
     private var regionId: Int = 2
+    
+    // Botón de quiz para la región
+    private lateinit var btnQuizRegion: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,12 +39,18 @@ class RegionCuello : AppCompatActivity() {
         region?.let {
             enlace.tvTitle.text = it.nombreCompleto.uppercase()
         }
+
+        // Animar la imagen de la región
+        ImageAnimationHelper.animateRegionImage(enlace.imgRegion)
         
         // Configurar RecyclerView
         configurarRecyclerView()
         
         // Configurar hotspots cuando la imagen esté lista
         configurarHotspots()
+
+        // Configurar botones de navegación
+        configurarBotonesNavegacion()
     }
 
     private fun configurarRecyclerView() {
@@ -71,6 +82,41 @@ class RegionCuello : AppCompatActivity() {
         val intent = Intent(this, DetalleMusculo::class.java)
         intent.putExtra("MUSCULO_ID", musculo.id)
         intent.putExtra("REGION_ID", regionId)
+        startActivity(intent)
+    }
+
+    private fun configurarBotonesNavegacion() {
+        // Configurar botón de home usando la clase base
+        setupHomeButton(enlace.btnHome)
+        
+        // Bindear botón de quiz
+        btnQuizRegion = enlace.btnQuizRegion
+
+        // Configurar listener del botón de quiz
+        btnQuizRegion.setOnClickListener {
+            irAQuizRegion()
+        }
+    }
+
+    override fun applyActivityAccessibilityColors() {
+        ErrorHandler.safeExecute(
+            context = this,
+            errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
+            errorMessage = "Error al aplicar colores de accesibilidad"
+        ) {
+            // Aplicar colores de accesibilidad a los elementos específicos de esta actividad
+            AccesibilityHelper.applySpecificColorblindColors(
+                this,
+                enlace.root,
+                AccesibilityHelper.getAccessibilityConfig(this).colorblindType
+            )
+        }
+    }
+
+    private fun irAQuizRegion() {
+        val intent = Intent(this, QuizActivity::class.java)
+        // Pasar el ID de la región específica (2 para Cuello)
+        intent.putExtra("REGION_ID", 2)
         startActivity(intent)
     }
 }

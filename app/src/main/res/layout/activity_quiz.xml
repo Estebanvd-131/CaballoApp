@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".QuizActivity">
+
+    <!-- Header con progreso -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/headerCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="@color/primary_brown"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/btnHome"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvQuizTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Quiz de Anatomía"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/tvProgress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pregunta 1 de 5"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="8dp"
+                    android:progress="20"
+                    android:max="100"
+                    android:progressTint="@color/warm_cream"
+                    android:progressBackgroundTint="@color/secondary_brown" />
+            </LinearLayout>
+            
+            <ImageButton
+                android:id="@+id/btnHome"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Ir al menú principal"
+                android:padding="12dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_home"
+                android:tint="@color/primary_brown" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Card de pregunta -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/questionCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="@color/warm_cream"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerCard">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tvQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="¿Cuál es la función del músculo X?"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:lineSpacingExtra="4dp" />
+
+            <TextView
+                android:id="@+id/tvDifficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dificultad: Media"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Opciones de respuesta -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/optionsCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionCard">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <RadioGroup
+                android:id="@+id/radioGroupOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rbOption1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Opción A"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="12dp"
+                    android:padding="12dp"
+                    android:background="@drawable/option_background"
+                    android:buttonTint="@color/primary_brown" />
+
+                <RadioButton
+                    android:id="@+id/rbOption2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Opción B"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="12dp"
+                    android:padding="12dp"
+                    android:background="@drawable/option_background"
+                    android:buttonTint="@color/primary_brown" />
+
+                <RadioButton
+                    android:id="@+id/rbOption3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Opción C"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="12dp"
+                    android:padding="12dp"
+                    android:background="@drawable/option_background"
+                    android:buttonTint="@color/primary_brown" />
+
+                <RadioButton
+                    android:id="@+id/rbOption4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Opción D"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:padding="12dp"
+                    android:background="@drawable/option_background"
+                    android:buttonTint="@color/primary_brown" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Controles -->
+    <LinearLayout
+        android:id="@+id/controlsLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/optionsCard">
+
+        <Button
+            android:id="@+id/btnSkip"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/warm_cream"
+            android:text="Saltar"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnAnswer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/primary_brown"
+            android:text="Responder"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <!-- Información de tiempo (opcional) -->
+    <TextView
+        android:id="@+id/tvTimeInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tiempo: 00:30"
+        android:textColor="@color/text_secondary"
+        android:textSize="12sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/controlsLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

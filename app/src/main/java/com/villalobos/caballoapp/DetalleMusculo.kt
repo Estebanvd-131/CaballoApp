@@ -16,28 +16,26 @@ import kotlin.math.min
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class DetalleMusculo : AppCompatActivity() {
+class DetalleMusculo : BaseNavigationActivity() {
 
     private lateinit var enlace: ActivityDetalleMusculoBinding
     private var musculo: Musculo? = null
     private var regionId: Int = 1
     
-    // Variables para zoom y paneo
+    // Variables para zoom inteligente
     private var matriz = Matrix()
-    private var savedMatrix = Matrix()
-    private var mode = NONE
-    private var start = PointF()
-    private var mid = PointF()
-    private var oldDist = 1f
     private var scaleGestureDetector: ScaleGestureDetector? = null
-    private var isVistaEnfocada = false
-    
-    // Constantes para el manejo de gestos
+    private var isZoomEnabled = false
+    private var currentZoomLevel = 1.0f
+    private var lastTouchX = 0f
+    private var lastTouchY = 0f
+
+    // Constantes para zoom
     companion object {
-        const val NONE = 0
-        const val DRAG = 1
-        const val ZOOM = 2
-        const val ZOOM_FACTOR = 2.0f  // Zoom fijo único
+        const val MIN_ZOOM = 1.0f
+        const val MAX_ZOOM = 3.0f
+        const val ZOOM_STEP = 0.5f
+        const val DOUBLE_TAP_ZOOM = 2.0f
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,16 +64,19 @@ class DetalleMusculo : AppCompatActivity() {
             // Configurar la interfaz
             configurarInterfaz()
             
-            // Configurar zoom y paneo
-            configurarZoomPaneo()
-            
-            // Configurar botones de alternancia
-            configurarBotonesAlternancia()
+            // Configurar zoom inteligente
+            configurarZoomInteligente()
 
             // Configurar botón volver
             enlace.btnVolver.setOnClickListener {
                 finish()
             }
+            
+            // Configurar el botón de inicio
+            setupHomeButton(enlace.btnHome)
+            
+            // Aplicar colores de accesibilidad
+            applyActivityAccessibilityColors()
             
         } catch (e: Exception) {
             ErrorHandler.handleError(
@@ -164,25 +165,34 @@ class DetalleMusculo : AppCompatActivity() {
                     }
                 }
                 enlace.imgMusculoDetalle.setImageResource(imageResource)
+
+                // Animar la imagen del músculo
+                ImageAnimationHelper.animateMuscleDetailImage(enlace.imgMusculoDetalle)
             }
         }
     }
     
-    private fun configurarZoomPaneo() {
+    private fun configurarZoomInteligente() {
         ErrorHandler.safeExecute(
             context = this,
             errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
-            errorMessage = "Error al configurar funciones de zoom"
+            errorMessage = "Error al configurar zoom inteligente"
         ) {
-            // Configurar ScaleGestureDetector para zoom con pellizco (zoom fijo)
+            // Configurar la imagen para zoom
+            enlace.imgMusculoDetalle.scaleType = ImageView.ScaleType.MATRIX
+
+            // Configurar ScaleGestureDetector para zoom con pellizco
             scaleGestureDetector = ScaleGestureDetector(this, object : ScaleGestureDetector.SimpleOnScaleGestureListener() {
                 override fun onScale(detector: ScaleGestureDetector): Boolean {
                     return try {
-                        if (isVistaEnfocada) {
-                            // Aplicar zoom fijo sin escalas variables
-                            matriz.reset()
-                            matriz.postScale(ZOOM_FACTOR, ZOOM_FACTOR, detector.focusX, detector.focusY)
-                            enlace.imgMusculoDetalle.imageMatrix = matriz
+                        if (isZoomEnabled) {
+                            val scaleFactor = detector.scaleFactor
+                            val newZoom = (currentZoomLevel * scaleFactor).coerceIn(MIN_ZOOM, MAX_ZOOM)
+
+                            if (newZoom != currentZoomLevel) {
+                                currentZoomLevel = newZoom
+                                aplicarZoom(currentZoomLevel, detector.focusX, detector.focusY)
+                            }
                         }
                         true
                     } catch (e: Exception) {
@@ -198,49 +208,37 @@ class DetalleMusculo : AppCompatActivity() {
                     }
                 }
             })
-            
-            // Configurar touch listener para paneo
+
+            // Configurar touch listener para pan y double tap
             enlace.imgMusculoDetalle.setOnTouchListener { _, event ->
                 try {
-                    when (event.action and MotionEvent.ACTION_MASK) {
+                    when (event.action) {
                         MotionEvent.ACTION_DOWN -> {
-                            savedMatrix.set(matriz)
-                            start.set(event.x, event.y)
-                            mode = DRAG
-                        }
-                        MotionEvent.ACTION_POINTER_DOWN -> {
-                            oldDist = spacing(event)
-                            if (oldDist > 10f) {
-                                savedMatrix.set(matriz)
-                                midPoint(mid, event)
-                                mode = ZOOM
-                            }
-                        }
-                        MotionEvent.ACTION_UP, MotionEvent.ACTION_POINTER_UP -> {
-                            mode = NONE
+                            lastTouchX = event.x
+                            lastTouchY = event.y
                         }
                         MotionEvent.ACTION_MOVE -> {
-                            if (isVistaEnfocada) {
-                                when (mode) {
-                                    DRAG -> {
-                                        matriz.set(savedMatrix)
-                                        matriz.postTranslate(event.x - start.x, event.y - start.y)
-                                    }
-                                    ZOOM -> {
-                                        val newDist = spacing(event)
-                                        if (newDist > 10f) {
-                                            // Aplicar zoom fijo al punto medio
-                                            matriz.reset()
-                                            matriz.postScale(ZOOM_FACTOR, ZOOM_FACTOR, mid.x, mid.y)
-                                        }
-                                    }
-                                }
+                            if (isZoomEnabled && currentZoomLevel > MIN_ZOOM) {
+                                // Pan the image
+                                val dx = event.x - lastTouchX
+                                val dy = event.y - lastTouchY
+
+                                matriz.postTranslate(dx, dy)
                                 enlace.imgMusculoDetalle.imageMatrix = matriz
+
+                                lastTouchX = event.x
+                                lastTouchY = event.y
                             }
                         }
                     }
-                    
-                    // Permitir que ScaleGestureDetector maneje también el evento
+
+                    // Handle double tap for zoom toggle
+                    if (event.action == MotionEvent.ACTION_UP) {
+                        // Simple double tap detection (you might want to use GestureDetector for better detection)
+                        // For now, we'll use a simpler approach
+                    }
+
+                    // Allow ScaleGestureDetector to handle pinch gestures
                     scaleGestureDetector?.onTouchEvent(event)
                     true
                 } catch (e: Exception) {
@@ -255,121 +253,90 @@ class DetalleMusculo : AppCompatActivity() {
                     false
                 }
             }
+
+            // Auto-zoom to muscle after image is loaded
+            enlace.imgMusculoDetalle.viewTreeObserver.addOnGlobalLayoutListener(object : android.view.ViewTreeObserver.OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    enlace.imgMusculoDetalle.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                    // Auto-focus on the muscle
+                    centrarEnMusculo()
+                }
+            })
         }
     }
     
-    private fun configurarBotonesAlternancia() {
+    private fun aplicarZoom(zoomLevel: Float, focusX: Float, focusY: Float) {
         ErrorHandler.safeExecute(
             context = this,
             errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
-            errorMessage = "Error al configurar botones de vista"
+            errorMessage = "Error al aplicar zoom"
         ) {
-            // Configurar botón vista regional
-            enlace.btnVistaRegional.setOnClickListener {
-                cambiarAVistaRegional()
-            }
-            
-            // Configurar botón vista enfocada
-            enlace.btnVistaEnfocada.setOnClickListener {
-                cambiarAVistaEnfocada()
-            }
-            
-            // Inicializar en vista regional
-            cambiarAVistaRegional()
-        }
-    }
-    
-    private fun cambiarAVistaRegional() {
-        ErrorHandler.safeExecute(
-            context = this,
-            errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
-            errorMessage = "Error al cambiar a vista regional"
-        ) {
-            isVistaEnfocada = false
-            
-            // Resetear transformaciones
             matriz.reset()
-            enlace.imgMusculoDetalle.scaleType = ImageView.ScaleType.FIT_CENTER
+            matriz.postScale(zoomLevel, zoomLevel, focusX, focusY)
             enlace.imgMusculoDetalle.imageMatrix = matriz
-            
-            // Actualizar estados de botones
-            enlace.btnVistaRegional.backgroundTintList = getColorStateList(R.color.secondary_brown)
-            enlace.btnVistaRegional.setTextColor(getColor(android.R.color.white))
-            
-            enlace.btnVistaEnfocada.backgroundTintList = getColorStateList(R.color.warm_cream)
-            enlace.btnVistaEnfocada.setTextColor(getColor(R.color.primary_brown))
-            
-            // Actualizar indicador
-            enlace.tvModoVista.text = "Vista Regional"
-            
-            // Configurar imagen regional normal
-            configurarImagenRegion()
         }
     }
-    
-    private fun cambiarAVistaEnfocada() {
+
+    private fun centrarEnMusculo() {
         ErrorHandler.safeExecute(
             context = this,
             errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
-            errorMessage = "Error al cambiar a vista enfocada"
+            errorMessage = "Error al centrar en músculo"
         ) {
-            isVistaEnfocada = true
-            
-            // Configurar para zoom
-            enlace.imgMusculoDetalle.scaleType = ImageView.ScaleType.MATRIX
-            
-            // Hacer zoom inicial al área del músculo basado en sus coordenadas
             musculo?.let { musculoInfo ->
-                inicializarZoomEnMusculo(musculoInfo)
+                // Calcular coordenadas del hotspot en píxeles
+                val imageView = enlace.imgMusculoDetalle
+                val drawable = imageView.drawable ?: return@let
+
+                // Obtener dimensiones reales de la imagen
+                val imageWidth = drawable.intrinsicWidth.toFloat()
+                val imageHeight = drawable.intrinsicHeight.toFloat()
+
+                // Calcular coordenadas del hotspot en la imagen
+                val hotspotX = imageWidth * musculoInfo.hotspotX
+                val hotspotY = imageHeight * musculoInfo.hotspotY
+
+                // Calcular escala para centrar el hotspot
+                val scaleX = imageView.width.toFloat() / imageWidth
+                val scaleY = imageView.height.toFloat() / imageHeight
+                val scale = minOf(scaleX, scaleY) * 1.5f // Zoom moderado
+
+                // Limitar el zoom
+                currentZoomLevel = scale.coerceIn(MIN_ZOOM, MAX_ZOOM)
+
+                // Calcular traslación para centrar el hotspot
+                val centerX = imageView.width / 2f
+                val centerY = imageView.height / 2f
+
+                val translateX = centerX - (hotspotX * currentZoomLevel)
+                val translateY = centerY - (hotspotY * currentZoomLevel)
+
+                // Aplicar transformación
+                matriz.reset()
+                matriz.postScale(currentZoomLevel, currentZoomLevel)
+                matriz.postTranslate(translateX, translateY)
+                imageView.imageMatrix = matriz
+
+                // Habilitar zoom interactivo
+                isZoomEnabled = true
+
+                // Actualizar indicador
+                enlace.tvModoVista.text = "Zoom Inteligente - Pellizca para ajustar"
             }
-            
-            // Actualizar estados de botones  
-            enlace.btnVistaEnfocada.backgroundTintList = getColorStateList(R.color.secondary_brown)
-            enlace.btnVistaEnfocada.setTextColor(getColor(android.R.color.white))
-            
-            enlace.btnVistaRegional.backgroundTintList = getColorStateList(R.color.warm_cream)
-            enlace.btnVistaRegional.setTextColor(getColor(R.color.primary_brown))
-            
-            // Actualizar indicador
-            enlace.tvModoVista.text = "Vista Enfocada - Pellizca para zoom"
         }
     }
     
-    private fun inicializarZoomEnMusculo(musculoInfo: Musculo) {
+    override fun applyActivityAccessibilityColors() {
         ErrorHandler.safeExecute(
             context = this,
             errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
-            errorMessage = "Error al inicializar zoom en músculo"
+            errorMessage = "Error al aplicar colores de accesibilidad en DetalleMusculo"
         ) {
-            // Aplicar zoom fijo único basado en las coordenadas del hotspot del músculo
-            val centerX = enlace.imgMusculoDetalle.width * musculoInfo.hotspotX
-            val centerY = enlace.imgMusculoDetalle.height * musculoInfo.hotspotY
-            
-            matriz.reset()
-            matriz.postScale(ZOOM_FACTOR, ZOOM_FACTOR, centerX, centerY)
-            
-            // Centrar en el músculo
-            val dx = enlace.imgMusculoDetalle.width / 2 - centerX * ZOOM_FACTOR
-            val dy = enlace.imgMusculoDetalle.height / 2 - centerY * ZOOM_FACTOR
-            matriz.postTranslate(dx, dy)
-            
-            enlace.imgMusculoDetalle.imageMatrix = matriz
+            // Aplicar colores de accesibilidad a los elementos de la actividad
+            AccesibilityHelper.applyAccessibilityColorsToApp(this)
         }
     }
     
-    // Función auxiliar para calcular distancia entre dos puntos
-    private fun spacing(event: MotionEvent): Float {
-        val x = event.getX(0) - event.getX(1)
-        val y = event.getY(0) - event.getY(1)
-        return kotlin.math.sqrt(x * x + y * y)
-    }
-    
-    // Función auxiliar para encontrar punto medio
-    private fun midPoint(point: PointF, event: MotionEvent) {
-        val x = event.getX(0) + event.getX(1)
-        val y = event.getY(0) + event.getY(1)
-        point.set(x / 2, y / 2)
-    }
     
     override fun onDestroy() {
         try {

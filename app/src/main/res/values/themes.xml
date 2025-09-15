@@ -2,11 +2,28 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.CaballoApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorPrimary">@color/primary_brown</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/secondary_brown</item>
+        <item name="colorOnSecondary">@color/white</item>
     </style>
 
     <style name="Theme.CaballoApp" parent="Base.Theme.CaballoApp" />
-    
+
+    <!-- Tema para Splash Screen -->
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@color/primary_brown</item>
+        <item name="android:statusBarColor">@color/primary_brown</item>
+        <item name="android:navigationBarColor">@color/primary_brown</item>
+    </style>
+
     <!-- Estilos de texto -->
     <style name="TitleText">
         <item name="android:textColor">@color/text_primary</item>
@@ -33,12 +50,14 @@
     </style>
     
     <style name="ButtonSecondary" parent="Widget.Material3.Button">
-        <item name="backgroundTint">@color/card_background</item>
-        <item name="android:textColor">@color/text_primary</item>
+        <item name="backgroundTint">@color/warm_cream</item>
+        <item name="android:textColor">@color/primary_brown</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
         <item name="cornerRadius">12dp</item>
         <item name="android:elevation">4dp</item>
+        <item name="strokeColor">@color/primary_brown</item>
+        <item name="strokeWidth">1dp</item>
     </style>
     
     <style name="ButtonExit" parent="Widget.Material3.Button">
@@ -53,7 +72,7 @@
     <!-- Nuevos estilos con paleta veterinaria -->
     <style name="ButtonVeterinary" parent="Widget.Material3.Button">
         <item name="backgroundTint">@color/accent_light_brown</item>
-        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
         <item name="cornerRadius">12dp</item>

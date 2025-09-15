@@ -2,16 +2,19 @@ package com.villalobos.caballoapp
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.villalobos.caballoapp.databinding.ActivityTutorialBinding
 
-class TutorialActivity : AppCompatActivity() {
+class TutorialActivity : BaseNavigationActivity() {
 
     private lateinit var enlace: ActivityTutorialBinding
     private lateinit var tutorialAdapter: TutorialAdapter
     private lateinit var sharedPreferences: SharedPreferences
     private var pasoActual = 0
+
+    private lateinit var btnBackTutorial: Button
     
     private val pasosTutorial = listOf(
         TutorialPaso(
@@ -85,6 +88,12 @@ class TutorialActivity : AppCompatActivity() {
             // Configurar estado inicial
             actualizarInterfaz()
             
+            // Configurar el botón de inicio
+            setupHomeButton(enlace.btnHome)
+            
+            // Aplicar colores de accesibilidad
+            applyActivityAccessibilityColors()
+            
         } catch (e: Exception) {
             ErrorHandler.handleError(
                 context = this,
@@ -122,13 +131,19 @@ class TutorialActivity : AppCompatActivity() {
             errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
             errorMessage = "Error al configurar botones"
         ) {
+            // Bind back button
+            btnBackTutorial = enlace.btnBackTutorial
+            btnBackTutorial.setOnClickListener {
+                finish()
+            }
+
             // Botón anterior
             enlace.btnAnterior.setOnClickListener {
                 if (pasoActual > 0) {
                     enlace.viewPagerTutorial.currentItem = pasoActual - 1
                 }
             }
-            
+
             // Botón siguiente/finalizar
             enlace.btnSiguiente.setOnClickListener {
                 if (pasoActual < pasosTutorial.size - 1) {
@@ -137,7 +152,7 @@ class TutorialActivity : AppCompatActivity() {
                     finalizarTutorial()
                 }
             }
-            
+
             // Botón saltar
             enlace.btnSaltarTutorial.setOnClickListener {
                 finalizarTutorial()
@@ -175,11 +190,7 @@ class TutorialActivity : AppCompatActivity() {
             errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
             errorMessage = "Error al finalizar tutorial"
         ) {
-            // Marcar tutorial como completado
-            sharedPreferences.edit()
-                .putBoolean("tutorial_completado", true)
-                .apply()
-            
+            // Tutorial siempre se muestra al inicio, no marcar como completado
             // Cerrar actividad
             finish()
         }
@@ -195,4 +206,15 @@ class TutorialActivity : AppCompatActivity() {
         }
         super.onBackPressed()
     }
-} 
+    
+    override fun applyActivityAccessibilityColors() {
+        ErrorHandler.safeExecute(
+            context = this,
+            errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
+            errorMessage = "Error al aplicar colores de accesibilidad en TutorialActivity"
+        ) {
+            // Aplicar colores de accesibilidad a los elementos de la actividad
+            AccesibilityHelper.applyAccessibilityColorsToApp(this)
+        }
+    }
+}

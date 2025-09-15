@@ -5,11 +5,10 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
 import com.villalobos.caballoapp.databinding.ActivityMainBinding
 
 //ventana de inicio que enlaza con todas las ventanas de la app
-class MainActivity : AppCompatActivity() {
+class MainActivity : AccessibilityActivity() {
 
     // Declaracion de variables
     lateinit var btnIniciar: Button
@@ -51,17 +50,28 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(enlace.root)
         
+        // Aplicar configuración de accesibilidad al iniciar
+        aplicarConfiguracionAccesibilidad()
+        
         // Verificar si es primera vez y mostrar tutorial
         verificarPrimeraVez()
     }
     
-    private fun verificarPrimeraVez() {
-        val tutorialCompletado = sharedPreferences.getBoolean("tutorial_completado", false)
-        if (!tutorialCompletado) {
-            // Es primera vez, mostrar tutorial
-            val intent = Intent(this, TutorialActivity::class.java)
-            startActivity(intent)
+    private fun aplicarConfiguracionAccesibilidad() {
+        ErrorHandler.safeExecute(
+            context = this,
+            errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
+            errorMessage = "Error al aplicar configuración de accesibilidad"
+        ) {
+            // Aplicar colores de accesibilidad
+            AccesibilityHelper.applyAccessibilityColorsToApp(this)
         }
+    }
+    
+    private fun verificarPrimeraVez() {
+        // Siempre mostrar tutorial al iniciar la app
+        val intent = Intent(this, TutorialActivity::class.java)
+        startActivity(intent)
     }
 
     //funcionamiento de llamado de ventanas de la App

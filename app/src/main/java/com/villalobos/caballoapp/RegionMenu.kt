@@ -4,10 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.villalobos.caballoapp.databinding.ActivityRegionMenuBinding
 
-class RegionMenu : AppCompatActivity() {
+class RegionMenu : BaseNavigationActivity() {
 
     lateinit var btnRegionCabeza: Button
     lateinit var btnRegionCuello: Button
@@ -46,7 +47,25 @@ class RegionMenu : AppCompatActivity() {
             irARegion(TipoRegion.MIEMBROS_PELVICOS.id)
         }
 
+
         setContentView(enlace.root)
+        
+        // Configurar el botón de inicio
+        setupHomeButton(enlace.btnHome)
+        
+        // Aplicar colores de accesibilidad
+        applyActivityAccessibilityColors()
+    }
+    
+    override fun applyActivityAccessibilityColors() {
+        ErrorHandler.safeExecute(
+            context = this,
+            errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
+            errorMessage = "Error al aplicar colores de accesibilidad en RegionMenu"
+        ) {
+            // Aplicar colores de accesibilidad a los elementos de la actividad
+            AccesibilityHelper.applyAccessibilityColorsToApp(this)
+        }
     }
 
     // Función para ir a la región seleccionada

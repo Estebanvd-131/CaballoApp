@@ -5,7 +5,7 @@
     android:id="@+id/layoutAccesibilidad"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_background"
+    android:background="@drawable/gradient_background"
     tools:context=".Accesibilidad">
 
     <!-- Header moderno -->
@@ -23,30 +23,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:padding="24dp">
 
-            <TextView
-                android:id="@+id/tvTitleAccesibilidad"
-                style="@style/TitleText"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="CONFIGURACIÓN DE ACCESIBILIDAD"
-                android:textSize="22sp" />
+                android:orientation="vertical">
 
-            <TextView
-                style="@style/SubtitleText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:gravity="center"
-                android:text="Personaliza la experiencia visual"
-                android:textSize="14sp" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/tvTitleAccesibilidad"
+                    style="@style/TitleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="CONFIGURACIÓN DE ACCESIBILIDAD"
+                    android:textSize="22sp" />
+
+                <TextView
+                    style="@style/SubtitleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="Personaliza la experiencia visual"
+                    android:textSize="14sp" />
+            </LinearLayout>
+            
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.core.widget.NestedScrollView
@@ -177,6 +183,24 @@
                                 android:textColor="@color/text_dark"
                                 android:textSize="16sp" />
                         </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            app:cardBackgroundColor="@color/surface_color"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="1dp">
+
+                            <RadioButton
+                                android:id="@+id/rbAcromatopsia"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="16dp"
+                                android:text="Acromatopsia (Visión en escala de grises)"
+                                android:textColor="@color/text_dark"
+                                android:textSize="16sp" />
+                        </androidx.cardview.widget.CardView>
                     </RadioGroup>
 
                     <!-- Vista previa de colores -->
@@ -237,179 +261,6 @@
                         android:textSize="14sp"
                         android:textStyle="bold"
                         android:visibility="gone"
-                        app:cornerRadius="12dp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Sección de Personalización de Colores -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="12dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="PERSONALIZACIÓN DE TEMA"
-                        android:textColor="@color/primary_blue"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
-                        android:text="Personaliza los colores principales de la aplicación:"
-                        android:textColor="@color/text_dark"
-                        android:textSize="14sp" />
-
-                    <!-- Color Principal -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="12dp"
-                        app:cardBackgroundColor="@color/surface_color"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="1dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:padding="16dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Color Principal"
-                                android:textColor="@color/text_dark"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <View
-                                android:id="@+id/viewColorPrimary"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_marginEnd="12dp"
-                                android:background="@drawable/circle_shape" />
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/btnEditColorPrimary"
-                                style="@style/ButtonSecondary"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Cambiar"
-                                android:textSize="12sp" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <!-- Color Secundario -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="12dp"
-                        app:cardBackgroundColor="@color/surface_color"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="1dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:padding="16dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Color Secundario"
-                                android:textColor="@color/text_dark"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <View
-                                android:id="@+id/viewColorSecondary"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_marginEnd="12dp"
-                                android:background="@drawable/circle_shape" />
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/btnEditColorSecondary"
-                                style="@style/ButtonSecondary"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Cambiar"
-                                android:textSize="12sp" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <!-- Color de Texto -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
-                        app:cardBackgroundColor="@color/surface_color"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="1dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:padding="16dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Color de Texto"
-                                android:textColor="@color/text_dark"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <View
-                                android:id="@+id/viewColorText"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_marginEnd="12dp"
-                                android:background="@drawable/circle_shape" />
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/btnEditColorText"
-                                style="@style/ButtonSecondary"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Cambiar"
-                                android:textSize="12sp" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <!-- Botón Restablecer -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnResetColors"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:backgroundTint="@color/warm_orange"
-                        android:text="RESTABLECER VALORES PREDETERMINADOS"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
                         app:cornerRadius="12dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

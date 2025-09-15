@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,12 +13,15 @@ import com.villalobos.caballoapp.databinding.ActivityRegionCabezaBinding
 import android.widget.RelativeLayout
 import com.villalobos.caballoapp.HotspotHelper
 
-class RegionCabeza : AppCompatActivity() {
+class RegionCabeza : BaseNavigationActivity() {
 
     private lateinit var enlace: ActivityRegionCabezaBinding
     private lateinit var adaptadorMusculos: AdaptadorMusculos
     private var musculos: List<Musculo> = emptyList()
     private var regionId: Int = 1
+    
+    // Botón de quiz para la región
+    private lateinit var btnQuizRegion: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +41,10 @@ class RegionCabeza : AppCompatActivity() {
             
             // Configurar hotspots cuando la imagen esté lista
             configurarHotspots()
-            
+
+            // Configurar botones de navegación
+            configurarBotonesNavegacion()
+
         } catch (e: Exception) {
             ErrorHandler.handleError(
                 context = this,
@@ -86,6 +94,9 @@ class RegionCabeza : AppCompatActivity() {
             region?.let {
                 enlace.tvTitle.text = it.nombreCompleto.uppercase()
             }
+
+            // Animar la imagen de la región
+            ImageAnimationHelper.animateRegionImage(enlace.imgRegion)
         }
     }
 
@@ -158,6 +169,53 @@ class RegionCabeza : AppCompatActivity() {
                 putExtra("REGION_ID", regionId)
             }
             
+            startActivity(intent)
+        }
+    }
+
+    private fun configurarBotonesNavegacion() {
+        ErrorHandler.safeExecute(
+            context = this,
+            errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
+            errorMessage = "Error al configurar botones de navegación"
+        ) {
+            // Configurar botón de home usando la clase base
+            setupHomeButton(enlace.btnHome)
+            
+            // Bindear botón de quiz
+            btnQuizRegion = enlace.btnQuizRegion
+
+            // Configurar listener del botón de quiz
+            btnQuizRegion.setOnClickListener {
+                irAQuizRegion()
+            }
+        }
+    }
+
+    override fun applyActivityAccessibilityColors() {
+        ErrorHandler.safeExecute(
+            context = this,
+            errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
+            errorMessage = "Error al aplicar colores de accesibilidad"
+        ) {
+            // Aplicar colores de accesibilidad a los elementos específicos de esta actividad
+            AccesibilityHelper.applySpecificColorblindColors(
+                this,
+                enlace.root,
+                AccesibilityHelper.getAccessibilityConfig(this).colorblindType
+            )
+        }
+    }
+
+    private fun irAQuizRegion() {
+        ErrorHandler.safeExecute(
+            context = this,
+            errorType = ErrorHandler.ErrorType.NAVIGATION_ERROR,
+            errorMessage = "Error al navegar al quiz de la región"
+        ) {
+            val intent = Intent(this, QuizActivity::class.java)
+            // Pasar el ID de la región específica (1 para Cabeza)
+            intent.putExtra("REGION_ID", 1)
             startActivity(intent)
         }
     }

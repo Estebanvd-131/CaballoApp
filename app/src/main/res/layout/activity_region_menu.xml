@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_background">
+    android:background="@drawable/gradient_background">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/light_background">
+            android:background="@drawable/gradient_background">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/headerCard"
@@ -34,16 +34,39 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/tvTitle"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="ANATOMÍA MUSCULAR EQUINA"
-                    android:textColor="@android:color/white"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:padding="16dp" />
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/btnHome"
+                        android:gravity="center"
+                        android:text="ANATOMÍA MUSCULAR EQUINA"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:padding="16dp" />
+                        
+                    <ImageButton
+                        android:id="@+id/btnHome"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="8dp"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="Ir al menú principal"
+                        android:padding="12dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_home"
+                        android:tint="@color/primary_brown" />
+
+                </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
 
@@ -69,6 +92,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgCaballo" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -144,6 +168,8 @@
                     android:paddingEnd="16dp"
                     android:text="REGIÓN PÉLVICA"
                     android:textColor="@color/text_primary" />
+
+
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

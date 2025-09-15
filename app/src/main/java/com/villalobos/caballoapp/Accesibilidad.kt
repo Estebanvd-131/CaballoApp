@@ -3,27 +3,31 @@ package com.villalobos.caballoapp
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.RadioGroup
 import android.widget.Switch
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.villalobos.caballoapp.databinding.ActivityAccesibilidadBinding
 
-class Accesibilidad : AppCompatActivity() {
+class Accesibilidad : AccessibilityActivity() {
     
     private lateinit var enlace: ActivityAccesibilidadBinding
     private var configActual = AccesibilityHelper.AccessibilityConfig()
     
     enum class TipoDaltonismo {
-        NORMAL, PROTANOPIA, DEUTERANOPIA, TRITANOPIA
+        NORMAL, PROTANOPIA, DEUTERANOPIA, TRITANOPIA, ACROMATOPSIA
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         
         try {
-            enlace = ActivityAccesibilidadBinding.inflate(layoutInflater)
+            enlace = ActivityAccesibilidadBinding.inflate(getLayoutInflater())
             setContentView(enlace.root)
             
             // Cargar configuración actual
@@ -35,11 +39,10 @@ class Accesibilidad : AppCompatActivity() {
             // Inicializar vistas de previsualización
             inicializarVistasPrevia()
             
-            // Configurar colores iniciales
-            configurarColoresIniciales()
-            
             // Cargar configuración en las vistas
             cargarConfiguracionEnVistas()
+            
+            
             
         } catch (e: Exception) {
             ErrorHandler.handleError(
@@ -63,32 +66,72 @@ class Accesibilidad : AppCompatActivity() {
             errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
             errorMessage = "Error al configurar controles"
         ) {
-            // Radio group para daltonismo - usando el ID correcto del layout
-            enlace.rgModosDaltonismo.setOnCheckedChangeListener { _, checkedId ->
-                val nuevoTipo = when (checkedId) {
-                    R.id.rbNormal -> AccesibilityHelper.ColorblindType.NONE
-                    R.id.rbProtanopia -> AccesibilityHelper.ColorblindType.PROTANOPIA
-                    R.id.rbDeuteranopia -> AccesibilityHelper.ColorblindType.DEUTERANOPIA
-                    R.id.rbTritanopia -> AccesibilityHelper.ColorblindType.TRITANOPIA
-                    else -> AccesibilityHelper.ColorblindType.NONE
+            // Radio group para daltonismo con selección única y deselección
+            val radioButtons = listOf(
+                enlace.rbNormal,
+                enlace.rbProtanopia,
+                enlace.rbDeuteranopia,
+                enlace.rbTritanopia,
+                enlace.rbAcromatopsia
+            )
+            
+            // Configurar listeners individuales para cada RadioButton
+            radioButtons.forEach { radioButton ->
+                radioButton.setOnClickListener {
+                    if (radioButton.isChecked) {
+                        // Desmarcar todos los demás botones
+                        radioButtons.forEach { otherButton ->
+                            if (otherButton != radioButton) {
+                                otherButton.isChecked = false
+                            }
+                        }
+                        
+                        val nuevoTipo = when (radioButton.id) {
+                            R.id.rbNormal -> AccesibilityHelper.ColorblindType.NONE
+                            R.id.rbProtanopia -> AccesibilityHelper.ColorblindType.PROTANOPIA
+                            R.id.rbDeuteranopia -> AccesibilityHelper.ColorblindType.DEUTERANOPIA
+                            R.id.rbTritanopia -> AccesibilityHelper.ColorblindType.TRITANOPIA
+                            R.id.rbAcromatopsia -> AccesibilityHelper.ColorblindType.ACHROMATOPSIA
+                            else -> AccesibilityHelper.ColorblindType.NONE
+                        }
+                        configActual = configActual.copy(colorblindType = nuevoTipo)
+                        aplicarColoresInmediatamente()
+                        actualizarVistaPreviaColores()
+                        actualizarInterfazConConfiguracion()
+                    } else {
+                        // Si se hace clic en un botón ya seleccionado, se deselecciona
+                        configActual = configActual.copy(colorblindType = AccesibilityHelper.ColorblindType.NONE)
+                        aplicarColoresInmediatamente()
+                        actualizarVistaPreviaColores()
+                        actualizarInterfazConConfiguracion()
+                    }
                 }
-                configActual = configActual.copy(colorblindType = nuevoTipo)
-                actualizarVistaPreviaColores()
-                actualizarInterfazConConfiguracion()
             }
             
-            // Botón reset
-            enlace.btnResetColors.setOnClickListener {
-                configActual = AccesibilityHelper.AccessibilityConfig()
-                cargarConfiguracionEnVistas()
-                actualizarVistaPreviaColores()
-                actualizarInterfazConConfiguracion()
+            // Listener para mantener la compatibilidad con navegación por teclado
+            enlace.rgModosDaltonismo.setOnCheckedChangeListener { _, checkedId ->
+                if (checkedId != -1) { // -1 significa que se deseleccionó todo
+                    val nuevoTipo = when (checkedId) {
+                        R.id.rbNormal -> AccesibilityHelper.ColorblindType.NONE
+                        R.id.rbProtanopia -> AccesibilityHelper.ColorblindType.PROTANOPIA
+                        R.id.rbDeuteranopia -> AccesibilityHelper.ColorblindType.DEUTERANOPIA
+                        R.id.rbTritanopia -> AccesibilityHelper.ColorblindType.TRITANOPIA
+                        R.id.rbAcromatopsia -> AccesibilityHelper.ColorblindType.ACHROMATOPSIA
+                        else -> AccesibilityHelper.ColorblindType.NONE
+                    }
+                    configActual = configActual.copy(colorblindType = nuevoTipo)
+                    aplicarColoresInmediatamente()
+                    actualizarVistaPreviaColores()
+                    actualizarInterfazConConfiguracion()
+                }
             }
+            
             
             // Botón desactivar daltonismo
             enlace.btnDesactivarDaltonismo.setOnClickListener {
                 configActual = configActual.copy(colorblindType = AccesibilityHelper.ColorblindType.NONE)
                 enlace.rbNormal.isChecked = true
+                aplicarColoresInmediatamente()
                 actualizarVistaPreviaColores()
                 actualizarInterfazConConfiguracion()
             }
@@ -107,6 +150,7 @@ class Accesibilidad : AppCompatActivity() {
         enlace.btnReiniciarTutorial.setOnClickListener {
             reiniciarTutorial()
         }
+
     }
     
     private fun cargarConfiguracionEnVistas() {
@@ -116,10 +160,7 @@ class Accesibilidad : AppCompatActivity() {
             AccesibilityHelper.ColorblindType.PROTANOPIA -> enlace.rbProtanopia.isChecked = true
             AccesibilityHelper.ColorblindType.DEUTERANOPIA -> enlace.rbDeuteranopia.isChecked = true
             AccesibilityHelper.ColorblindType.TRITANOPIA -> enlace.rbTritanopia.isChecked = true
-            AccesibilityHelper.ColorblindType.ACHROMATOPSIA -> {
-                // Si hay acromatopsia, usar el más cercano
-                enlace.rbNormal.isChecked = true
-            }
+            AccesibilityHelper.ColorblindType.ACHROMATOPSIA -> enlace.rbAcromatopsia.isChecked = true
         }
     }
     
@@ -139,28 +180,72 @@ class Accesibilidad : AppCompatActivity() {
         actualizarVistaPreviaColores()
     }
     
-    private fun configurarColoresIniciales() {
-        ErrorHandler.safeExecute(
-            context = this,
-            errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
-            errorMessage = "Error al configurar colores iniciales"
-        ) {
-            // Configurar colores actuales en las vistas usando AccesibilityHelper
-            val colorPrimario = AccesibilityHelper.getAccessibleColor(this, R.color.primary_brown)
-            val colorSecundario = AccesibilityHelper.getAccessibleColor(this, R.color.secondary_brown)
-            val colorTexto = AccesibilityHelper.getAccessibleColor(this, R.color.text_dark)
-            
-            enlace.viewColorPrimary.setBackgroundColor(colorPrimario)
-            enlace.viewColorSecondary.setBackgroundColor(colorSecundario)
-            enlace.viewColorText.setBackgroundColor(colorTexto)
-        }
-    }
     
     private fun actualizarInterfazConConfiguracion() {
         // Mostrar/ocultar botón de desactivar
-        enlace.btnDesactivarDaltonismo.visibility = 
-            if (configActual.colorblindType != AccesibilityHelper.ColorblindType.NONE) View.VISIBLE 
+        enlace.btnDesactivarDaltonismo.visibility =
+            if (configActual.colorblindType != AccesibilityHelper.ColorblindType.NONE) View.VISIBLE
             else View.GONE
+    }
+    
+    private fun aplicarColoresInmediatamente() {
+        ErrorHandler.safeExecute(
+            context = this,
+            errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
+            errorMessage = "Error al aplicar colores de daltonismo"
+        ) {
+            // Guardar temporalmente la configuración actual para que los colores se mantengan
+            AccesibilityHelper.saveAccessibilityConfig(this, configActual)
+            
+            // Aplicar los colores de daltonismo inmediatamente a la actividad actual
+            when (configActual.colorblindType) {
+                AccesibilityHelper.ColorblindType.NONE -> {
+                    // Restaurar colores originales
+                    AccesibilityHelper.restoreOriginalColors(this)
+                }
+                AccesibilityHelper.ColorblindType.PROTANOPIA -> {
+                    AccesibilityHelper.adjustForProtanopia(this, this)
+                }
+                AccesibilityHelper.ColorblindType.DEUTERANOPIA -> {
+                    AccesibilityHelper.adjustForDeuteranopia(this, this)
+                }
+                AccesibilityHelper.ColorblindType.TRITANOPIA -> {
+                    AccesibilityHelper.adjustForTritanopia(this, this)
+                }
+                AccesibilityHelper.ColorblindType.ACHROMATOPSIA -> {
+                    AccesibilityHelper.adjustForAchromatopsia(this, this)
+                }
+            }
+            
+            // Forzar actualización inmediata y agresiva de la interfaz
+            window.decorView.post {
+                // Aplicar colores específicos de forma inmediata
+                AccesibilityHelper.applySpecificColorblindColors(this, window.decorView, configActual.colorblindType)
+                
+                // Forzar redibujado completo
+                window.decorView.invalidate()
+                
+                // Volver a aplicar los colores después de un pequeño delay para asegurar que persistan
+                Handler(Looper.getMainLooper()).postDelayed({
+                    // Aplicar gradiente de fondo de forma agresiva
+                    AccesibilityHelper.applyBackgroundGradient(this, window.decorView, configActual.colorblindType)
+                    
+                    // Aplicar colores a todas las vistas de forma recursiva y agresiva
+                    AccesibilityHelper.applySpecificColorblindColors(this, window.decorView, configActual.colorblindType)
+                    
+                    // Forzar actualización de todos los componentes de la interfaz
+                    window.decorView.requestLayout()
+                    window.decorView.invalidate()
+                    
+                    // Aplicar colores nuevamente para asegurar que persistan
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        AccesibilityHelper.applySpecificColorblindColors(this, window.decorView, configActual.colorblindType)
+                        window.decorView.invalidate()
+                        
+                    }, 100)
+                }, 200)
+            }
+        }
     }
     
     private fun actualizarVistaPreviaColores() {
@@ -186,11 +271,11 @@ class Accesibilidad : AppCompatActivity() {
                     mostrarMensajeConfiguracion("Protanopia: Dificultad para distinguir rojos")
                 }
                 AccesibilityHelper.ColorblindType.DEUTERANOPIA -> {
-                    enlace.previewColor1.setBackgroundColor(Color.parseColor("#FF0000")) // Rojo
-                    enlace.previewColor2.setBackgroundColor(Color.parseColor("#B8860B")) // Verde → Marrón
-                    enlace.previewColor3.setBackgroundColor(Color.parseColor("#0000FF")) // Azul
-                    enlace.previewColor4.setBackgroundColor(Color.parseColor("#FFFF00")) // Amarillo
-                    mostrarMensajeConfiguracion("Deuteranopia: Dificultad para distinguir verdes")
+                    enlace.previewColor1.setBackgroundColor(Color.parseColor("#FF0000")) // Rojo (distinguible)
+                    enlace.previewColor2.setBackgroundColor(Color.parseColor("#8B0000")) // Rojo oscuro (distinguible)
+                    enlace.previewColor3.setBackgroundColor(Color.parseColor("#0000FF")) // Azul (distinguible)
+                    enlace.previewColor4.setBackgroundColor(Color.parseColor("#FF1493")) // Rosa magenta (distinguible)
+                    mostrarMensajeConfiguracion("Deuteranopia: Dificultad para distinguir verdes - usa rojos, azules y magentas")
                 }
                 AccesibilityHelper.ColorblindType.TRITANOPIA -> {
                     enlace.previewColor1.setBackgroundColor(Color.parseColor("#FF0000")) // Rojo
@@ -213,7 +298,7 @@ class Accesibilidad : AppCompatActivity() {
     
     private fun mostrarMensajeConfiguracion(mensaje: String) {
         // Mostrar mensaje informativo sobre el tipo de daltonismo
-        android.widget.Toast.makeText(this, mensaje, android.widget.Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
     }
     
     private fun guardarConfiguracion() {
@@ -225,6 +310,9 @@ class Accesibilidad : AppCompatActivity() {
             // Guardar configuración usando AccesibilityHelper
             AccesibilityHelper.saveAccessibilityConfig(this, configActual)
             
+            // Aplicar inmediatamente la configuración para asegurar que persista
+            AccesibilityHelper.applyAccessibilityColorsToApp(this)
+            
             val tipoString = when (configActual.colorblindType) {
                 AccesibilityHelper.ColorblindType.NONE -> "Colores estándar"
                 AccesibilityHelper.ColorblindType.PROTANOPIA -> "Protanopia"
@@ -233,15 +321,18 @@ class Accesibilidad : AppCompatActivity() {
                 AccesibilityHelper.ColorblindType.ACHROMATOPSIA -> "Acromatopsia"
             }
             
-            val mensaje = "✅ Configuración de accesibilidad guardada:\n• Tipo: $tipoString"
+            val mensaje = "✅ Configuración guardada. Reiniciando aplicación con: $tipoString"
             
-            android.widget.Toast.makeText(this, mensaje, android.widget.Toast.LENGTH_LONG).show()
+            Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
             
-            // Volver a la pantalla anterior
-            finish()
+            // Reiniciar la aplicación para aplicar completamente los cambios de colores
+            Handler(Looper.getMainLooper()).postDelayed({
+                AccesibilityHelper.restartAppForColorChanges(this)
+            }, 1000) // Pequeño delay para que el usuario vea el mensaje
         }
     }
     
+
     override fun onDestroy() {
         try {
             super.onDestroy()
