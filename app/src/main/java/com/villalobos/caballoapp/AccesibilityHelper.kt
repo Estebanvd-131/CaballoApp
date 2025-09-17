@@ -740,6 +740,9 @@ object AccesibilityHelper {
         try {
             // También aplicar colores a la actividad actual inmediatamente
             applyAccessibilityColorsToApp(context)
+            
+            // Mostrar mensaje de que los colores se han aplicado
+            Toast.makeText(context, "Colores de accesibilidad aplicados", Toast.LENGTH_SHORT).show()
         } catch (e: Exception) {
             Log.e(TAG, "Error notificando cambio de colores: ${e.message}")
         }

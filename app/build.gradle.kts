@@ -20,6 +20,11 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+    
+    // Evitar que Gradle espere dispositivos
+    adbOptions {
+        timeOutInMs = 10000
+    }
 
     buildTypes {
         release {

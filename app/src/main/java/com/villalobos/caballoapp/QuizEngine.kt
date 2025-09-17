@@ -90,6 +90,10 @@ class QuizEngine(private val context: Context) {
         return currentSession?.questions?.getOrNull(currentSession?.currentQuestionIndex ?: 0)
     }
 
+    fun getCurrentSession(): QuizSession? {
+        return currentSession
+    }
+
     fun getCurrentProgress(): Pair<Int, Int> { // current, total
         val session = currentSession ?: return Pair(0, 0)
         return Pair(session.currentQuestionIndex + 1, session.questions.size)
@@ -138,8 +142,7 @@ class QuizEngine(private val context: Context) {
         // Notify completion
         onQuizCompleted?.invoke(result)
 
-        // Clean up
-        currentSession = null
+        // Don't clean up the session immediately, keep it for viewing correct answers
         cancelTimer()
     }
 

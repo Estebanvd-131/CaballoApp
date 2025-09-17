@@ -114,14 +114,6 @@
                 android:textStyle="bold"
                 android:lineSpacingExtra="4dp" />
 
-            <TextView
-                android:id="@+id/tvDifficulty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dificultad: Media"
-                android:textColor="@color/text_secondary"
-                android:textSize="12sp"
-                android:layout_marginTop="8dp" />
 
         </LinearLayout>
 
@@ -162,7 +154,6 @@
                     android:textSize="16sp"
                     android:layout_marginBottom="12dp"
                     android:padding="12dp"
-                    android:background="@drawable/option_background"
                     android:buttonTint="@color/primary_brown" />
 
                 <RadioButton
@@ -174,7 +165,6 @@
                     android:textSize="16sp"
                     android:layout_marginBottom="12dp"
                     android:padding="12dp"
-                    android:background="@drawable/option_background"
                     android:buttonTint="@color/primary_brown" />
 
                 <RadioButton
@@ -186,7 +176,6 @@
                     android:textSize="16sp"
                     android:layout_marginBottom="12dp"
                     android:padding="12dp"
-                    android:background="@drawable/option_background"
                     android:buttonTint="@color/primary_brown" />
 
                 <RadioButton
@@ -197,7 +186,6 @@
                     android:textColor="@color/text_primary"
                     android:textSize="16sp"
                     android:padding="12dp"
-                    android:background="@drawable/option_background"
                     android:buttonTint="@color/primary_brown" />
 
             </RadioGroup>

@@ -56,6 +56,9 @@
             android:name=".QuizActivity"
             android:exported="false" />
         <activity
+            android:name=".CorrectAnswersActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
     </application>

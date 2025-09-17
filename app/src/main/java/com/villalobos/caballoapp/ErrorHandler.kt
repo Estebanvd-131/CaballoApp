@@ -13,7 +13,7 @@ import androidx.appcompat.app.AlertDialog
  */
 object ErrorHandler {
     
-    private const val TAG = "CaballoApp_ErrorHandler"
+    public const val TAG = "CaballoApp_ErrorHandler"
     
     /**
      * Niveles de severidad de errores
@@ -288,14 +288,21 @@ object ErrorHandler {
         return try {
             operation()
         } catch (e: Exception) {
-            handleError(
-                context = context,
-                throwable = e,
-                errorType = errorType,
-                level = ErrorLevel.ERROR,
-                userMessage = errorMessage,
-                canRecover = true
-            )
+            // No mostrar mensajes de error para accesibilidad para no molestar al usuario
+            if (!errorMessage.contains("accesibilidad", ignoreCase = true) &&
+                !errorMessage.contains("accessibility", ignoreCase = true)) {
+                handleError(
+                    context = context,
+                    throwable = e,
+                    errorType = errorType,
+                    level = ErrorLevel.ERROR,
+                    userMessage = errorMessage,
+                    canRecover = true
+                )
+            } else {
+                // Solo registrar el error en el log sin mostrar al usuario
+                Log.e(TAG, "Error de accesibilidad: ${e.message}")
+            }
             null
         }
     }

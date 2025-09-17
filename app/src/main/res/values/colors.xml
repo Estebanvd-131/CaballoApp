@@ -50,6 +50,7 @@
 
     <!-- Status Colors - Modern & Accessible -->
     <color name="success_green">#146C2E</color>          <!-- Modern success green -->
+    <color name="correct_green">#146C2E</color>          <!-- Correct answer green -->
     <color name="warning_orange">#7D5800</color>         <!-- Modern warning amber -->
     <color name="error_red">#BA1A1A</color>              <!-- Modern error red -->
     <color name="info_blue">#005AC1</color>              <!-- Modern info blue -->

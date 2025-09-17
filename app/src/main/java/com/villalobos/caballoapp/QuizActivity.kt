@@ -107,7 +107,7 @@ class QuizActivity : BaseNavigationActivity() {
     }
 
     private fun startQuiz() {
-        val success = quizEngine.startQuiz(regionId, questionCount = 5)
+        val success = quizEngine.startQuiz(regionId, questionCount = 10)
 
         if (!success) {
             Toast.makeText(this, "No hay suficientes preguntas disponibles", Toast.LENGTH_LONG).show()
@@ -122,14 +122,6 @@ class QuizActivity : BaseNavigationActivity() {
 
         // Actualizar pregunta
         binding.tvQuestion.text = question.question
-
-        // Actualizar dificultad
-        val difficultyText = when (question.difficulty) {
-            Difficulty.EASY -> "Fácil"
-            Difficulty.MEDIUM -> "Media"
-            Difficulty.HARD -> "Difícil"
-        }
-        binding.tvDifficulty.text = "Dificultad: $difficultyText"
 
         // Limpiar selección anterior
         binding.radioGroupOptions.clearCheck()
@@ -213,10 +205,13 @@ class QuizActivity : BaseNavigationActivity() {
                 append("Tiempo total: $timeFormatted\n")
                 append("Tiempo promedio por pregunta: ${result.averageTimePerQuestion / 1000}s")
             })
-            .setPositiveButton("Ver Logros") { _, _ ->
+            .setPositiveButton("Ver Respuestas Correctas") { _, _ ->
+                showCorrectAnswers()
+            }
+            .setNegativeButton("Ver Logros") { _, _ ->
                 showAchievements()
             }
-            .setNegativeButton("Continuar") { _, _ ->
+            .setNeutralButton("Continuar") { _, _ ->
                 finish()
             }
             .setCancelable(false)
@@ -247,6 +242,24 @@ class QuizActivity : BaseNavigationActivity() {
         } else {
             finish()
         }
+    }
+
+    private fun showCorrectAnswers() {
+        val session = quizEngine.getCurrentSession()
+        if (session == null) {
+            Toast.makeText(this, "No se pudo obtener la información del quiz", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
+
+        val regionId = session.questions.firstOrNull()?.regionId ?: 1
+        
+        val intent = Intent(this, CorrectAnswersActivity::class.java)
+        intent.putExtra("REGION_ID", regionId)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+        
+        // No cerrar esta actividad hasta que el usuario decida volver
     }
 
     private fun checkForNewAchievements(result: QuizEngine.QuizResult) {
