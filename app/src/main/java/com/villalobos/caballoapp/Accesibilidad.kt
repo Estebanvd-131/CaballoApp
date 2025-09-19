@@ -16,6 +16,20 @@ import com.villalobos.caballoapp.databinding.ActivityAccesibilidadBinding
 
 class Accesibilidad : AccessibilityActivity() {
     
+    override fun applyActivityAccessibilityColors() {
+        ErrorHandler.safeExecute(
+            context = this,
+            errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
+            errorMessage = "Error al aplicar colores de accesibilidad específicos de la actividad"
+        ) {
+            // Aplicar colores específicos para los elementos de la actividad de accesibilidad
+            AccesibilityHelper.applySpecificColorblindColors(this, window.decorView, configActual.colorblindType)
+            
+            // Aplicar gradiente de fondo
+            AccesibilityHelper.applyBackgroundGradient(this, window.decorView, configActual.colorblindType)
+        }
+    }
+    
     private lateinit var enlace: ActivityAccesibilidadBinding
     private var configActual = AccesibilityHelper.AccessibilityConfig()
     

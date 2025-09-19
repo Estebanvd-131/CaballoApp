@@ -13,7 +13,7 @@ import com.villalobos.caballoapp.databinding.ActivityRegionCabezaBinding
 import android.widget.RelativeLayout
 import com.villalobos.caballoapp.HotspotHelper
 
-class RegionCabeza : BaseNavigationActivity() {
+class RegionCabeza : AccessibilityActivity() {
 
     private lateinit var enlace: ActivityRegionCabezaBinding
     private lateinit var adaptadorMusculos: AdaptadorMusculos

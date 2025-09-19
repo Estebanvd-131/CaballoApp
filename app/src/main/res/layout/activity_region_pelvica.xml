@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitCenter"
-                android:src="@drawable/grupa_lateral" />
+                android:src="@drawable/grupa_miembro_posterior" />
 
             <!-- Hotspots (se crearán dinámicamente en el código) -->
 

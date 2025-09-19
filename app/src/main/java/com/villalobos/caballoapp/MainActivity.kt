@@ -9,6 +9,23 @@ import com.villalobos.caballoapp.databinding.ActivityMainBinding
 
 //ventana de inicio que enlaza con todas las ventanas de la app
 class MainActivity : AccessibilityActivity() {
+    
+    override fun applyActivityAccessibilityColors() {
+        ErrorHandler.safeExecute(
+            context = this,
+            errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
+            errorMessage = "Error al aplicar colores de accesibilidad específicos de la actividad"
+        ) {
+            // Obtener la configuración actual de accesibilidad
+            val config = AccesibilityHelper.getAccessibilityConfig(this)
+            
+            // Aplicar colores específicos para los elementos de la actividad principal
+            AccesibilityHelper.applySpecificColorblindColors(this, window.decorView, config.colorblindType)
+            
+            // Aplicar gradiente de fondo
+            AccesibilityHelper.applyBackgroundGradient(this, window.decorView, config.colorblindType)
+        }
+    }
 
     // Declaracion de variables
     lateinit var btnIniciar: Button
@@ -69,9 +86,14 @@ class MainActivity : AccessibilityActivity() {
     }
     
     private fun verificarPrimeraVez() {
-        // Siempre mostrar tutorial al iniciar la app
-        val intent = Intent(this, TutorialActivity::class.java)
-        startActivity(intent)
+        // Verificar si el usuario ha marcado la opción de no mostrar más el tutorial
+        val noMostrarTutorial = sharedPreferences.getBoolean("no_mostrar_tutorial", false)
+        
+        // Si el usuario no ha marcado la opción de no mostrar más el tutorial, mostrarlo
+        if (!noMostrarTutorial) {
+            val intent = Intent(this, TutorialActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     //funcionamiento de llamado de ventanas de la App

@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitCenter"
-                android:src="@drawable/hombro_miembro_anterior" />
+                android:src="@drawable/musculo_supraespinoso" />
 
             <!-- Hotspots (se crearán dinámicamente en el código) -->
 

@@ -11,7 +11,7 @@ import com.villalobos.caballoapp.databinding.ActivityRegionPelvicaBinding
 import com.villalobos.caballoapp.HotspotHelper
 import com.villalobos.caballoapp.AccesibilityHelper
 
-class RegionPelvica : BaseNavigationActivity() {
+class RegionPelvica : AccessibilityActivity() {
 
     private lateinit var enlace: ActivityRegionPelvicaBinding
     private lateinit var adaptadorMusculos: AdaptadorMusculos

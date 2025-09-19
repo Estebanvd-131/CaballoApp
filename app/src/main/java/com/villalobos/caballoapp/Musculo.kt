@@ -10,5 +10,6 @@ data class Musculo(
     val hotspotX: Float = 0f,
     val hotspotY: Float = 0f,
     val hotspotNumero: Int = 0,
-    val descripcion: String = ""
-) 
+    val descripcion: String = "",
+    val imagen: String? = null
+)

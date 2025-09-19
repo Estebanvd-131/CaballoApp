@@ -11,7 +11,7 @@ import com.villalobos.caballoapp.databinding.ActivityRegionTroncoBinding
 import com.villalobos.caballoapp.HotspotHelper
 import com.villalobos.caballoapp.AccesibilityHelper
 
-class RegionTronco : BaseNavigationActivity() {
+class RegionTronco : AccessibilityActivity() {
 
     private lateinit var enlace: ActivityRegionTroncoBinding
     private lateinit var adaptadorMusculos: AdaptadorMusculos

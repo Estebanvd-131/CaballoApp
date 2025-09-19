@@ -614,17 +614,26 @@ object AccesibilityHelper {
      */
     fun applyBackgroundGradient(context: Context, view: View, colorblindType: ColorblindType) {
         try {
-            // EN MODO DALTONISMO USAR FONDO BLANCO, NO DEGRADADOS
             val background = when (colorblindType) {
                 ColorblindType.NONE -> {
                     // En modo normal, mantener el gradiente café original
                     ContextCompat.getDrawable(context, R.drawable.gradient_background)
                 }
-                else -> {
-                    // Para cualquier modo de daltonismo, usar fondo blanco sólido
-                    val whiteDrawable = GradientDrawable()
-                    whiteDrawable.setColor(ContextCompat.getColor(context, R.color.white))
-                    whiteDrawable
+                ColorblindType.PROTANOPIA -> {
+                    // Usar gradiente específico para protanopia
+                    ContextCompat.getDrawable(context, R.drawable.gradient_coffee_protanopia)
+                }
+                ColorblindType.DEUTERANOPIA -> {
+                    // Usar gradiente específico para deuteranopia
+                    ContextCompat.getDrawable(context, R.drawable.gradient_coffee_deuteranopia)
+                }
+                ColorblindType.TRITANOPIA -> {
+                    // Usar gradiente específico para tritanopia
+                    ContextCompat.getDrawable(context, R.drawable.gradient_coffee_tritanopia)
+                }
+                ColorblindType.ACHROMATOPSIA -> {
+                    // Usar gradiente específico para acromatopsia
+                    ContextCompat.getDrawable(context, R.drawable.gradient_coffee_achromatopsia)
                 }
             }
 
@@ -943,6 +952,20 @@ object AccesibilityHelper {
                     ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_black)
                 }
                 view.setTextColor(textColor)
+                
+                // También aplicar color de fondo para TextViews que no sean transparentes
+                if (view.background != null && view.background !is android.graphics.drawable.ColorDrawable) {
+                    val backgroundColor = when (colorblindType) {
+                        ColorblindType.NONE -> android.graphics.Color.TRANSPARENT
+                        ColorblindType.PROTANOPIA -> ContextCompat.getColor(context, R.color.protanopia_background)
+                        ColorblindType.DEUTERANOPIA -> ContextCompat.getColor(context, R.color.deuteranopia_background)
+                        ColorblindType.TRITANOPIA -> ContextCompat.getColor(context, R.color.tritanopia_background)
+                        ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_white)
+                    }
+                    if (colorblindType != ColorblindType.NONE) {
+                        view.setBackgroundColor(backgroundColor)
+                    }
+                }
             }
             
             if (view is com.google.android.material.button.MaterialButton) {
@@ -1015,6 +1038,21 @@ object AccesibilityHelper {
                     ColorblindType.TRITANOPIA -> ContextCompat.getColor(context, R.color.tritanopia_background)
                     ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_white)
                 }
+                view.setBackgroundColor(backgroundColor)
+            }
+            
+            // APLICAR COLOR DE FONDO A TODOS LOS LAYOUTS Y CONTENEDORES EN MODO DALTONISMO
+            if (view is android.view.ViewGroup && colorblindType != ColorblindType.NONE) {
+                // Aplicar color de fondo a layouts y contenedores
+                val backgroundColor = when (colorblindType) {
+                    ColorblindType.PROTANOPIA -> ContextCompat.getColor(context, R.color.protanopia_background)
+                    ColorblindType.DEUTERANOPIA -> ContextCompat.getColor(context, R.color.deuteranopia_background)
+                    ColorblindType.TRITANOPIA -> ContextCompat.getColor(context, R.color.tritanopia_background)
+                    ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_white)
+                    else -> android.graphics.Color.TRANSPARENT
+                }
+                
+                // Aplicar color de fondo a todos los contenedores, incluso si ya tienen un fondo especial
                 view.setBackgroundColor(backgroundColor)
             }
             

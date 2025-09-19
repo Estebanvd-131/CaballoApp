@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
  * Clase base para actividades que aplican automáticamente la configuración de accesibilidad
  * Todas las actividades deberían extender esta clase o llamar a applyAccessibilityOnStart()
  */
-abstract class AccessibilityActivity : AppCompatActivity() {
+abstract class AccessibilityActivity : BaseNavigationActivity() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +33,8 @@ abstract class AccessibilityActivity : AppCompatActivity() {
             errorMessage = "Error al aplicar configuración de accesibilidad al iniciar"
         ) {
             AccesibilityHelper.applyAccessibilityColorsToApp(this)
+            // Aplicar colores específicos de la actividad
+            applyActivityAccessibilityColors()
         }
     }
     
@@ -46,6 +48,8 @@ abstract class AccessibilityActivity : AppCompatActivity() {
             errorMessage = "Error al aplicar configuración de accesibilidad al reanudar"
         ) {
             AccesibilityHelper.applyAccessibilityColorsToApp(this)
+            // Aplicar colores específicos de la actividad
+            applyActivityAccessibilityColors()
         }
     }
 }

@@ -16,6 +16,9 @@ class TutorialActivity : BaseNavigationActivity() {
 
     private lateinit var btnBackTutorial: Button
     
+    // Preferencia para no mostrar más el tutorial
+    private val PREF_NO_MOSTRAR_TUTORIAL = "no_mostrar_tutorial"
+    
     private val pasosTutorial = listOf(
         TutorialPaso(
             numero = 1,
@@ -51,13 +54,13 @@ class TutorialActivity : BaseNavigationActivity() {
         TutorialPaso(
             numero = 5,
             titulo = "Funciones Avanzadas",
-            descripcion = "Usa la búsqueda para encontrar músculos rápidamente y aprovecha el zoom en vista enfocada para explorar detalles.",
-            imagen = R.drawable.grupa_miembro_posterior,
+            descripcion = "Usa la búsqueda para encontrar músculos rápidamente y explora los detalles anatómicos de cada músculo.",
+            imagen = R.drawable.group_1,
             mostrarCaracteristicas = true,
             caracteristicas = listOf(
                 "Búsqueda por nombre de músculo",
                 "Filtros por región anatómica",
-                "Zoom y navegación en detalle",
+                "Navegación detallada por músculos",
                 "Hotspots interactivos en imágenes"
             )
         ),
@@ -190,7 +193,12 @@ class TutorialActivity : BaseNavigationActivity() {
             errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
             errorMessage = "Error al finalizar tutorial"
         ) {
-            // Tutorial siempre se muestra al inicio, no marcar como completado
+            // Guardar la preferencia del usuario sobre no mostrar más el tutorial
+            val noMostrarMas = enlace.cbNoMostrarMas.isChecked
+            sharedPreferences.edit()
+                .putBoolean(PREF_NO_MOSTRAR_TUTORIAL, noMostrarMas)
+                .apply()
+            
             // Cerrar actividad
             finish()
         }

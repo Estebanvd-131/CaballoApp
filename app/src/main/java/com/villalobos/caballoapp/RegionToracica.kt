@@ -11,7 +11,7 @@ import com.villalobos.caballoapp.databinding.ActivityRegionToracicaBinding
 import com.villalobos.caballoapp.HotspotHelper
 import com.villalobos.caballoapp.AccesibilityHelper
 
-class RegionToracica : BaseNavigationActivity() {
+class RegionToracica : AccessibilityActivity() {
 
     private lateinit var enlace: ActivityRegionToracicaBinding
     private lateinit var adaptadorMusculos: AdaptadorMusculos

@@ -51,47 +51,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTituloMusculo">
 
-        <!-- ScrollView para zoom y paneo -->
-        <ScrollView
-            android:id="@+id/scrollViewHorizontal"
+        <ImageView
+            android:id="@+id/imgMusculoDetalle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true">
-
-            <HorizontalScrollView
-                android:id="@+id/scrollViewVertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fillViewport="true">
-
-                <ImageView
-                    android:id="@+id/imgMusculoDetalle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:scaleType="matrix"
-                    android:src="@drawable/cabeza_lateral" />
-
-            </HorizontalScrollView>
-        </ScrollView>
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cabeza_lateral" />
 
     </androidx.cardview.widget.CardView>
-
-    <!-- Indicador de modo de vista -->
-    <TextView
-        android:id="@+id/tvModoVista"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/circle_background"
-        android:paddingHorizontal="12dp"
-        android:paddingVertical="4dp"
-        android:text="Vista Regional"
-        android:textColor="@color/warm_cream"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/cardImageDetalle"
-        app:layout_constraintTop_toBottomOf="@+id/cardImageDetalle" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -103,7 +71,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnVolver"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvModoVista">
+        app:layout_constraintTop_toBottomOf="@+id/cardImageDetalle">
 
         <LinearLayout
             android:layout_width="match_parent"

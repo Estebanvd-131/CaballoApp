@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.villalobos.caballoapp.databinding.ActivityRegionCuelloBinding
 import com.villalobos.caballoapp.HotspotHelper
 
-class RegionCuello : BaseNavigationActivity() {
+class RegionCuello : AccessibilityActivity() {
 
     private lateinit var enlace: ActivityRegionCuelloBinding
     private lateinit var adaptadorMusculos: AdaptadorMusculos

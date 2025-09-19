@@ -8,7 +8,7 @@ object DatosMusculares {
         Region(2, "CUELLO", "Región del Cuello", "Músculos de la región cervical del caballo", "cuello_y_torax", "#B8956A", 2),
         Region(3, "TRONCO", "Región del Tronco", "Músculos del tronco del caballo", "torsoequino", "#FFA500", 3),
         Region(4, "MIEMBROS_TORACICOS", "Miembros Torácicos", "Músculos de los miembros torácicos del caballo", "hombro_miembro_anterior", "#C8A882", 4),
-        Region(5, "MIEMBROS_PELVICOS", "Región Pélvica", "Músculos de los miembros pélvicos del caballo", "grupa_miembro_posterior", "#A0825C", 5)
+        Region(5, "MIEMBROS_PELVICOS", "Región Pélvica", "Músculos de los miembros pélvicos del caballo", "2- MusculoGluteoMedio.png", "#A0825C", 5)
     )
     
     // Músculos por región - Basados en los mockups
@@ -23,7 +23,9 @@ object DatosMusculares {
             hotspotX = 0.45f,
             hotspotY = 0.35f,
             hotspotNumero = 1,
-            descripcion = "Músculo responsable del cierre de los párpados"
+            descripcion = "Músculo responsable del cierre de los párpados",
+            imagen = "ojo"
+
         ),
         Musculo(
             id = 2,
@@ -35,7 +37,9 @@ object DatosMusculares {
             hotspotX = 0.35f,
             hotspotY = 0.55f,
             hotspotNumero = 2,
-            descripcion = "Músculo masticador principal"
+            descripcion = "Músculo masticador principal",
+            imagen= "zona_meseterica"
+
         ),
         Musculo(
             id = 3,
@@ -47,7 +51,8 @@ object DatosMusculares {
             hotspotX = 0.25f,
             hotspotY = 0.25f,
             hotspotNumero = 3,
-            descripcion = "Músculo masticador profundo"
+            descripcion = "Músculo masticador profundo",
+            imagen = "zona_parieto_temporal"
         ),
         Musculo(
             id = 4,
@@ -59,7 +64,8 @@ object DatosMusculares {
             hotspotX = 0.40f,
             hotspotY = 0.65f,
             hotspotNumero = 4,
-            descripcion = "Músculo de la mejilla"
+            descripcion = "Músculo de la mejilla",
+            imagen = "musculo_businador"
         ),
         Musculo(
             id = 5,
@@ -71,21 +77,24 @@ object DatosMusculares {
             hotspotX = 0.30f,
             hotspotY = 0.75f,
             hotspotNumero = 5,
-            descripcion = "Músculo que ayuda a abrir la boca"
+            descripcion = "Músculo que ayuda a abrir la boca",
+            imagen = "zona_mentoniana"
         ),
         Musculo(
             id = 6,
-            nombre = "Músculo Pterigoideos",
-            origen = "Hueso pterigoideo y palatino",
-            insercion = "Cara medial de la rama mandibular",
-            funcion = "Movimientos laterales de la mandíbula",
+            nombre = "Músculo Auricular Posterior",
+            origen = "Cresta nucal",
+            insercion = "Base de la oreja, en la cara medial",
+            funcion = "Retracción de la oreja",
             regionId = 1,
             hotspotX = 0.20f,
             hotspotY = 0.60f,
             hotspotNumero = 6,
-            descripcion = "Músculos masticadores profundos"
+            descripcion = "Músculo auricular que retrae el pabellón auricular hacia atrás",
+            imagen = "oreja"
         ),
-        Musculo(
+
+                Musculo(
             id = 7,
             nombre = "Músculo Occipitofrontal",
             origen = "Cresta occipital externa",
@@ -95,7 +104,8 @@ object DatosMusculares {
             hotspotX = 0.15f,
             hotspotY = 0.15f,
             hotspotNumero = 7,
-            descripcion = "Músculo de la expresión facial"
+            descripcion = "Músculo de la expresión facial",
+                    imagen = "expresion"
         )
     )
     
@@ -188,7 +198,8 @@ object DatosMusculares {
             hotspotX = 0.40f,
             hotspotY = 0.40f,
             hotspotNumero = 1,
-            descripcion = "Músculo del hombro"
+            descripcion = "Músculo del hombro",
+            imagen = "musculo_gluteo_medio.png"
         ),
         Musculo(
             id = 15,
@@ -215,46 +226,130 @@ object DatosMusculares {
             descripcion = "Músculo extensor del antebrazo"
         )
     )
-    
+
     val musculosPelvicos = listOf(
         Musculo(
             id = 17,
-            nombre = "Músculo Glúteo Superficial",
-            origen = "Cresta ilíaca y ligamento sacroilíaco",
-            insercion = "Trocánter mayor del fémur",
-            funcion = "Extensión y abducción del muslo",
+            nombre = "Músculo Glúteo Accesorio",
+            origen = "Tuberosidad coxal del ilion",
+            insercion = "Cresta ventral del trocánter mayor del fémur",
+            funcion = "Extiende la articulación de la cadera y abduce el miembro",
             regionId = 5,
-            hotspotX = 0.45f,
-            hotspotY = 0.35f,
+            hotspotX = 0.38f,
+            hotspotY = 0.32f,
             hotspotNumero = 1,
-            descripcion = "Músculo principal de la grupa"
+            descripcion = "Músculo accesorio de la región glútea",
+            imagen = "musculo_1"
+
         ),
         Musculo(
             id = 18,
-            nombre = "Músculo Bíceps Femoral",
-            origen = "Tuberosidad isquiática",
-            insercion = "Patela y tibia",
-            funcion = "Extensión del muslo y flexión de la pierna",
+            nombre = "Músculo Glúteo Medio",
+            origen = "Cara lateral del ilion, sacro y primeras vértebras caudales",
+            insercion = "Trocánter mayor del fémur",
+            funcion = "Extiende la cadera y participa en la propulsión",
             regionId = 5,
-            hotspotX = 0.40f,
-            hotspotY = 0.50f,
+            hotspotX = 0.42f,
+            hotspotY = 0.30f,
             hotspotNumero = 2,
-            descripcion = "Músculo posterior del muslo"
+            descripcion = "Músculo potente extensor de la cadera",
+            imagen = "musculo_gluteo_medio"
         ),
         Musculo(
             id = 19,
-            nombre = "Músculo Semitendinoso",
-            origen = "Tuberosidad isquiática",
-            insercion = "Cara medial de la tibia",
-            funcion = "Extensión del muslo y flexión de la pierna",
+            nombre = "Músculo Tensor de la Fascia Lata",
+            origen = "Tuberosidad coxal",
+            insercion = "Fascia lata y tibia",
+            funcion = "Tensa la fascia lata, flexiona la cadera y extiende la rodilla",
             regionId = 5,
-            hotspotX = 0.35f,
-            hotspotY = 0.55f,
+            hotspotX = 0.48f,
+            hotspotY = 0.40f,
             hotspotNumero = 3,
-            descripcion = "Músculo de la parte posterior del muslo"
+            descripcion = "Músculo tensor y flexor de la cadera",
+            imagen = "musculo_tensor_fascia"
+        ),
+        Musculo(
+            id = 20,
+            nombre = "Músculo Glúteo Superficial",
+            origen = "Tuberosidad coxal, borde lateral del ilion y fascia glútea",
+            insercion = "Tercer trocánter del fémur",
+            funcion = "Abduce el miembro, flexiona la cadera y tensa la fascia glútea",
+            regionId = 5,
+            hotspotX = 0.46f,
+            hotspotY = 0.34f,
+            hotspotNumero = 4,
+            descripcion = "Músculo superficial de la región glútea",
+            imagen = "musculo_superficial"
+        ),
+        Musculo(
+            id = 21,
+            nombre = "Músculo Bíceps Femoral",
+            origen = "Ligamento sacroilíaco dorsal y lateral, fascia glútea y tuberosidad isquiática",
+            insercion = "Superficie caudal del fémur, tibia, tuberosidad calcánea y ligamento rotuliano lateral",
+            funcion = "Extiende miembro, corvejón y rodilla",
+            regionId = 5,
+            hotspotX = 0.39f,
+            hotspotY = 0.52f,
+            hotspotNumero = 5,
+            descripcion = "Músculo largo y fuerte de la región caudal",
+            imagen = "musculo_femoral"
+
+        ),
+        Musculo(
+            id = 22,
+            nombre = "Músculo Semitendinoso",
+            origen = "Apófisis transversas de la I y II vértebras caudales y tuberosidad isquiática",
+            insercion = "Tibia y tuberosidad calcánea",
+            funcion = "Extiende cadera y corvejón, rota medialmente el miembro",
+            regionId = 5,
+            hotspotX = 0.34f,
+            hotspotY = 0.57f,
+            hotspotNumero = 6,
+            descripcion = "Músculo caudal con inserción en el corvejón",
+            imagen = "musculo_semitendinoso"
+        ),
+        Musculo(
+            id = 23,
+            nombre = "Músculo Semimembranoso",
+            origen = "Superficie ventral de la tuberosidad isquiática y ligamento sacrotuberal ancho",
+            insercion = "Epicóndilo medial del fémur",
+            funcion = "Extiende cadera y aduce el miembro",
+            regionId = 5,
+            hotspotX = 0.36f,
+            hotspotY = 0.60f,
+            hotspotNumero = 7,
+            descripcion = "Músculo interno de la región caudal",
+            imagen = "musculo_semimembranoso"
+        ),
+        Musculo(
+            id = 24,
+            nombre = "Músculo Gastrocnemio",
+            origen = "Cabeza lateral y medial de la tuberosidad supracondiloidea",
+            insercion = "Tuberosidad calcánea",
+            funcion = "Extiende el corvejón y flexiona la rodilla",
+            regionId = 5,
+            hotspotX = 0.37f,
+            hotspotY = 0.68f,
+            hotspotNumero = 8,
+            descripcion = "Músculo principal del tendón de Aquiles",
+            imagen = "musculo_gastrocnemio"
+        ),
+        Musculo(
+            id = 25,
+            nombre = "Músculo Extensor Digital Largo",
+            origen = "Cóndilo lateral del fémur",
+            insercion = "Tercer falange distal",
+            funcion = "Flexiona corvejón y extiende el miembro",
+            regionId = 5,
+            hotspotX = 0.39f,
+            hotspotY = 0.75f,
+            hotspotNumero = 9,
+            descripcion = "Músculo extensor del dedo y miembro posterior",
+            imagen = "musculo_digital_largo"
         )
     )
-    
+
+
     // Función para obtener músculos por región
     fun obtenerMusculosPorRegion(regionId: Int): List<Musculo> {
         return when (regionId) {
