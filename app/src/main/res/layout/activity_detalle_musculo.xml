@@ -16,7 +16,7 @@
         android:layout_marginEnd="60dp"
         android:gravity="center"
         android:text="Músculo Orbicular de los Párpados"
-        android:textColor="@color/text_primary"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Origen:"
-                android:textColor="@color/warm_cream"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="Porción orbital: borde orbitario. Porción palpebral: ligamento palpebral."
-                android:textColor="@color/text_primary"
+                android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
             <TextView
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Inserción:"
-                android:textColor="@color/warm_cream"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="Forma un anillo alrededor del ojo, las fibras musculares se insertan en la piel"
-                android:textColor="@color/text_primary"
+                android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
             <TextView
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Función:"
-                android:textColor="@color/warm_cream"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -132,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="Cierre del ojo, protección, parpadeo"
-                android:textColor="@color/text_primary"
+                android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -146,9 +146,9 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="@android:color/white"
+        android:backgroundTint="@android:color/black"
         android:text="VOLVER"
-        android:textColor="@color/primary_brown"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

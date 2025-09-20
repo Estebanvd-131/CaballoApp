@@ -26,7 +26,7 @@
             android:background="@drawable/circle_background"
             android:gravity="center"
             android:text="1"
-            android:textColor="@color/warm_cream"
+            android:textColor="@android:color/black"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nombre del Músculo"
-                android:textColor="@color/text_primary"
+                android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Descripción del músculo"
-                android:textColor="@color/text_secondary"
+                android:textColor="@android:color/black"
                 android:textSize="14sp" />
 
         </LinearLayout>

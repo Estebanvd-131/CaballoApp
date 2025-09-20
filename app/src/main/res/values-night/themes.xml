@@ -2,6 +2,61 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.CaballoApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:windowBackground">@color/dark_background</item>
+        <item name="android:colorBackground">@color/dark_background</item>
+        <item name="colorSurface">@color/dark_secondary</item>
+        <item name="colorPrimary">@color/dark_primary</item>
+        <item name="colorOnPrimary">@color/dark_primary_text</item>
+        <item name="colorSecondary">@color/dark_secondary</item>
+        <item name="colorOnSecondary">@color/dark_secondary_text</item>
+        <item name="android:textColorPrimary">@color/dark_primary_text</item>
+        <item name="android:textColorSecondary">@color/dark_secondary_text</item>
+    </style>
+    
+    <!-- Estilos de botones para tema oscuro -->
+    <style name="ButtonPrimary" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/dark_primary</item>
+        <item name="android:textColor">@color/dark_primary_text</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+    
+    <style name="ButtonSecondary" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/dark_secondary</item>
+        <item name="android:textColor">@color/dark_secondary_text</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+    
+    <style name="ButtonExit" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/dark_primary</item>
+        <item name="android:textColor">@color/dark_primary_text</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+    
+    <!-- Botón con estilo veterinario para tema oscuro -->
+    <style name="ButtonVeterinary" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/dark_primary</item>
+        <item name="android:textColor">@color/dark_primary_text</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+    
+    <style name="ButtonTertiary" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/dark_primary</item>
+        <item name="android:textColor">@color/dark_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="strokeWidth">2dp</item>
     </style>
 </resources>

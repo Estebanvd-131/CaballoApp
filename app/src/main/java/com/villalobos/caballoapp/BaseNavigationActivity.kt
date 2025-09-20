@@ -83,7 +83,8 @@ abstract class BaseNavigationActivity : AppCompatActivity() {
                 else -> ContextCompat.getColor(this, R.color.primary_brown)
             }
             
-            btnHome.setColorFilter(getColor(colorTint))
+            // Usar directamente el valor ARGB ya resuelto
+            btnHome.setColorFilter(colorTint)
         }
     }
 

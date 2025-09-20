@@ -31,7 +31,7 @@
             android:shadowDy="2"
             android:shadowRadius="4"
             android:text="CaballoApp"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="32sp"
             android:textStyle="bold" />
 
@@ -43,7 +43,7 @@
             android:layout_marginBottom="24dp"
             android:contentDescription="Logo CaballoApp"
             android:scaleType="fitCenter"
-            android:src="@drawable/miologiaequinocompleto" />
+            android:src="@drawable/cabeza_lateral" />
 
         <!-- Logo USC -->
         <ImageView
@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:text="Anatomía Muscular Equina"
-            android:textColor="@color/warm_cream"
+            android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="italic" />
 
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Cargando..."
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
@@ -128,7 +128,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="v1.0"
-        android:textColor="@color/warm_cream"
+        android:textColor="@android:color/black"
         android:textSize="12sp"
         android:alpha="0.7"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -141,7 +141,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="Desarrollado para\nMedicina Veterinaria"
-        android:textColor="@color/warm_cream"
+        android:textColor="@android:color/black"
         android:textSize="10sp"
         android:alpha="0.6"
         android:gravity="start"

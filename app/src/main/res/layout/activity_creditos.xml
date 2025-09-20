@@ -35,7 +35,7 @@
                 android:layout_marginStart="8dp"
                 android:background="?android:attr/selectableItemBackground"
                 android:text="←"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -48,7 +48,7 @@
                 android:layout_toEndOf="@+id/btnBackCreditos"
                 android:gravity="center"
                 android:text="CRÉDITOS"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:padding="16dp" />
@@ -90,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="CaballoApp"
-                android:textColor="@color/primary_brown"
+                android:textColor="@android:color/black"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 android:gravity="center"
@@ -100,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Aplicación educativa para el estudio de la miología del Caballo Criollo Colombiano"
-                android:textColor="@color/text_primary"
+                android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:gravity="center"
                 android:layout_marginBottom="32dp" />
@@ -109,7 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Desarrollado por:"
-                android:textColor="@color/primary_blue"
+                android:textColor="@android:color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="16dp" />
@@ -118,7 +118,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Universidad Santiago de Cali\nFacultad de Ingeniería de Sistemas\nProyecto de Investigación"
-                android:textColor="@color/text_primary"
+                android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:gravity="center"
                 android:layout_marginBottom="32dp" />
@@ -127,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Versión 1.0"
-                android:textColor="@color/text_secondary"
+                android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:gravity="center" />
 

@@ -47,7 +47,7 @@
                         android:layout_toStartOf="@+id/btnHome"
                         android:gravity="center"
                         android:text="ANATOMÍA MUSCULAR EQUINA"
-                        android:textColor="@android:color/white"
+                        android:textColor="@android:color/black"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:padding="16dp" />
@@ -75,7 +75,7 @@
                 android:layout_width="224dp"
                 android:layout_height="167dp"
                 android:layout_marginTop="16dp"
-                android:src="@drawable/miologiaequinocompleto"
+                android:src="@drawable/zona_mentoniana"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/headerCard" />
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Selecciona algún músculo"
-                android:textColor="#F3D4C0"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -115,7 +115,7 @@
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:text="REGIÓN DE LA CABEZA"
-                    android:textColor="@color/text_primary" />
+                    android:textColor="@android:color/black" />
 
                 <Button
                     android:id="@+id/btnRegionCuello"
@@ -128,7 +128,7 @@
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:text="REGIÓN DEL CUELLO"
-                    android:textColor="@color/text_primary" />
+                    android:textColor="@android:color/black" />
 
                 <Button
                     android:id="@+id/btnRegionTronco"
@@ -141,7 +141,7 @@
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:text="REGIÓN DEL TRONCO"
-                    android:textColor="@color/text_primary" />
+                    android:textColor="@android:color/black" />
 
                 <Button
                     android:id="@+id/btnRegionToracica"
@@ -154,7 +154,7 @@
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:text="REGIÓN DE MIEMBROS TORÁCICOS"
-                    android:textColor="@color/text_primary" />
+                    android:textColor="@android:color/black" />
 
                 <Button
                     android:id="@+id/btnRegionPelvica"
@@ -167,7 +167,7 @@
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:text="REGIÓN PÉLVICA"
-                    android:textColor="@color/text_primary" />
+                    android:textColor="@android:color/black" />
 
 
 

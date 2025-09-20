@@ -24,7 +24,7 @@ class TutorialActivity : BaseNavigationActivity() {
             numero = 1,
             titulo = "¡Bienvenido a CaballoApp!",
             descripcion = "Aprende anatomía muscular del Caballo Criollo Colombiano de forma interactiva, científica y completamente gratuita.",
-            imagen = R.drawable.miologiaequinocompleto,
+            imagen = R.drawable.zona_parieto_temporal,
             mostrarCaracteristicas = true,
             caracteristicas = listOf(
                 "Exploración por regiones anatómicas",
@@ -37,19 +37,19 @@ class TutorialActivity : BaseNavigationActivity() {
             numero = 2,
             titulo = "Navegación Principal",
             descripcion = "Desde la pantalla principal puedes acceder a todas las funciones: explorar regiones, buscar músculos y ajustar accesibilidad.",
-            imagen = R.drawable.cabeza_lateral
+            imagen = R.drawable.zona_cervico_lateral
         ),
         TutorialPaso(
             numero = 3,
             titulo = "Exploración por Regiones",
             descripcion = "Selecciona una región anatómica (Cabeza, Cuello, Tronco, Miembros) para ver sus músculos específicos con imágenes detalladas.",
-            imagen = R.drawable.cuello_y_torax
+            imagen = R.drawable.musculo_interoseo
         ),
         TutorialPaso(
             numero = 4,
             titulo = "Interacción con Músculos",
             descripcion = "Toca cualquier punto destacado en las imágenes para ver información completa: origen, inserción y función biomecánica del músculo.",
-            imagen = R.drawable.hombro_miembro_anterior
+            imagen = R.drawable.planta_casco
         ),
         TutorialPaso(
             numero = 5,
@@ -68,7 +68,7 @@ class TutorialActivity : BaseNavigationActivity() {
             numero = 6,
             titulo = "¡Listo para Comenzar!",
             descripcion = "Ya conoces todas las funciones principales. Recuerda que puedes acceder a configuraciones de accesibilidad desde el menú principal si las necesitas.",
-            imagen = R.drawable.torsoequino
+            imagen = R.drawable.zona_mandibular
         )
     )
 

@@ -50,7 +50,7 @@
                 android:layout_marginBottom="16dp"
                 android:gravity="center"
                 android:text="Bienvenido a CaballoApp"
-                android:textColor="@color/text_primary"
+                android:textColor="@android:color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -63,7 +63,7 @@
                 android:gravity="center"
                 android:lineSpacingExtra="4dp"
                 android:text="Aprende anatomía muscular del Caballo Criollo Colombiano de forma interactiva y gratuita."
-                android:textColor="@color/text_secondary"
+                android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
             <!-- Lista de características (opcional) -->
@@ -79,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:text="• Exploración por regiones anatómicas"
-                    android:textColor="@color/text_primary"
+                    android:textColor="@android:color/black"
                     android:textSize="14sp"
                     android:drawableStart="@android:drawable/btn_star_big_on"
                     android:drawablePadding="8dp"
@@ -90,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:text="• Información detallada de cada músculo"
-                    android:textColor="@color/text_primary"
+                    android:textColor="@android:color/black"
                     android:textSize="14sp"
                     android:drawableStart="@android:drawable/btn_star_big_on"
                     android:drawablePadding="8dp"
@@ -101,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:text="• Búsqueda rápida y favoritos"
-                    android:textColor="@color/text_primary"
+                    android:textColor="@android:color/black"
                     android:textSize="14sp"
                     android:drawableStart="@android:drawable/btn_star_big_on"
                     android:drawablePadding="8dp"
@@ -111,7 +111,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="• Funciona sin conexión a internet"
-                    android:textColor="@color/text_primary"
+                    android:textColor="@android:color/black"
                     android:textSize="14sp"
                     android:drawableStart="@android:drawable/btn_star_big_on"
                     android:drawablePadding="8dp"

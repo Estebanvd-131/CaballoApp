@@ -37,7 +37,6 @@
     <color name="secondary_brown">#A0522D</color>        <!-- Sienna brown secondary -->
     <color name="accent_light_brown">#D2691E</color>     <!-- Chocolate accent -->
     <color name="elegant_gray">#3A2A1E</color>           <!-- Brown neutral -->
-    <color name="light_background">#FFFFFF</color>       <!-- White background for minimalism -->
     <color name="warm_cream">#FAFAFA</color>             <!-- Very light gray surface -->
     
     <!-- Functional Colors - Modern M3 -->
@@ -109,4 +108,21 @@
     <color name="achromatopsia_light_gray">#D3D3D3</color>  <!-- Gris muy claro -->
     <color name="achromatopsia_white">#FFFFFF</color>       <!-- Blanco puro -->
     <color name="achromatopsia_button_text">#2F4F4F</color> <!-- Texto oscuro para botones -->
+    
+    <!-- Color beige para degradado de fondo -->
+    <color name="beige_gradient">#f3f0e0</color> <!-- RGB: (243, 240, 224) -->
+    
+    <!-- Paleta de colores para el tema claro -->
+    <color name="light_background">#FDF6E3</color> <!-- Fondo principal crema pálido -->
+    <color name="light_primary">#A89A88</color> <!-- Color primario marrón/grisáceo -->
+    <color name="light_secondary">#EAE1D3</color> <!-- Color secundario crema más claro -->
+    <color name="light_secondary_text">#333333</color> <!-- Texto para botones secundarios -->
+    <color name="light_primary_text">#FFFFFF</color> <!-- Texto para botones primarios y cabecera -->
+    
+    <!-- Paleta de colores para el tema oscuro -->
+    <color name="dark_primary">#8C7D6B</color> <!-- Primario tema oscuro -->
+    <color name="dark_secondary">#3C3C3C</color> <!-- Secundario tema oscuro -->
+    <color name="dark_primary_text">#E5E5E5</color> <!-- Texto principal tema oscuro -->
+    <color name="dark_secondary_text">#A0A0A0</color> <!-- Texto secundario tema oscuro -->
+    <color name="dark_background">#1E1E1E</color> <!-- Fondo tema oscuro -->
 </resources>

@@ -11,6 +11,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.google.android.material.shape.MaterialShapeDrawable
+import androidx.core.view.ViewCompat
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatRadioButton
 
 // TAG para los logs
 private const val TAG = "AccesibilityHelper"
@@ -166,14 +170,39 @@ object AccesibilityHelper {
             return customColor
         }
 
+        // En modo normal (NONE), usar los colores del tema actual
+        if (config.colorblindType == ColorblindType.NONE) {
+            val isNightMode = context.resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK == android.content.res.Configuration.UI_MODE_NIGHT_YES
+            
+            return when (originalColorRes) {
+                R.color.primary_brown -> {
+                    if (isNightMode) ContextCompat.getColor(context, R.color.dark_primary)
+                    else ContextCompat.getColor(context, R.color.light_primary)
+                }
+                R.color.secondary_brown -> {
+                    if (isNightMode) ContextCompat.getColor(context, R.color.dark_secondary)
+                    else ContextCompat.getColor(context, R.color.light_secondary)
+                }
+                R.color.text_primary, R.color.text_dark -> {
+                    if (isNightMode) ContextCompat.getColor(context, R.color.dark_primary_text)
+                    else ContextCompat.getColor(context, R.color.light_primary_text)
+                }
+                R.color.light_background -> {
+                    if (isNightMode) ContextCompat.getColor(context, R.color.dark_background)
+                    else ContextCompat.getColor(context, R.color.light_background)
+                }
+                else -> ContextCompat.getColor(context, originalColorRes)
+            }
+        }
+
         val originalColor = ContextCompat.getColor(context, originalColorRes)
 
         return when (config.colorblindType) {
-            ColorblindType.NONE -> originalColor
             ColorblindType.PROTANOPIA -> adjustForProtanopia(context, originalColorRes)
             ColorblindType.DEUTERANOPIA -> adjustForDeuteranopia(context, originalColorRes)
             ColorblindType.TRITANOPIA -> adjustForTritanopia(context, originalColorRes)
             ColorblindType.ACHROMATOPSIA -> adjustForAchromatopsia(context, originalColorRes)
+            else -> originalColor
         }
     }
 
@@ -616,7 +645,7 @@ object AccesibilityHelper {
         try {
             val background = when (colorblindType) {
                 ColorblindType.NONE -> {
-                    // En modo normal, mantener el gradiente café original
+                    // En modo normal, usar el gradiente actualizado con los nuevos colores
                     ContextCompat.getDrawable(context, R.drawable.gradient_background)
                 }
                 ColorblindType.PROTANOPIA -> {
@@ -662,6 +691,9 @@ object AccesibilityHelper {
             // Aplicar colores específicos según el tipo de daltonismo configurado
             applySpecificColorblindColors(context, activity.window.decorView, config.colorblindType)
 
+            // Fuerza inmediata de paleta de botones en todo el árbol (MaterialButton, Button, RadioButton)
+            forceApplyButtonPalette(context, activity.window.decorView, config.colorblindType)
+
             // Aplicar colores a toda la vista de manera más agresiva
             applyAccessibilityColorsToView(context, activity.window.decorView)
 
@@ -674,12 +706,62 @@ object AccesibilityHelper {
             // Aplicar colores nuevamente después de un pequeño delay para asegurar persistencia
             android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
                 applySpecificColorblindColors(context, activity.window.decorView, config.colorblindType)
+
+                // LIMPIEZA FINAL: Remover cualquier overlay blanco que haya quedado en imágenes
+                removeWhiteOverlaysFromImages(context, activity.window.decorView)
+
                 activity.window.decorView.invalidate()
                 Log.d(TAG, "Colores de accesibilidad aplicados agresivamente: ${config.colorblindType.displayName}")
             }, 100)
+
+            // Reaplicar colores tras el próximo layout para asegurar que todos los botones tomen el tinte
+            reapplyButtonColorsOnNextLayout(context, config.colorblindType)
         } catch (e: Exception) {
             Log.e(TAG, "Error aplicando colores de accesibilidad: ${e.message}")
         }
+    }
+
+// Reaplica colores de botones tras el próximo layout para asegurar que tomen el tinte del modo
+private fun reapplyButtonColorsOnNextLayout(context: Context, colorblindType: ColorblindType) {
+    val activity = context as? Activity ?: return
+    val root = activity.window.decorView
+    root.viewTreeObserver.addOnGlobalLayoutListener(object : android.view.ViewTreeObserver.OnGlobalLayoutListener {
+        override fun onGlobalLayout() {
+            try {
+                // Reaplicar paleta por modo y recorrido profundo a todos los botones
+                applySpecificColorblindColors(context, root, colorblindType)
+                applyAccessibilityColorsToView(context, root)
+                // Forzar redibujo
+                root.invalidate()
+            } catch (_: Exception) {
+                // Ignorar para no romper el ciclo de vida
+            } finally {
+                // Remover listener para evitar loops
+                root.viewTreeObserver.removeOnGlobalLayoutListener(this)
+            }
+        }
+    })
+}
+    // Detecta si una vista pertenece al grupo de opciones de daltonismo (RadioGroup) para no recolorearla
+    private fun isInDaltonismRadioArea(view: View): Boolean {
+        var parent = view.parent
+        while (parent is android.view.View) {
+            val v = parent as android.view.View
+            if (v.id == R.id.rgModosDaltonismo) return true
+            parent = v.parent
+        }
+        return false
+    }
+
+    // Detecta si una vista pertenece al grupo de opciones del quiz (RadioGroup) para no recolorearla
+    private fun isInQuizRadioArea(view: View): Boolean {
+        var parent = view.parent
+        while (parent is android.view.View) {
+            val v = parent as android.view.View
+            if (v.id == R.id.radioGroupOptions) return true
+            parent = v.parent
+        }
+        return false
     }
 
     /**
@@ -697,18 +779,79 @@ object AccesibilityHelper {
             }
             
             if (view is com.google.android.material.button.MaterialButton) {
-                // Aplicar colores a botones
+                // Limpiar tints/fondos que pueden forzar café por XML
+                ViewCompat.setBackgroundTintList(view, null)
+                view.backgroundTintList = null
+                view.backgroundTintMode = null
+                view.setBackgroundResource(0)
+
+                // Aplicar colores a botones (MaterialButton) con paleta según modo de daltonismo
                 val backgroundColor = getAccessibleColor(context, R.color.primary_brown)
+                val stroke = getAccessibleColor(context, R.color.secondary_brown)
+
+                // Forzar relleno en cualquier estilo (incl. Outlined)
+                view.setBackgroundColor(backgroundColor)
+                (view.background as? com.google.android.material.shape.MaterialShapeDrawable)?.let { shape ->
+                    shape.fillColor = android.content.res.ColorStateList.valueOf(backgroundColor)
+                    shape.strokeColor = android.content.res.ColorStateList.valueOf(stroke)
+                }
+
                 view.backgroundTintList = android.content.res.ColorStateList.valueOf(backgroundColor)
-                
-                val textColor = getAccessibleColor(context, R.color.white)
+                view.backgroundTintMode = android.graphics.PorterDuff.Mode.SRC_IN
+                view.strokeColor = android.content.res.ColorStateList.valueOf(stroke)
+                view.strokeWidth = if (view.strokeWidth > 0) view.strokeWidth else 3
+                view.rippleColor = android.content.res.ColorStateList.valueOf(stroke)
+                view.iconTint = android.content.res.ColorStateList.valueOf(ContextCompat.getColor(context, android.R.color.black))
+
+                val textColor = ContextCompat.getColor(context, android.R.color.black)
                 view.setTextColor(textColor)
+            }
+
+            // Soporte para botones estándar (android.widget.Button y AppCompatButton)
+            if ((view is android.widget.Button || view is AppCompatButton) && !(view is android.widget.RadioButton || view is AppCompatRadioButton || view is com.google.android.material.radiobutton.MaterialRadioButton)) {
+                val btn = view as android.widget.TextView
+                // Limpiar tints/fondos que pueden forzar café por XML
+                ViewCompat.setBackgroundTintList(btn, null)
+                btn.backgroundTintList = null
+                btn.setBackgroundResource(0)
+
+                // Aplicar colores a botones estándar con paleta según modo de daltonismo
+                val backgroundColor = getAccessibleColor(context, R.color.primary_brown)
+                btn.setBackgroundColor(backgroundColor)
+                btn.backgroundTintList = android.content.res.ColorStateList.valueOf(backgroundColor)
+
+                val textColor = ContextCompat.getColor(context, android.R.color.black)
+                btn.setTextColor(textColor)
+            }
+
+            // Soporte para RadioButtons (tinte del check y texto) - omitir en Accesibilidad.rgModosDaltonismo
+            if (view is android.widget.RadioButton || view is AppCompatRadioButton || view is com.google.android.material.radiobutton.MaterialRadioButton) {
+                if (!isInDaltonismRadioArea(view)) {
+                    val rb = view as android.widget.CompoundButton
+                    val tintColor = getAccessibleColor(context, R.color.primary_brown)
+                    val inDaltonismArea = isInDaltonismRadioArea(view)
+val appliedTint = if (inDaltonismArea) ContextCompat.getColor(context, R.color.primary_brown) else tintColor
+rb.buttonTintList = android.content.res.ColorStateList.valueOf(appliedTint)
+if (inDaltonismArea) {
+    (rb as android.widget.TextView).background = ContextCompat.getDrawable(context, R.drawable.radio_option_background)
+}
+                    (rb as android.widget.TextView).setTextColor(ContextCompat.getColor(context, android.R.color.black))
+                } else {
+                    // Restaurar apariencia por defecto en la pantalla de Accesibilidad (no recolorear)
+                    (view as android.widget.CompoundButton).buttonTintList = null
+                    (view as android.widget.TextView).setTextColor(ContextCompat.getColor(context, android.R.color.black))
+                }
             }
             
             if (view is androidx.cardview.widget.CardView) {
-                // Aplicar color de fondo a tarjetas
-                val cardColor = getAccessibleColor(context, R.color.white)
-                view.setCardBackgroundColor(cardColor)
+                if (!isInDaltonismRadioArea(view)) {
+                    // Aplicar color de fondo a tarjetas
+                    val cardColor = getAccessibleColor(context, R.color.white)
+                    view.setCardBackgroundColor(cardColor)
+                } else {
+                    // Mantener opciones de daltonismo con fondo blanco sólido
+                    view.setCardBackgroundColor(ContextCompat.getColor(context, R.color.white))
+                }
             }
             
             if (view is android.widget.ImageView) {
@@ -723,17 +866,40 @@ object AccesibilityHelper {
                 }
             }
             
-            // Aplicar color de fondo si la vista tiene un fondo de color
+            // Evitar pintar fondos sobre overlays o vistas cercanas a imágenes
             if (view.background is android.graphics.drawable.ColorDrawable) {
-                val backgroundDrawable = view.background as android.graphics.drawable.ColorDrawable
-                val backgroundColor = getAccessibleColor(context, backgroundDrawable.color)
-                view.setBackgroundColor(backgroundColor)
+                val isRadioInProtectedArea =
+                    (view is android.widget.RadioButton || view is AppCompatRadioButton || view is com.google.android.material.radiobutton.MaterialRadioButton) &&
+                    (isInDaltonismRadioArea(view) || isInQuizRadioArea(view))
+
+                val shouldPaintBackground =
+                    (view is TextView || view is com.google.android.material.button.MaterialButton) &&
+                    !ancestorContainsImages(view) &&
+                    !isRadioInProtectedArea
+
+                if (shouldPaintBackground) {
+                    val backgroundDrawable = view.background as android.graphics.drawable.ColorDrawable
+                    val backgroundColor = getAccessibleColor(context, backgroundDrawable.color)
+                    view.setBackgroundColor(backgroundColor)
+                }
             }
             
-            // Aplicar recursivamente a hijos
+            // Aplicar recursivamente a hijos, pero con cuidado de no aplicar fondos a contenedores de imágenes
             if (view is android.view.ViewGroup) {
                 for (i in 0 until view.childCount) {
-                    applyAccessibilityColorsToView(context, view.getChildAt(i))
+                    val child = view.getChildAt(i)
+                    // Evitar aplicar colores a contenedores que contienen imágenes para prevenir overlays
+                    if (!(child is android.widget.ImageView ||
+                          child.javaClass.simpleName.contains("Image"))) {
+                        // Para CardViews, verificar si contienen imágenes antes de procesar
+                        if (child is androidx.cardview.widget.CardView) {
+                            if (!containsImagesRecursively(child)) {
+                                applyAccessibilityColorsToView(context, child)
+                            }
+                        } else {
+                            applyAccessibilityColorsToView(context, child)
+                        }
+                    }
                 }
             }
         } catch (e: Exception) {
@@ -938,122 +1104,402 @@ object AccesibilityHelper {
     }
 
     /**
+     * Verifica recursivamente si un ViewGroup contiene imágenes en cualquier nivel de su jerarquía
+     */
+    private fun containsImagesRecursively(viewGroup: android.view.ViewGroup): Boolean {
+        // Evitar verificar el decorView raíz para no bloquear toda la aplicación
+        if (viewGroup.id == android.R.id.content || viewGroup.javaClass.simpleName == "DecorView") {
+            return false
+        }
+
+        for (i in 0 until viewGroup.childCount) {
+            val child = viewGroup.getChildAt(i)
+
+            // Verificar si el hijo directo es una imagen
+            if (child is android.widget.ImageView ||
+                child.javaClass.simpleName.contains("Image")) {
+                return true
+            }
+
+            // Verificar si el hijo es un CardView (que podría contener imágenes)
+            if (child is androidx.cardview.widget.CardView) {
+                // Verificar si el CardView tiene un ImageView como hijo directo
+                for (j in 0 until child.childCount) {
+                    val cardChild = child.getChildAt(j)
+                    if (cardChild is android.widget.ImageView ||
+                        cardChild.javaClass.simpleName.contains("Image")) {
+                        return true
+                    }
+                }
+                // En caso de duda, no pintar sobre CardView
+                return true
+            }
+
+            // Si es otro ViewGroup, verificar recursivamente
+            if (child is android.view.ViewGroup) {
+                if (containsImagesRecursively(child)) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
+    // Detecta si este ViewGroup contiene el RadioGroup de modos de daltonismo
+    private fun containsDaltonismRadioGroup(viewGroup: android.view.ViewGroup): Boolean {
+        for (i in 0 until viewGroup.childCount) {
+            val child = viewGroup.getChildAt(i)
+            if (child.id == R.id.rgModosDaltonismo) return true
+            if (child is android.view.ViewGroup) {
+                if (containsDaltonismRadioGroup(child)) return true
+            }
+        }
+        return false
+    }
+
+    // Detecta si este ViewGroup contiene el RadioGroup de opciones del quiz
+    private fun containsQuizRadioGroup(viewGroup: android.view.ViewGroup): Boolean {
+        for (i in 0 until viewGroup.childCount) {
+            val child = viewGroup.getChildAt(i)
+            if (child.id == R.id.radioGroupOptions) return true
+            if (child is android.view.ViewGroup) {
+                if (containsQuizRadioGroup(child)) return true
+            }
+        }
+        return false
+    }
+    // Verifica si algún ancestro contiene imágenes (para excluir pintura de fondos)
+    private fun ancestorContainsImages(view: View): Boolean {
+        var p = view.parent
+        while (p is android.view.ViewGroup) {
+            if (containsImagesRecursively(p)) return true
+            p = p.parent
+        }
+        return false
+    }
+
+    /**
+     * Función de limpieza final para remover overlays blancos de imágenes
+     */
+    fun removeWhiteOverlaysFromImages(context: Context, rootView: View) {
+        try {
+            if (rootView is android.view.ViewGroup) {
+                for (i in 0 until rootView.childCount) {
+                    val child = rootView.getChildAt(i)
+
+                    // Si encontramos una imagen, verificar y limpiar su contenedor padre
+                    if (child is android.widget.ImageView) {
+                        val parent = child.parent
+                        if (parent is android.view.ViewGroup) {
+                            // Remover cualquier fondo blanco del contenedor padre
+                            if (parent.background is android.graphics.drawable.ColorDrawable) {
+                                val bgColor = (parent.background as android.graphics.drawable.ColorDrawable).color
+                                if (isLightColor(bgColor)) {
+                                    parent.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+                                }
+                            }
+                        }
+                    }
+
+                    // Recursivamente verificar hijos
+                    if (child is android.view.ViewGroup) {
+                        removeWhiteOverlaysFromImages(context, child)
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Error removiendo overlays blancos: ${e.message}")
+        }
+    }
+
+    /**
+     * Verifica si un color es claro (blanco o casi blanco)
+     */
+    private fun isLightColor(color: Int): Boolean {
+        val alpha = android.graphics.Color.alpha(color)
+        val red = android.graphics.Color.red(color)
+        val green = android.graphics.Color.green(color)
+        val blue = android.graphics.Color.blue(color)
+
+        // Considerar colores con alta luminosidad como "claros"
+        val brightness = (red * 0.299 + green * 0.587 + blue * 0.114) / 255.0
+        return brightness > 0.7 && alpha > 150
+    }
+
+    /**
      * Aplica colores específicos para un tipo de daltonismo
      */
     fun applySpecificColorblindColors(context: Context, view: View, colorblindType: ColorblindType) {
         try {
+            // No alterar el área del RadioGroup de daltonismo: mantener fondos blancos/transparentes
+            if (view.id == R.id.rgModosDaltonismo && view is android.view.ViewGroup) {
+                view.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+            }
             if (view is TextView) {
-                // Aplicar color de texto según el tipo de daltonismo
-                val textColor = when (colorblindType) {
-                    ColorblindType.NONE -> ContextCompat.getColor(context, R.color.text_primary)
-                    ColorblindType.PROTANOPIA -> ContextCompat.getColor(context, R.color.protanopia_text_primary)
-                    ColorblindType.DEUTERANOPIA -> ContextCompat.getColor(context, R.color.deuteranopia_text_primary)
-                    ColorblindType.TRITANOPIA -> ContextCompat.getColor(context, R.color.tritanopia_text_primary)
-                    ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_black)
-                }
+                // Aplicar color de texto negro para todos los modos
+                val textColor = ContextCompat.getColor(context, android.R.color.black)
                 view.setTextColor(textColor)
                 
-                // También aplicar color de fondo para TextViews que no sean transparentes
+                // También aplicar color de fondo para TextViews que no sean transparentes,
+                // excepto cuando sea un RadioButton dentro de áreas protegidas (daltonismo o quiz).
                 if (view.background != null && view.background !is android.graphics.drawable.ColorDrawable) {
-                    val backgroundColor = when (colorblindType) {
-                        ColorblindType.NONE -> android.graphics.Color.TRANSPARENT
-                        ColorblindType.PROTANOPIA -> ContextCompat.getColor(context, R.color.protanopia_background)
-                        ColorblindType.DEUTERANOPIA -> ContextCompat.getColor(context, R.color.deuteranopia_background)
-                        ColorblindType.TRITANOPIA -> ContextCompat.getColor(context, R.color.tritanopia_background)
-                        ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_white)
-                    }
-                    if (colorblindType != ColorblindType.NONE) {
-                        view.setBackgroundColor(backgroundColor)
+                    val isRadioInProtectedArea =
+                        (view is android.widget.RadioButton || view is AppCompatRadioButton || view is com.google.android.material.radiobutton.MaterialRadioButton) &&
+                        (isInDaltonismRadioArea(view) || isInQuizRadioArea(view))
+                    if (!isRadioInProtectedArea) {
+                        val backgroundColor = when (colorblindType) {
+                            ColorblindType.NONE -> android.graphics.Color.TRANSPARENT
+                            ColorblindType.PROTANOPIA -> ContextCompat.getColor(context, R.color.protanopia_background)
+                            ColorblindType.DEUTERANOPIA -> ContextCompat.getColor(context, R.color.deuteranopia_background)
+                            ColorblindType.TRITANOPIA -> ContextCompat.getColor(context, R.color.tritanopia_background)
+                            ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_white)
+                        }
+                        if (colorblindType != ColorblindType.NONE) {
+                            view.setBackgroundColor(backgroundColor)
+                        }
                     }
                 }
             }
             
             if (view is com.google.android.material.button.MaterialButton) {
-                // Aplicar colores específicos para botones según el tipo de daltonismo
+                // Verificar si es uno de los botones especiales que deben mantener su estilo
+                val isSpecialButton = view.id == R.id.btnAccesibilidad || view.id == R.id.btnCreditos
+                
+                // Aplicar colores con texto negro para todos los botones Material
                 val (backgroundColor, textColor, strokeColor) = when (colorblindType) {
-                    ColorblindType.NONE -> Triple(
-                        ContextCompat.getColor(context, R.color.primary_brown),
-                        ContextCompat.getColor(context, R.color.white),
-                        ContextCompat.getColor(context, R.color.secondary_brown)
-                    )
+                    ColorblindType.NONE -> {
+                        if (isSpecialButton) {
+                            // Botones especiales en modo normal: fondo beige oscuro con texto negro y bordes
+                            Triple(
+                                ContextCompat.getColor(context, R.color.light_secondary),
+                                ContextCompat.getColor(context, android.R.color.black),
+                                ContextCompat.getColor(context, R.color.light_primary)
+                            )
+                        } else {
+                            // Botones normales en modo normal: colores cafés originales con texto negro
+                            Triple(
+                                ContextCompat.getColor(context, R.color.primary_brown),
+                                ContextCompat.getColor(context, android.R.color.black),
+                                ContextCompat.getColor(context, R.color.secondary_brown)
+                            )
+                        }
+                    }
                     ColorblindType.PROTANOPIA -> Triple(
                         ContextCompat.getColor(context, R.color.protanopia_primary),
-                        ContextCompat.getColor(context, R.color.protanopia_button_text),
+                        ContextCompat.getColor(context, android.R.color.black),
                         ContextCompat.getColor(context, R.color.protanopia_secondary)
                     )
                     ColorblindType.DEUTERANOPIA -> Triple(
                         ContextCompat.getColor(context, R.color.deuteranopia_primary),
-                        ContextCompat.getColor(context, R.color.deuteranopia_button_text),
+                        ContextCompat.getColor(context, android.R.color.black),
                         ContextCompat.getColor(context, R.color.deuteranopia_secondary)
                     )
                     ColorblindType.TRITANOPIA -> Triple(
                         ContextCompat.getColor(context, R.color.tritanopia_primary),
-                        ContextCompat.getColor(context, R.color.tritanopia_button_text),
+                        ContextCompat.getColor(context, android.R.color.black),
                         ContextCompat.getColor(context, R.color.tritanopia_secondary)
                     )
                     ColorblindType.ACHROMATOPSIA -> Triple(
                         ContextCompat.getColor(context, R.color.achromatopsia_medium_gray),
-                        ContextCompat.getColor(context, R.color.achromatopsia_button_text),
+                        ContextCompat.getColor(context, android.R.color.black),
                         ContextCompat.getColor(context, R.color.achromatopsia_dark_gray)
                     )
                 }
                 
+                // Limpiar tints/fondos que pueden forzar café por XML
+                ViewCompat.setBackgroundTintList(view, null)
+                view.backgroundTintList = null
+                view.backgroundTintMode = null
+                view.setBackgroundResource(0)
+
                 view.backgroundTintList = android.content.res.ColorStateList.valueOf(backgroundColor)
+                view.backgroundTintMode = android.graphics.PorterDuff.Mode.SRC_IN
+                // Forzar relleno en estilos Outlined usando el drawable de Material
+                (view.background as? com.google.android.material.shape.MaterialShapeDrawable)?.let { shape ->
+                    shape.fillColor = android.content.res.ColorStateList.valueOf(backgroundColor)
+                    shape.strokeColor = android.content.res.ColorStateList.valueOf(strokeColor)
+                }
+                view.setBackgroundColor(backgroundColor)
                 view.setTextColor(textColor)
                 view.strokeColor = android.content.res.ColorStateList.valueOf(strokeColor)
-                view.strokeWidth = 3 // Hacer los bordes más visibles
+                view.strokeWidth = if (isSpecialButton && colorblindType == ColorblindType.NONE) 2 else 3
+                view.rippleColor = android.content.res.ColorStateList.valueOf(strokeColor)
+                view.iconTint = android.content.res.ColorStateList.valueOf(ContextCompat.getColor(context, android.R.color.black))
+            }
+
+            // Soporte para botones estándar (android.widget.Button / AppCompatButton) con la misma paleta por modo
+            if ((view is android.widget.Button || view is AppCompatButton) && !(view is android.widget.RadioButton || view is AppCompatRadioButton || view is com.google.android.material.radiobutton.MaterialRadioButton)) {
+                val isSpecialButton = view.id == R.id.btnAccesibilidad || view.id == R.id.btnCreditos
+
+                val (backgroundColor, textColor) = when (colorblindType) {
+                    ColorblindType.NONE -> {
+                        if (isSpecialButton) {
+                            Pair(
+                                ContextCompat.getColor(context, R.color.light_secondary),
+                                ContextCompat.getColor(context, android.R.color.black)
+                            )
+                        } else {
+                            Pair(
+                                ContextCompat.getColor(context, R.color.primary_brown),
+                                ContextCompat.getColor(context, android.R.color.black)
+                            )
+                        }
+                    }
+                    ColorblindType.PROTANOPIA -> Pair(
+                        ContextCompat.getColor(context, R.color.protanopia_primary),
+                        ContextCompat.getColor(context, android.R.color.black)
+                    )
+                    ColorblindType.DEUTERANOPIA -> Pair(
+                        ContextCompat.getColor(context, R.color.deuteranopia_primary),
+                        ContextCompat.getColor(context, android.R.color.black)
+                    )
+                    ColorblindType.TRITANOPIA -> Pair(
+                        ContextCompat.getColor(context, R.color.tritanopia_primary),
+                        ContextCompat.getColor(context, android.R.color.black)
+                    )
+                    ColorblindType.ACHROMATOPSIA -> Pair(
+                        ContextCompat.getColor(context, R.color.achromatopsia_medium_gray),
+                        ContextCompat.getColor(context, android.R.color.black)
+                    )
+                }
+
+                // Limpiar tints/fondos que pueden forzar café por XML
+                val btn = view as android.widget.TextView
+                ViewCompat.setBackgroundTintList(btn, null)
+                btn.backgroundTintList = null
+                btn.setBackgroundResource(0)
+
+                btn.backgroundTintList = android.content.res.ColorStateList.valueOf(backgroundColor)
+                // Forzar fondo para asegurar visibilidad en botones estándar
+                btn.setBackgroundColor(backgroundColor)
+                btn.setTextColor(textColor)
+            }
+
+            // RadioButtons: asignar colores por modo
+            if (view is android.widget.RadioButton || view is AppCompatRadioButton || view is com.google.android.material.radiobutton.MaterialRadioButton) {
+                val rb = view as android.widget.CompoundButton
+                val tintColor = when (colorblindType) {
+                    ColorblindType.NONE -> ContextCompat.getColor(context, R.color.primary_brown)
+                    ColorblindType.PROTANOPIA -> ContextCompat.getColor(context, R.color.protanopia_primary)
+                    ColorblindType.DEUTERANOPIA -> ContextCompat.getColor(context, R.color.deuteranopia_primary)
+                    ColorblindType.TRITANOPIA -> ContextCompat.getColor(context, R.color.tritanopia_primary)
+                    ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_medium_gray)
+                }
+                val inProtectedArea = isInDaltonismRadioArea(view) || isInQuizRadioArea(view)
+                val appliedTint = if (inProtectedArea) ContextCompat.getColor(context, R.color.primary_brown) else tintColor
+                rb.buttonTintList = android.content.res.ColorStateList.valueOf(appliedTint)
+                if (inProtectedArea) {
+                    (rb as android.widget.TextView).background = ContextCompat.getDrawable(context, R.drawable.radio_option_background)
+                    (rb as android.widget.TextView).backgroundTintList = null
+                }
+                (rb as android.widget.TextView).setTextColor(ContextCompat.getColor(context, android.R.color.black))
             }
             
             if (view is androidx.cardview.widget.CardView) {
-                // Aplicar color de fondo a tarjetas según el tipo de daltonismo
-                val cardColor = when (colorblindType) {
-                    ColorblindType.NONE -> ContextCompat.getColor(context, R.color.white)
-                    ColorblindType.PROTANOPIA -> ContextCompat.getColor(context, R.color.protanopia_background)
-                    ColorblindType.DEUTERANOPIA -> ContextCompat.getColor(context, R.color.deuteranopia_background)
-                    ColorblindType.TRITANOPIA -> ContextCompat.getColor(context, R.color.tritanopia_background)
-                    ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_white)
+                // Mantener blanco sólido si contiene el RadioGroup de daltonismo o el de quiz
+                if (isInDaltonismRadioArea(view) || containsQuizRadioGroup(view)) {
+                    view.setCardBackgroundColor(ContextCompat.getColor(context, R.color.white))
+                } else {
+                    // Verificar si es el header card que debe mantener su color café
+                    val isHeaderCard = view.id == R.id.headerCard
+                    
+                    // Aplicar color de fondo a tarjetas según el tipo de daltonismo
+                    val cardColor = when (colorblindType) {
+                        ColorblindType.NONE -> {
+                            if (isHeaderCard) {
+                                // Header card en modo normal: mantener color café
+                                ContextCompat.getColor(context, R.color.primary_brown)
+                            } else {
+                                // Otras tarjetas en modo normal: usar los colores del tema actual
+                                if (context.resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK == android.content.res.Configuration.UI_MODE_NIGHT_YES) {
+                                    ContextCompat.getColor(context, R.color.dark_secondary)
+                                } else {
+                                    ContextCompat.getColor(context, R.color.light_secondary)
+                                }
+                            }
+                        }
+                        ColorblindType.PROTANOPIA -> ContextCompat.getColor(context, R.color.protanopia_background)
+                        ColorblindType.DEUTERANOPIA -> ContextCompat.getColor(context, R.color.deuteranopia_background)
+                        ColorblindType.TRITANOPIA -> ContextCompat.getColor(context, R.color.tritanopia_background)
+                        ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_white)
+                    }
+                    view.setCardBackgroundColor(cardColor)
                 }
-                view.setCardBackgroundColor(cardColor)
             }
             
             if (view is android.widget.ImageView) {
                 // EN MODO DALTONISMO ESTÁ PROHIBIDO TOCAR LAS IMÁGENES
                 // Eliminar cualquier filtro o tinte de imágenes
                 view.clearColorFilter()
-                
+
                 // Asegurar que las imágenes no tengan fondo ni bordes en modo daltonismo
                 if (colorblindType != ColorblindType.NONE) {
                     view.setBackgroundColor(android.graphics.Color.TRANSPARENT)
                 }
+
+                // IMPORTANTE: Remover cualquier overlay blanco que pueda haber sido aplicado
+                // a contenedores padre de imágenes
+                val parent = view.parent
+                if (parent is android.view.ViewGroup && colorblindType != ColorblindType.NONE) {
+                    // Si el padre tiene un fondo blanco, removerlo para evitar overlays
+                    if (parent.background is android.graphics.drawable.ColorDrawable) {
+                        val bgColor = (parent.background as android.graphics.drawable.ColorDrawable).color
+                        if (bgColor == android.graphics.Color.WHITE ||
+                            bgColor == ContextCompat.getColor(context, R.color.white) ||
+                            android.graphics.Color.alpha(bgColor) > 200) { // Colores muy claros
+                            parent.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+                        }
+                    }
+                }
             }
             
-            // Aplicar color de fondo si la vista tiene un fondo de color SOLO SI NO ES UN GRADIENTE O SHAPE
+            // Aplicar color de fondo solo a vistas seguras (evitar overlays sobre imágenes)
             // (Los gradientes se aplican por separado en applyBackgroundGradient)
             if (view.background is android.graphics.drawable.ColorDrawable) {
-                val backgroundDrawable = view.background as android.graphics.drawable.ColorDrawable
-                val backgroundColor = when (colorblindType) {
-                    ColorblindType.NONE -> backgroundDrawable.color
-                    ColorblindType.PROTANOPIA -> ContextCompat.getColor(context, R.color.protanopia_background)
-                    ColorblindType.DEUTERANOPIA -> ContextCompat.getColor(context, R.color.deuteranopia_background)
-                    ColorblindType.TRITANOPIA -> ContextCompat.getColor(context, R.color.tritanopia_background)
-                    ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_white)
+                val isRadioInProtectedArea =
+                    (view is android.widget.RadioButton || view is AppCompatRadioButton || view is com.google.android.material.radiobutton.MaterialRadioButton) &&
+                    (isInDaltonismRadioArea(view) || isInQuizRadioArea(view))
+
+                val shouldPaintBackground =
+                    (view is TextView || view is com.google.android.material.button.MaterialButton) &&
+                    !ancestorContainsImages(view) &&
+                    !isRadioInProtectedArea
+
+                if (shouldPaintBackground) {
+                    val backgroundDrawable = view.background as android.graphics.drawable.ColorDrawable
+                    val backgroundColor = when (colorblindType) {
+                        ColorblindType.NONE -> backgroundDrawable.color
+                        ColorblindType.PROTANOPIA -> ContextCompat.getColor(context, R.color.protanopia_background)
+                        ColorblindType.DEUTERANOPIA -> ContextCompat.getColor(context, R.color.deuteranopia_background)
+                        ColorblindType.TRITANOPIA -> ContextCompat.getColor(context, R.color.tritanopia_background)
+                        ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_white)
+                    }
+                    view.setBackgroundColor(backgroundColor)
                 }
-                view.setBackgroundColor(backgroundColor)
             }
             
-            // APLICAR COLOR DE FONDO A TODOS LOS LAYOUTS Y CONTENEDORES EN MODO DALTONISMO
-            if (view is android.view.ViewGroup && colorblindType != ColorblindType.NONE) {
-                // Aplicar color de fondo a layouts y contenedores
-                val backgroundColor = when (colorblindType) {
-                    ColorblindType.PROTANOPIA -> ContextCompat.getColor(context, R.color.protanopia_background)
-                    ColorblindType.DEUTERANOPIA -> ContextCompat.getColor(context, R.color.deuteranopia_background)
-                    ColorblindType.TRITANOPIA -> ContextCompat.getColor(context, R.color.tritanopia_background)
-                    ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_white)
-                    else -> android.graphics.Color.TRANSPARENT
+            // APLICAR COLOR DE FONDO A LAYOUTS Y CONTENEDORES EN MODO DALTONISMO
+            // EXCLUYENDO contenedores con imágenes y el área que contiene el RadioGroup de daltonismo
+            if (view is android.view.ViewGroup &&
+                colorblindType != ColorblindType.NONE &&
+                !containsDaltonismRadioGroup(view)) {
+
+                // Verificar recursivamente si este ViewGroup contiene imágenes en cualquier nivel
+                val containsImages = containsImagesRecursively(view)
+
+                // Solo aplicar color de fondo si no contiene imágenes en ningún nivel
+                if (!containsImages) {
+                    val backgroundColor = when (colorblindType) {
+                        ColorblindType.PROTANOPIA -> ContextCompat.getColor(context, R.color.protanopia_background)
+                        ColorblindType.DEUTERANOPIA -> ContextCompat.getColor(context, R.color.deuteranopia_background)
+                        ColorblindType.TRITANOPIA -> ContextCompat.getColor(context, R.color.tritanopia_background)
+                        ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_white)
+                        else -> android.graphics.Color.TRANSPARENT
+                    }
+
+                    // Aplicar color de fondo solo a contenedores permitidos (no RadioGroup de daltonismo)
+                    view.setBackgroundColor(backgroundColor)
                 }
-                
-                // Aplicar color de fondo a todos los contenedores, incluso si ya tienen un fondo especial
-                view.setBackgroundColor(backgroundColor)
             }
             
             // Aplicar recursivamente a hijos
@@ -1066,4 +1512,113 @@ object AccesibilityHelper {
             Log.e(TAG, "Error aplicando colores específicos: ${e.message}")
         }
     }
+}
+
+// === Force button palette application helpers (appended) ===
+private fun forceApplyButtonPalette(context: Context, root: View, colorblindType: AccesibilityHelper.ColorblindType) {
+    try {
+        when (root) {
+            // IMPORTANT: handle radio buttons FIRST so they don't fall into the generic Button branch
+            is com.google.android.material.radiobutton.MaterialRadioButton,
+            is android.widget.RadioButton,
+            is AppCompatRadioButton -> {
+                val rb = root as android.widget.CompoundButton
+                val tint = when (colorblindType) {
+                    AccesibilityHelper.ColorblindType.NONE -> ContextCompat.getColor(context, R.color.primary_brown)
+                    AccesibilityHelper.ColorblindType.PROTANOPIA -> ContextCompat.getColor(context, R.color.protanopia_primary)
+                    AccesibilityHelper.ColorblindType.DEUTERANOPIA -> ContextCompat.getColor(context, R.color.deuteranopia_primary)
+                    AccesibilityHelper.ColorblindType.TRITANOPIA -> ContextCompat.getColor(context, R.color.tritanopia_primary)
+                    AccesibilityHelper.ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_medium_gray)
+                }
+                rb.buttonTintList = android.content.res.ColorStateList.valueOf(tint)
+                (rb as android.widget.TextView).setTextColor(ContextCompat.getColor(context, android.R.color.black))
+                // Do NOT set any background color here to keep options white
+            }
+
+            is com.google.android.material.button.MaterialButton -> {
+                val (bg, txt, stroke) = when (colorblindType) {
+                    AccesibilityHelper.ColorblindType.NONE -> Triple(
+                        ContextCompat.getColor(context, R.color.primary_brown),
+                        ContextCompat.getColor(context, android.R.color.black),
+                        ContextCompat.getColor(context, R.color.secondary_brown)
+                    )
+                    AccesibilityHelper.ColorblindType.PROTANOPIA -> Triple(
+                        ContextCompat.getColor(context, R.color.protanopia_primary),
+                        ContextCompat.getColor(context, android.R.color.black),
+                        ContextCompat.getColor(context, R.color.protanopia_secondary)
+                    )
+                    AccesibilityHelper.ColorblindType.DEUTERANOPIA -> Triple(
+                        ContextCompat.getColor(context, R.color.deuteranopia_primary),
+                        ContextCompat.getColor(context, android.R.color.black),
+                        ContextCompat.getColor(context, R.color.deuteranopia_secondary)
+                    )
+                    AccesibilityHelper.ColorblindType.TRITANOPIA -> Triple(
+                        ContextCompat.getColor(context, R.color.tritanopia_primary),
+                        ContextCompat.getColor(context, android.R.color.black),
+                        ContextCompat.getColor(context, R.color.tritanopia_secondary)
+                    )
+                    AccesibilityHelper.ColorblindType.ACHROMATOPSIA -> Triple(
+                        ContextCompat.getColor(context, R.color.achromatopsia_medium_gray),
+                        ContextCompat.getColor(context, android.R.color.black),
+                        ContextCompat.getColor(context, R.color.achromatopsia_dark_gray)
+                    )
+                }
+                root.backgroundTintList = android.content.res.ColorStateList.valueOf(bg)
+                root.backgroundTintMode = android.graphics.PorterDuff.Mode.SRC_IN
+                // Important for outlined buttons which are transparent by default
+                root.setBackgroundColor(bg)
+                root.setTextColor(txt)
+                root.strokeColor = android.content.res.ColorStateList.valueOf(stroke)
+                if (root.strokeWidth <= 0) root.strokeWidth = 3
+                root.rippleColor = android.content.res.ColorStateList.valueOf(stroke)
+                root.iconTint = android.content.res.ColorStateList.valueOf(txt)
+            }
+
+            // Generic Buttons, but EXCLUDE radio buttons (which inherit from AppCompatButton)
+            is android.widget.Button, is AppCompatButton -> {
+                if (root is android.widget.RadioButton || root is AppCompatRadioButton || root is com.google.android.material.radiobutton.MaterialRadioButton) {
+                    // already handled above
+                } else {
+                    val btn = root as android.widget.TextView
+                    val bg = when (colorblindType) {
+                        AccesibilityHelper.ColorblindType.NONE -> ContextCompat.getColor(context, R.color.primary_brown)
+                        AccesibilityHelper.ColorblindType.PROTANOPIA -> ContextCompat.getColor(context, R.color.protanopia_primary)
+                        AccesibilityHelper.ColorblindType.DEUTERANOPIA -> ContextCompat.getColor(context, R.color.deuteranopia_primary)
+                        AccesibilityHelper.ColorblindType.TRITANOPIA -> ContextCompat.getColor(context, R.color.tritanopia_primary)
+                        AccesibilityHelper.ColorblindType.ACHROMATOPSIA -> ContextCompat.getColor(context, R.color.achromatopsia_medium_gray)
+                    }
+                    ViewCompat.setBackgroundTintList(btn, null)
+                    btn.backgroundTintList = null
+                    btn.setBackgroundResource(0)
+                    btn.backgroundTintList = android.content.res.ColorStateList.valueOf(bg)
+                    // Important to force fill on platform/AppCompat Buttons
+                    btn.setBackgroundColor(bg)
+                    btn.setTextColor(ContextCompat.getColor(context, android.R.color.black))
+                }
+            }
+        }
+
+        if (root is android.view.ViewGroup) {
+            for (i in 0 until root.childCount) {
+                forceApplyButtonPalette(context, root.getChildAt(i), colorblindType)
+            }
+        }
+    } catch (e: Exception) {
+        Log.e(TAG, "forceApplyButtonPalette error: ${e.message}")
+    }
+}
+
+// Hook to call after next layout to guarantee palette sticks
+private fun reapplyButtonsAfterLayout(context: Context, colorblindType: AccesibilityHelper.ColorblindType) {
+    val activity = context as? Activity ?: return
+    val root = activity.window.decorView
+    root.viewTreeObserver.addOnGlobalLayoutListener(object : android.view.ViewTreeObserver.OnGlobalLayoutListener {
+        override fun onGlobalLayout() {
+            try {
+                forceApplyButtonPalette(context, root, colorblindType)
+                root.invalidate()
+            } catch (_: Exception) { }
+            finally { root.viewTreeObserver.removeOnGlobalLayoutListener(this) }
+        }
+    })
 }

@@ -91,7 +91,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="ADAPTACIÓN PARA DALTONISMO"
-                        android:textColor="@color/primary_blue"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:fontFamily="sans-serif-medium"
@@ -101,7 +101,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Selecciona el modo de colores que mejor se adapte a tu visión:"
-                        android:textColor="@color/text_dark"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp"
                         android:layout_marginBottom="16dp" />
 
@@ -110,97 +110,72 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <androidx.cardview.widget.CardView
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rbNormal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
-                            app:cardBackgroundColor="@color/surface_color"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="1dp">
+                            android:checked="true"
+                            android:padding="16dp"
+                            android:minHeight="56dp"
+                            android:background="@drawable/radio_option_background"
+                            android:text="Colores Estándar"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:useMaterialThemeColors="false"
+                            app:buttonTint="@color/primary_brown" />
 
-                            <RadioButton
-                                android:id="@+id/rbNormal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:checked="true"
-                                android:padding="16dp"
-                                android:text="Colores Estándar"
-                                android:textColor="@color/text_dark"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rbProtanopia"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
-                            app:cardBackgroundColor="@color/surface_color"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="1dp">
+                            android:padding="16dp"
+                            android:minHeight="56dp"
+                            android:background="@drawable/radio_option_background"
+                            android:text="Protanopia (Dificultad con rojos)"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            app:useMaterialThemeColors="false"
+                            app:buttonTint="@color/primary_brown" />
 
-                            <RadioButton
-                                android:id="@+id/rbProtanopia"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="16dp"
-                                android:text="Protanopia (Dificultad con rojos)"
-                                android:textColor="@color/text_dark"
-                                android:textSize="16sp" />
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rbDeuteranopia"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
-                            app:cardBackgroundColor="@color/surface_color"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="1dp">
+                            android:padding="16dp"
+                            android:minHeight="56dp"
+                            android:background="@drawable/radio_option_background"
+                            android:text="Deuteranopia (Dificultad con verdes)"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            app:useMaterialThemeColors="false"
+                            app:buttonTint="@color/primary_brown" />
 
-                            <RadioButton
-                                android:id="@+id/rbDeuteranopia"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="16dp"
-                                android:text="Deuteranopia (Dificultad con verdes)"
-                                android:textColor="@color/text_dark"
-                                android:textSize="16sp" />
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rbTritanopia"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
-                            app:cardBackgroundColor="@color/surface_color"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="1dp">
+                            android:padding="16dp"
+                            android:minHeight="56dp"
+                            android:background="@drawable/radio_option_background"
+                            android:text="Tritanopia (Dificultad con azules/amarillos)"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            app:useMaterialThemeColors="false"
+                            app:buttonTint="@color/primary_brown" />
 
-                            <RadioButton
-                                android:id="@+id/rbTritanopia"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="16dp"
-                                android:text="Tritanopia (Dificultad con azules/amarillos)"
-                                android:textColor="@color/text_dark"
-                                android:textSize="16sp" />
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rbAcromatopsia"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
-                            app:cardBackgroundColor="@color/surface_color"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="1dp">
-
-                            <RadioButton
-                                android:id="@+id/rbAcromatopsia"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="16dp"
-                                android:text="Acromatopsia (Visión en escala de grises)"
-                                android:textColor="@color/text_dark"
-                                android:textSize="16sp" />
-                        </androidx.cardview.widget.CardView>
+                            android:padding="16dp"
+                            android:minHeight="56dp"
+                            android:background="@drawable/radio_option_background"
+                            android:text="Acromatopsia (Visión en escala de grises)"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            app:useMaterialThemeColors="false"
+                            app:buttonTint="@color/primary_brown" />
                     </RadioGroup>
 
                     <!-- Vista previa de colores -->
@@ -217,7 +192,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
                             android:text="Vista previa:"
-                            android:textColor="@color/text_dark"
+                            android:textColor="@android:color/black"
                             android:textSize="14sp" />
 
                         <View
@@ -257,7 +232,7 @@
                         android:layout_marginTop="16dp"
                         android:backgroundTint="@color/warm_orange"
                         android:text="DESACTIVAR DALTONISMO"
-                        android:textColor="@color/white"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp"
                         android:textStyle="bold"
                         android:visibility="gone"
@@ -284,7 +259,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
                         android:text="Tutorial de la Aplicación"
-                        android:textColor="@color/text_primary"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -293,7 +268,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
                         android:text="Vuelve a ver el tutorial interactivo para familiarizarte con todas las funciones de CaballoApp."
-                        android:textColor="@color/text_secondary"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
                     <com.google.android.material.button.MaterialButton
@@ -302,7 +277,7 @@
                         android:layout_height="48dp"
                         android:backgroundTint="@color/accent_light_brown"
                         android:text="🎓 REINICIAR TUTORIAL"
-                        android:textColor="@color/white"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp"
                         android:textStyle="bold"
                         app:cornerRadius="12dp" />

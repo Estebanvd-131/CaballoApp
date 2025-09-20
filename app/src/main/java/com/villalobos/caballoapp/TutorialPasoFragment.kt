@@ -49,7 +49,9 @@ class TutorialPasoFragment : Fragment() {
         ) {
             // Configurar contenido básico
             binding.tvTituloPaso.text = paso.titulo
+            binding.tvTituloPaso.setTextColor(resources.getColor(android.R.color.black, null))
             binding.tvDescripcionPaso.text = paso.descripcion
+            binding.tvDescripcionPaso.setTextColor(resources.getColor(android.R.color.black, null))
             binding.imgPasoTutorial.setImageResource(paso.imagen)
 
             // Animar la imagen del tutorial
@@ -65,7 +67,7 @@ class TutorialPasoFragment : Fragment() {
                     val textView = TextView(requireContext()).apply {
                         text = "• $caracteristica"
                         textSize = 14f
-                        setTextColor(resources.getColor(R.color.text_primary, null))
+                        setTextColor(resources.getColor(android.R.color.black, null))
                         setPadding(0, 0, 0, 16)
                         setCompoundDrawablesWithIntrinsicBounds(
                             android.R.drawable.btn_star_big_on, 0, 0, 0

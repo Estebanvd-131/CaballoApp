@@ -24,7 +24,7 @@ object DatosMusculares {
             hotspotY = 0.35f,
             hotspotNumero = 1,
             descripcion = "Músculo responsable del cierre de los párpados",
-            imagen = "ojo"
+            imagen = "orbicularcaballo"
 
         ),
         Musculo(
