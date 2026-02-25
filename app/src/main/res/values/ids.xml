@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="tag_accessibility_mode" />
+    <item type="id" name="tag_accessibility_high_contrast" />
+    <item type="id" name="tag_accessibility_text_scale" />
+    <item type="id" name="tag_accessibility_original_text_size" />
+</resources>

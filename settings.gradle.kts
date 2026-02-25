@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "CaballoApp"
+rootProject.name = "EquusApp"
 include(":app")
  

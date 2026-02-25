@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
+    <!-- Sombra dorada suave (Glow) -->
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_glow_gold_soft"
+        app:layout_constraintTop_toTopOf="@id/cardImagen"
+        app:layout_constraintBottom_toBottomOf="@id/cardImagen"
+        app:layout_constraintStart_toStartOf="@id/cardImagen"
+        app:layout_constraintEnd_toEndOf="@id/cardImagen"
+        android:layout_margin="-12dp"
+        android:elevation="0dp"
+        tools:visibility="visible"/>
+
     <!-- Imagen ilustrativa -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardImagen"
@@ -14,6 +27,7 @@
         android:layout_marginBottom="24dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -40,7 +54,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="24dp">
 
             <!-- Título del paso -->
             <TextView
@@ -49,21 +64,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:gravity="center"
-                android:text="Bienvenido a CaballoApp"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:text="Bienvenido a EquusApp"
+                android:textColor="@color/primary_brown"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"/>
 
             <!-- Descripción del paso -->
             <TextView
                 android:id="@+id/tvDescripcionPaso"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="24dp"
                 android:gravity="center"
                 android:lineSpacingExtra="4dp"
                 android:text="Aprende anatomía muscular del Caballo Criollo Colombiano de forma interactiva y gratuita."
-                android:textColor="@android:color/black"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp" />
 
             <!-- Lista de características (opcional) -->
@@ -72,50 +88,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="gone"
+                android:paddingHorizontal="8dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="• Exploración por regiones anatómicas"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp"
-                    android:drawableStart="@android:drawable/btn_star_big_on"
-                    android:drawablePadding="8dp"
-                    android:gravity="center_vertical" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="• Información detallada de cada músculo"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp"
-                    android:drawableStart="@android:drawable/btn_star_big_on"
-                    android:drawablePadding="8dp"
-                    android:gravity="center_vertical" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="• Búsqueda rápida y favoritos"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp"
-                    android:drawableStart="@android:drawable/btn_star_big_on"
-                    android:drawablePadding="8dp"
-                    android:gravity="center_vertical" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="• Funciona sin conexión a internet"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp"
-                    android:drawableStart="@android:drawable/btn_star_big_on"
-                    android:drawablePadding="8dp"
-                    android:gravity="center_vertical" />
+                <!-- Items se agregan dinámicamente -->
 
             </LinearLayout>
 

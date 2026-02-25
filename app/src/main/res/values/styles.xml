@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ============================================== -->
+    <!-- ESTILOS BASE (REQUERIDOS POR HERENCIA)        -->
+    <!-- ============================================== -->
+    
+    <!-- Estilo base para TextAppearance -->
+    <style name="TextAppearance.EquusApp" parent="TextAppearance.Material3.BodyLarge" />
+    
+    <!-- Estilo base para Widget -->
+    <style name="Widget.EquusApp" parent="@android:style/Widget" />
+    
+    <!-- ============================================== -->
+    <!-- ESTILOS DE TEXTO - JERARQUÍA TIPOGRÁFICA      -->
+    <!-- ============================================== -->
+    
+    <!-- Título Principal (H1) -->
+    <style name="TextAppearance.EquusApp.Headline1" parent="TextAppearance.EquusApp">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+        <item name="android:shadowColor">#40000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">4</item>
+    </style>
+    
+    <!-- Título Secundario (H2) -->
+    <style name="TextAppearance.EquusApp.Headline2">
+        <item name="android:textSize">@dimen/text_size_h2</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <!-- Stats Number Style -->
+    <style name="TextAppearance.EquusApp.StatsNumber">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textColor">@color/primary_brown</item>
+    </style>
+
+    <!-- Stats Label Style -->
+    <style name="TextAppearance.EquusApp.StatsLabel">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+    
+    <!-- Título de Sección (H3) -->
+    <style name="TextAppearance.EquusApp.Headline3">
+        <item name="android:textSize">@dimen/text_size_h3</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    
+    <!-- Subtítulo (H4) -->
+    <style name="TextAppearance.EquusApp.Headline4">
+        <item name="android:textSize">@dimen/text_size_h4</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    
+    <!-- Cuerpo Grande -->
+    <style name="TextAppearance.EquusApp.BodyLarge">
+        <item name="android:textSize">@dimen/text_size_body_large</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:lineSpacingMultiplier">1.5</item>
+    </style>
+    
+    <!-- Cuerpo Normal -->
+    <style name="TextAppearance.EquusApp.Body">
+        <item name="android:textSize">@dimen/text_size_body</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+    </style>
+    
+    <!-- Cuerpo Pequeño -->
+    <style name="TextAppearance.EquusApp.BodySmall">
+        <item name="android:textSize">@dimen/text_size_body_small</item>
+        <item name="android:textColor">@color/text_tertiary</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- Etiqueta -->
+    <style name="TextAppearance.EquusApp.Label">
+        <item name="android:textSize">@dimen/text_size_label</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+    
+    <!-- Caption -->
+    <style name="TextAppearance.EquusApp.Caption">
+        <item name="android:textSize">@dimen/text_size_caption</item>
+        <item name="android:textColor">@color/text_tertiary</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- ============================================== -->
+    <!-- BOTONES - ESTILOS MATERIAL 3 MEJORADOS        -->
+    <!-- ============================================== -->
+    
+    <!-- Botón Principal (Filled) - Estilo Pill -->
+    <style name="Widget.EquusApp.Button.Primary" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/primary_brown</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_label</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="elevation">@dimen/button_elevation</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:paddingStart">@dimen/button_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/button_padding_horizontal</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">@dimen/button_icon_padding</item>
+        <item name="rippleColor">@color/ripple_brown</item>
+    </style>
+    
+    <!-- Botón Secundario (Tonal) -->
+    <style name="Widget.EquusApp.Button.Secondary" parent="Widget.Material3.Button.TonalButton">
+        <item name="backgroundTint">@color/warm_cream</item>
+        <item name="android:textColor">@color/primary_brown</item>
+        <item name="android:textSize">@dimen/text_size_label</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="elevation">2dp</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:paddingStart">@dimen/button_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/button_padding_horizontal</item>
+        <item name="rippleColor">@color/ripple_cream</item>
+    </style>
+    
+    <!-- Botón Outlined -->
+    <style name="Widget.EquusApp.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/primary_brown</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="android:textColor">@color/primary_brown</item>
+        <item name="android:textSize">@dimen/text_size_label</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:paddingStart">@dimen/button_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/button_padding_horizontal</item>
+        <item name="rippleColor">@color/ripple_brown</item>
+    </style>
+    
+    <!-- Botón de Texto -->
+    <style name="Widget.EquusApp.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textColor">@color/primary_brown</item>
+        <item name="android:textSize">@dimen/text_size_label</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:minHeight">@dimen/button_height_small</item>
+        <item name="rippleColor">@color/ripple_brown</item>
+    </style>
+    
+    <!-- Botón de Navegación (Atrás/Home) -->
+    <style name="Widget.EquusApp.Button.Navigation" parent="Widget.Material3.Button.IconButton">
+        <item name="android:background">@drawable/bg_button_navigation</item>
+        <item name="tint">@color/primary_brown</item>
+        <item name="android:minWidth">@dimen/nav_button_size</item>
+        <item name="android:minHeight">@dimen/nav_button_size</item>
+    </style>
+    
+    <!-- Botón de Región (Menu) -->
+    <style name="Widget.EquusApp.Button.Region" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/warm_cream</item>
+        <item name="android:textColor">@color/primary_brown</item>
+        <item name="android:textSize">@dimen/text_size_body_large</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">@dimen/card_corner_radius</item>
+        <item name="elevation">@dimen/card_elevation</item>
+        <item name="android:minHeight">64dp</item>
+        <item name="android:paddingStart">@dimen/spacing_lg</item>
+        <item name="android:paddingEnd">@dimen/spacing_lg</item>
+        <item name="iconGravity">end</item>
+        <item name="iconTint">@color/primary_brown</item>
+        <item name="icon">@drawable/ic_arrow_right</item>
+        <item name="rippleColor">@color/ripple_cream</item>
+    </style>
+    
+    <!-- Botón de Salir -->
+    <style name="Widget.EquusApp.Button.Exit" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/error_red</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="android:textColor">@color/error_red</item>
+        <item name="android:textSize">@dimen/text_size_label</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="rippleColor">@color/error_red</item>
+    </style>
+    
+    <!-- ============================================== -->
+    <!-- CARDS - ESTILOS MATERIAL 3                    -->
+    <!-- ============================================== -->
+    
+    <!-- Card Elevada -->
+    <style name="Widget.EquusApp.Card.Elevated" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="contentPadding">@dimen/card_padding</item>
+    </style>
+    
+    <!-- Card Outlined -->
+    <style name="Widget.EquusApp.Card.Outlined" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="strokeColor">@color/border_light</item>
+        <item name="strokeWidth">@dimen/card_stroke_width</item>
+        <item name="contentPadding">@dimen/card_padding</item>
+    </style>
+    
+    <!-- Card de Header -->
+    <style name="Widget.EquusApp.Card.Header" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/warm_cream</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius_large</item>
+        <item name="cardElevation">@dimen/card_elevation_raised</item>
+        <item name="contentPadding">@dimen/card_padding_large</item>
+    </style>
+    
+    <!-- Card de Contenido (Quiz, Músculo) -->
+    <style name="Widget.EquusApp.Card.Content" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/surface_variant</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">0dp</item>
+        <item name="contentPadding">@dimen/card_padding</item>
+    </style>
+    
+    <!-- Card Interactiva (clicable) -->
+    <style name="Widget.EquusApp.Card.Interactive" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="contentPadding">@dimen/card_padding</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="rippleColor">@color/ripple_brown</item>
+    </style>
+    
+    <!-- ============================================== -->
+    <!-- CHIPS                                          -->
+    <!-- ============================================== -->
+    
+    <style name="Widget.EquusApp.Chip" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip_background_selector</item>
+        <item name="chipCornerRadius">20dp</item>
+        <item name="android:textColor">@color/chip_text_selector</item>
+        <item name="chipStrokeColor">@color/primary_brown</item>
+        <item name="chipStrokeWidth">1dp</item>
+    </style>
+    
+    <!-- ============================================== -->
+    <!-- INPUTS                                         -->
+    <!-- ============================================== -->
+    
+    <style name="Widget.EquusApp.TextInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">@dimen/card_corner_radius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/card_corner_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/card_corner_radius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/card_corner_radius</item>
+        <item name="boxStrokeColor">@color/input_stroke_selector</item>
+        <item name="hintTextColor">@color/text_tertiary</item>
+    </style>
+    
+    <!-- ============================================== -->
+    <!-- DIVIDERS                                       -->
+    <!-- ============================================== -->
+    
+    <style name="Widget.EquusApp.Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/divider_height</item>
+        <item name="android:background">@color/divider</item>
+    </style>
+    
+</resources>

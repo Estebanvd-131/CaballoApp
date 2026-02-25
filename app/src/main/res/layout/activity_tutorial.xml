@@ -4,94 +4,116 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
-    tools:context=".TutorialActivity">
+    android:background="@drawable/bg_tutorial_gradient"
+    tools:context=".ui.tutorial.TutorialActivity">
 
     <!-- Header con indicador de progreso -->
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutHeader"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="12dp"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btnBackTutorial"
+        <!-- Icono y Título -->
+        <ImageView
+            android:id="@+id/ivHeaderIcon"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginEnd="8dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:text="←"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:src="@drawable/ic_horse_head"
+            app:tint="@color/primary_brown"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-        <TextView
-            android:id="@+id/tvTutorialTitulo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Tutorial CaballoApp"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/tvPasoActual"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/circle_background"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="6dp"
-            android:text="1/6"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:layout_marginStart="12dp"
+            app:layout_constraintStart_toEndOf="@id/ivHeaderIcon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <Button
-            android:id="@+id/btnSaltarTutorial"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tutorial"
+                android:textSize="16sp"
+                android:textColor="@color/text_primary"
+                android:fontFamily="sans-serif-medium" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EquusApp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_brown"
+                android:fontFamily="sans-serif-medium" />
+        </LinearLayout>
+
+        <!-- Botones de acción derecha -->
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_marginStart="8dp"
-            android:backgroundTint="@color/text_secondary"
-            android:paddingHorizontal="12dp"
-            android:text="Saltar"
-            android:textColor="@android:color/black"
-            android:textSize="12sp" />
-            
-        <ImageButton
-            android:id="@+id/btnHome"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Ir al menú principal"
-            android:padding="12dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_home"
-            android:tint="@color/primary_brown" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-    </LinearLayout>
+            <!-- Indicador de página (Pill) -->
+            <TextView
+                android:id="@+id/tvPasoActual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_pill_brown"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:text="1/6"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="12dp"/>
+
+            <!-- Botón Saltar -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSaltarTutorial"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Saltar"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:minHeight="40dp"
+                android:paddingHorizontal="16dp"
+                app:strokeColor="@color/text_primary"
+                app:strokeWidth="1dp"
+                app:cornerRadius="20dp"
+                android:background="@android:color/transparent"
+                app:backgroundTint="@android:color/transparent"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Barra de progreso -->
     <ProgressBar
         android:id="@+id/progressBarTutorial"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
-        android:layout_height="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_height="4dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:max="6"
         android:progress="1"
-        android:progressTint="@color/primary_brown"
-        android:progressBackgroundTint="@color/divider_color"
+        android:progressDrawable="@drawable/progress_tutorial"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutHeader" />
@@ -101,26 +123,28 @@
         android:id="@+id/viewPagerTutorial"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/layoutNavegacion"
+        app:layout_constraintBottom_toTopOf="@+id/cbNoMostrarMas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBarTutorial" />
 
     <!-- Opción para no mostrar más el tutorial -->
-    <CheckBox
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/cbNoMostrarMas"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
         android:text="No volver a mostrar este tutorial"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
+        android:textColor="@color/text_primary"
+        android:textSize="16sp"
+        android:buttonTint="@color/primary_brown"
+        android:background="@android:color/transparent"
+        app:useMaterialThemeColors="false"
         app:layout_constraintBottom_toTopOf="@+id/layoutNavegacion"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Navegación inferior -->
@@ -128,37 +152,43 @@
         android:id="@+id/layoutNavegacion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
         android:orientation="horizontal"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAnterior"
+            style="@style/Widget.Material3.Button"
             android:layout_width="0dp"
-            android:layout_height="56dp"
+            android:layout_height="64dp"
             android:layout_weight="1"
-            android:layout_marginEnd="8dp"
-            android:backgroundTint="@color/secondary_brown"
+            android:layout_marginEnd="12dp"
+            app:backgroundTint="@color/secondary_brown"
             android:text="← Anterior"
-            android:textColor="@android:color/black"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:textStyle="bold"
+            app:cornerRadius="32dp"
             android:enabled="false" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSiguiente"
+            style="@style/Widget.Material3.Button"
             android:layout_width="0dp"
-            android:layout_height="56dp"
+            android:layout_height="64dp"
             android:layout_weight="1"
-            android:layout_marginStart="8dp"
-            android:backgroundTint="@color/primary_brown"
+            android:layout_marginStart="12dp"
+            app:backgroundTint="@color/primary_brown"
             android:text="Siguiente →"
-            android:textColor="@android:color/black"
-            android:textStyle="bold" />
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="32dp" />
 
     </LinearLayout>
 

@@ -1,177 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <!-- Header Card Mejorado -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/headerCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/screen_margin_horizontal"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:layout_marginEnd="@dimen/screen_margin_horizontal"
+        app:cardBackgroundColor="@color/primary_brown"
+        app:cardCornerRadius="@dimen/card_corner_radius_large"
+        app:cardElevation="@dimen/card_elevation_raised"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/gradient_background">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/headerCard"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                app:cardBackgroundColor="@color/primary_brown"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <TextView
-                        android:id="@+id/tvTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toStartOf="@+id/btnHome"
-                        android:gravity="center"
-                        android:text="ANATOMÍA MUSCULAR EQUINA"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:padding="16dp" />
-                        
-                    <ImageButton
-                        android:id="@+id/btnHome"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="8dp"
-                        android:background="?android:attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="Ir al menú principal"
-                        android:padding="12dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ic_home"
-                        android:tint="@color/primary_brown" />
-
-                </RelativeLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <ImageView
-                android:id="@+id/imgCaballo"
-                android:layout_width="224dp"
-                android:layout_height="167dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/zona_mentoniana"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/headerCard" />
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_md">
 
             <TextView
-                android:id="@+id/tvSelecciona"
-                android:layout_width="wrap_content"
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Selecciona algún músculo"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="@dimen/spacing_xs"
+                android:gravity="start"
+                android:text="Anatomía Muscular"
+                android:textAppearance="@style/TextAppearance.EquusApp.Headline2"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/tvSubtitleHeader"
+                app:layout_constraintEnd_toStartOf="@+id/btnHome"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgCaballo" />
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/tvSubtitleHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xxs"
+                android:gravity="start"
+                android:text="Caballo Criollo Colombiano"
+                android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                android:textColor="@color/white"
+                android:alpha="0.9"
+                app:layout_constraintEnd_toStartOf="@+id/btnHome"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="16dp"
-                android:orientation="vertical"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnHome"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="@dimen/nav_button_size"
+                android:layout_height="@dimen/nav_button_size"
+                android:contentDescription="Ir al menú principal"
+                app:icon="@drawable/ic_home"
+                app:iconTint="@color/white"
+                app:iconSize="@dimen/nav_icon_size"
+                app:rippleColor="@color/ripple_cream"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvSelecciona">
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:id="@+id/btnRegionCabeza"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:backgroundTint="@color/warm_cream"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="REGIÓN DE LA CABEZA"
-                    android:textColor="@android:color/black" />
-
-                <Button
-                    android:id="@+id/btnRegionCuello"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:backgroundTint="@color/warm_cream"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="REGIÓN DEL CUELLO"
-                    android:textColor="@android:color/black" />
-
-                <Button
-                    android:id="@+id/btnRegionTronco"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:backgroundTint="@color/warm_cream"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="REGIÓN DEL TRONCO"
-                    android:textColor="@android:color/black" />
-
-                <Button
-                    android:id="@+id/btnRegionToracica"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:backgroundTint="@color/warm_cream"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="REGIÓN DE MIEMBROS TORÁCICOS"
-                    android:textColor="@android:color/black" />
-
-                <Button
-                    android:id="@+id/btnRegionPelvica"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:backgroundTint="@color/warm_cream"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="REGIÓN PÉLVICA"
-                    android:textColor="@android:color/black" />
-
-
-
-            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Imagen del caballo con Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/imageCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_xl"
+        android:layout_marginTop="@dimen/spacing_lg"
+        android:layout_marginEnd="@dimen/spacing_xl"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="@dimen/card_elevation"
+        app:strokeColor="@color/border_light"
+        app:strokeWidth="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerCard">
+
+        <ImageView
+            android:id="@+id/imgCaballo"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_margin="@dimen/spacing_sm"
+            android:scaleType="fitCenter"
+            android:src="@drawable/zona_mentoniana"
+            android:contentDescription="Imagen de anatomía equina" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Sección de título -->
+    <TextView
+        android:id="@+id/tvSelecciona"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_lg"
+        android:text="Selecciona una región"
+        android:textAppearance="@style/TextAppearance.EquusApp.Headline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageCard" />
+
+    <!-- ScrollView con botones de regiones -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSelecciona">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/screen_margin_horizontal"
+            android:paddingEnd="@dimen/screen_margin_horizontal"
+            android:paddingBottom="@dimen/spacing_lg">
+
+            <!-- Botón Región Cabeza -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRegionCabeza"
+                style="@style/Widget.EquusApp.Button.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginBottom="@dimen/spacing_sm"
+                android:text="Región de la Cabeza"
+                android:textAllCaps="false"
+                app:icon="@drawable/ic_arrow_right"
+                app:iconGravity="end"
+                app:iconTint="@color/primary_brown" />
+
+            <!-- Botón Región Cuello -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRegionCuello"
+                style="@style/Widget.EquusApp.Button.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginBottom="@dimen/spacing_sm"
+                android:text="Región del Cuello"
+                android:textAllCaps="false"
+                app:icon="@drawable/ic_arrow_right"
+                app:iconGravity="end"
+                app:iconTint="@color/primary_brown" />
+
+            <!-- Botón Región Tronco -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRegionTronco"
+                style="@style/Widget.EquusApp.Button.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginBottom="@dimen/spacing_sm"
+                android:text="Región del Tronco"
+                android:textAllCaps="false"
+                app:icon="@drawable/ic_arrow_right"
+                app:iconGravity="end"
+                app:iconTint="@color/primary_brown" />
+
+            <!-- Botón Región Torácica -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRegionToracica"
+                style="@style/Widget.EquusApp.Button.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginBottom="@dimen/spacing_sm"
+                android:text="Miembros Torácicos"
+                android:textAllCaps="false"
+                app:icon="@drawable/ic_arrow_right"
+                app:iconGravity="end"
+                app:iconTint="@color/primary_brown" />
+
+            <!-- Botón Región Pélvica -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRegionPelvica"
+                style="@style/Widget.EquusApp.Button.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginBottom="@dimen/spacing_sm"
+                android:text="Región Pélvica"
+                android:textAllCaps="false"
+                app:icon="@drawable/ic_arrow_right"
+                app:iconGravity="end"
+                app:iconTint="@color/primary_brown" />
+
+            <!-- Botón Región Distal -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRegionDistal"
+                style="@style/Widget.EquusApp.Button.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:text="Región Distal (Casco)"
+                android:textAllCaps="false"
+                app:icon="@drawable/ic_arrow_right"
+                app:iconGravity="end"
+                app:iconTint="@color/primary_brown" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

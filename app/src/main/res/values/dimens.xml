@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ============================================== -->
+    <!-- SISTEMA DE ESPACIADO (8dp Grid System)        -->
+    <!-- ============================================== -->
+    
+    <!-- Espaciado base -->
+    <dimen name="spacing_xxs">4dp</dimen>
+    <dimen name="spacing_xs">8dp</dimen>
+    <dimen name="spacing_sm">12dp</dimen>
+    <dimen name="spacing_md">16dp</dimen>
+    <dimen name="spacing_lg">24dp</dimen>
+    <dimen name="spacing_xl">32dp</dimen>
+    <dimen name="spacing_xxl">48dp</dimen>
+    
+    <!-- Márgenes de pantalla -->
+    <dimen name="screen_margin_horizontal">20dp</dimen>
+    <dimen name="screen_margin_vertical">16dp</dimen>
+    
+    <!-- ============================================== -->
+    <!-- TIPOGRAFÍA                                     -->
+    <!-- ============================================== -->
+    
+    <!-- Títulos -->
+    <dimen name="text_size_h1">28sp</dimen>
+    <dimen name="text_size_h2">24sp</dimen>
+    <dimen name="text_size_h3">20sp</dimen>
+    <dimen name="text_size_h4">18sp</dimen>
+    
+    <!-- Cuerpo -->
+    <dimen name="text_size_body_large">16sp</dimen>
+    <dimen name="text_size_body">14sp</dimen>
+    <dimen name="text_size_body_small">12sp</dimen>
+    
+    <!-- Etiquetas -->
+    <dimen name="text_size_label">14sp</dimen>
+    <dimen name="text_size_caption">12sp</dimen>
+    <dimen name="text_size_overline">10sp</dimen>
+    
+    <!-- ============================================== -->
+    <!-- BOTONES                                        -->
+    <!-- ============================================== -->
+    
+    <dimen name="button_height">56dp</dimen>
+    <dimen name="button_height_small">44dp</dimen>
+    <dimen name="button_min_width">120dp</dimen>
+    <dimen name="button_corner_radius">28dp</dimen>
+    <dimen name="button_corner_radius_small">16dp</dimen>
+    <dimen name="button_padding_horizontal">24dp</dimen>
+    <dimen name="button_padding_vertical">12dp</dimen>
+    <dimen name="button_elevation">4dp</dimen>
+    <dimen name="button_icon_size">24dp</dimen>
+    <dimen name="button_icon_padding">12dp</dimen>
+    
+    <!-- ============================================== -->
+    <!-- CARDS                                          -->
+    <!-- ============================================== -->
+    
+    <dimen name="card_corner_radius">16dp</dimen>
+    <dimen name="card_corner_radius_large">24dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="card_elevation_raised">8dp</dimen>
+    <dimen name="card_padding">16dp</dimen>
+    <dimen name="card_padding_large">24dp</dimen>
+    <dimen name="card_stroke_width">1dp</dimen>
+    
+    <!-- ============================================== -->
+    <!-- ICONOS                                         -->
+    <!-- ============================================== -->
+    
+    <dimen name="icon_size_small">20dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="icon_size_large">32dp</dimen>
+    <dimen name="icon_size_xlarge">48dp</dimen>
+    
+    <!-- ============================================== -->
+    <!-- IMÁGENES                                       -->
+    <!-- ============================================== -->
+    
+    <dimen name="image_corner_radius">12dp</dimen>
+    <dimen name="avatar_size">48dp</dimen>
+    <dimen name="avatar_size_large">72dp</dimen>
+    
+    <!-- ============================================== -->
+    <!-- COMPONENTES ESPECÍFICOS                        -->
+    <!-- ============================================== -->
+    
+    <!-- Headers -->
+    <dimen name="header_height">180dp</dimen>
+    <dimen name="header_padding">24dp</dimen>
+    
+    <!-- Navigation -->
+    <dimen name="nav_button_size">48dp</dimen>
+    <dimen name="nav_icon_size">24dp</dimen>
+    
+    <!-- Progress -->
+    <dimen name="progress_bar_height">8dp</dimen>
+    <dimen name="progress_bar_corner">4dp</dimen>
+    
+    <!-- Dividers -->
+    <dimen name="divider_height">1dp</dimen>
+    
+    <!-- Bottom Sheet -->
+    <dimen name="bottom_sheet_corner_radius">24dp</dimen>
+    
+</resources>

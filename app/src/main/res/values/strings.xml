@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">CaballoApp</string>
+    <string name="app_name">EquusApp</string>
+    <string name="anatomia_interactiva_description">Imagen anatómica interactiva con %d músculos. Toque para ver detalles.</string>
+    <string name="region_cabeza_title">REGIÓN DE LA CABEZA</string>
+    <string name="home_description">Ir al menú principal</string>
+    <string name="instruction_select_muscle">Selecciona un músculo</string>
+    <string name="instruction_select_muscle_detail">Selecciona un músculo de la lista para ver sus detalles</string>
+    <string name="quiz_cabeza_button">🎯 QUIZ DE CABEZA</string>
 </resources>

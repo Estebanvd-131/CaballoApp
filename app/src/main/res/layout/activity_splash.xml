@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".SplashActivity">
+    tools:context=".ui.splash.SplashActivity">
 
     <!-- Contenedor principal con elementos ordenados verticalmente -->
     <LinearLayout
@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Título CaballoApp -->
+        <!-- Título EquusApp -->
         <TextView
             android:id="@+id/tvAppName"
             android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
             android:shadowDx="2"
             android:shadowDy="2"
             android:shadowRadius="4"
-            android:text="CaballoApp"
+            android:text="EquusApp"
             android:textColor="@android:color/black"
             android:textSize="32sp"
             android:textStyle="bold" />
@@ -41,7 +41,7 @@
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:layout_marginBottom="24dp"
-            android:contentDescription="Logo CaballoApp"
+            android:contentDescription="Logo EquusApp"
             android:scaleType="fitCenter"
             android:src="@drawable/cabeza_lateral" />
 

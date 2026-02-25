@@ -119,6 +119,26 @@
     <color name="light_secondary_text">#333333</color> <!-- Texto para botones secundarios -->
     <color name="light_primary_text">#FFFFFF</color> <!-- Texto para botones primarios y cabecera -->
     
+    <!-- ============================================== -->
+    <!-- COLORES ADICIONALES PARA UI MEJORADA          -->
+    <!-- ============================================== -->
+    
+    <!-- Texto con jerarquía -->
+    <color name="text_tertiary">#757575</color>
+    <color name="text_on_dark">#FFFFFF</color>           <!-- Texto sobre fondos oscuros -->
+    <color name="text_hint">#9E9E9E</color>              <!-- Hint text color -->
+    
+    <!-- Acentos -->
+    <color name="accent_gold">#D4AF37</color>            <!-- Dorado elegante -->
+    
+    <!-- Ripple effects -->
+    <color name="ripple_brown">#338B4513</color>         <!-- 20% opacity brown -->
+    <color name="ripple_cream">#33A89A88</color>         <!-- 20% opacity cream -->
+    
+    <!-- Bordes y divisores -->
+    <color name="border_light">#E0E0E0</color>
+    <color name="divider">#EEEEEE</color>
+    
     <!-- Paleta de colores para el tema oscuro -->
     <color name="dark_primary">#8C7D6B</color> <!-- Primario tema oscuro -->
     <color name="dark_secondary">#3C3C3C</color> <!-- Secundario tema oscuro -->

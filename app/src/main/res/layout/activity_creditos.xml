@@ -6,75 +6,79 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".Creditos">
+    tools:context=".ui.credits.Creditos">
 
-    <androidx.cardview.widget.CardView
+    <!-- Header Card con estilo modernizado -->
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/headerCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/spacing_md"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:layout_marginEnd="@dimen/spacing_md"
         app:cardBackgroundColor="@color/primary_brown"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="4dp"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="@dimen/card_elevation_raised"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_sm">
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnBackCreditos"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="8dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:text="←"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:layout_width="@dimen/nav_button_size"
+                android:layout_height="@dimen/nav_button_size"
+                android:background="@drawable/bg_button_navigation"
+                android:contentDescription="Volver"
+                android:src="@drawable/ic_arrow_back"
+                android:padding="@dimen/spacing_sm"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/text_on_dark" />
 
             <TextView
                 android:id="@+id/tvTitleCreditos"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toStartOf="@+id/btnHome"
-                android:layout_toEndOf="@+id/btnBackCreditos"
+                android:layout_marginStart="@dimen/spacing_sm"
+                android:layout_marginEnd="@dimen/spacing_sm"
                 android:gravity="center"
                 android:text="CRÉDITOS"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:padding="16dp" />
-                
+                android:textAppearance="@style/TextAppearance.EquusApp.Headline2"
+                android:textColor="@color/text_on_dark"
+                android:padding="@dimen/spacing_md"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnHome"
+                app:layout_constraintStart_toEndOf="@id/btnBackCreditos"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageButton
                 android:id="@+id/btnHome"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="8dp"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:layout_width="@dimen/nav_button_size"
+                android:layout_height="@dimen/nav_button_size"
+                android:background="@drawable/bg_button_navigation"
                 android:contentDescription="Ir al menú principal"
-                android:padding="12dp"
+                android:padding="@dimen/spacing_sm"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_home"
-                android:tint="@color/primary_brown" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/text_on_dark" />
 
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
+        android:layout_marginTop="@dimen/spacing_md"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,52 +88,87 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="@dimen/spacing_md">
 
-            <TextView
+            <!-- Card principal de contenido -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CaballoApp"
-                android:textColor="@android:color/black"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_marginBottom="24dp" />
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Aplicación educativa para el estudio de la miología del Caballo Criollo Colombiano"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:layout_marginBottom="32dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/card_padding_large"
+                    android:gravity="center_horizontal">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Desarrollado por:"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp" />
+                    <!-- Logo/Título de la app -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="EquusApp"
+                        android:textAppearance="@style/TextAppearance.EquusApp.Headline1"
+                        android:textColor="@color/primary_brown"
+                        android:gravity="center"
+                        android:layout_marginBottom="@dimen/spacing_sm" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Universidad Santiago de Cali\nFacultad de Ingeniería de Sistemas\nProyecto de Investigación"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:layout_marginBottom="32dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Aplicación educativa para el estudio de la miología del Caballo Criollo Colombiano"
+                        android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                        android:textColor="@color/text_secondary"
+                        android:gravity="center"
+                        android:layout_marginBottom="@dimen/spacing_xl" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Versión 1.0"
-                android:textColor="@android:color/black"
-                android:textSize="14sp"
-                android:gravity="center" />
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="80dp"
+                        android:layout_height="@dimen/divider_height"
+                        android:background="@color/accent_gold"
+                        android:layout_marginBottom="@dimen/spacing_xl" />
+
+                    <!-- Sección: Desarrollado por -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Desarrollado por:"
+                        android:textAppearance="@style/TextAppearance.EquusApp.Headline4"
+                        android:textColor="@color/primary_brown"
+                        android:layout_marginBottom="@dimen/spacing_md" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Universidad Santiago de Cali\nFacultad de Ingeniería de Sistemas\nProyecto de Investigación"
+                        android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                        android:textColor="@color/text_secondary"
+                        android:gravity="center"
+                        android:lineSpacingMultiplier="1.5"
+                        android:layout_marginBottom="@dimen/spacing_xl" />
+
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="80dp"
+                        android:layout_height="@dimen/divider_height"
+                        android:background="@color/accent_gold"
+                        android:layout_marginBottom="@dimen/spacing_xl" />
+
+                    <!-- Versión -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Versión 1.0"
+                        android:textAppearance="@style/TextAppearance.EquusApp.Caption"
+                        android:textColor="@color/text_tertiary"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 

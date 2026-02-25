@@ -6,94 +6,91 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".QuizActivity">
+    tools:context=".ui.quiz.QuizActivity">
 
     <!-- Header con progreso -->
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/headerCard"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_margin="@dimen/spacing_md"
         app:cardBackgroundColor="@color/primary_brown"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="4dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:padding="20dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tvQuizTitle"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_toStartOf="@+id/btnHome"
-                android:orientation="vertical">
+                android:text="Quiz de Anatomía"
+                android:textAppearance="@style/TextAppearance.EquusApp.Headline3"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnHome"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tvQuizTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Quiz de Anatomía"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:gravity="center" />
+            <TextView
+                android:id="@+id/tvProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pregunta 1 de 5"
+                android:textAppearance="@style/TextAppearance.EquusApp.Caption"
+                android:textColor="@color/accent_gold"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvQuizTitle" />
 
-                <TextView
-                    android:id="@+id/tvProgress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Pregunta 1 de 5"
-                    android:textColor="@android:color/black"
-                    android:textSize="14sp"
-                    android:gravity="center"
-                    android:layout_marginTop="4dp" />
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="12dp"
+                android:progress="20"
+                android:max="100"
+                android:progressDrawable="@drawable/progress_tutorial"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvProgress" />
 
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="8dp"
-                    android:layout_marginTop="8dp"
-                    android:progress="20"
-                    android:max="100"
-                    android:progressTint="@color/warm_cream"
-                    android:progressBackgroundTint="@color/secondary_brown" />
-            </LinearLayout>
-            
             <ImageButton
                 android:id="@+id/btnHome"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:background="@drawable/bg_button_navigation"
                 android:contentDescription="Ir al menú principal"
                 android:padding="12dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_home"
-                android:tint="@color/white" />
+                app:tint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <!-- Card de pregunta -->
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/questionCard"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardBackgroundColor="@color/warm_cream"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="2dp"
+        android:layout_marginHorizontal="@dimen/spacing_md"
+        android:layout_marginTop="24dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerCard">
@@ -102,159 +99,149 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="24dp">
 
             <TextView
                 android:id="@+id/tvQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="¿Cuál es la función del músculo X?"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
+                android:textAppearance="@style/TextAppearance.EquusApp.Headline4"
+                android:textColor="@color/text_primary"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:lineSpacingExtra="4dp" />
-
+                android:lineSpacingMultiplier="1.2"
+                android:gravity="center" />
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <!-- Opciones de respuesta -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/optionsCard"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/controlsLayout"
         app:layout_constraintTop_toBottomOf="@+id/questionCard">
 
-        <LinearLayout
+        <RadioGroup
+            android:id="@+id/radioGroupOptions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingHorizontal="@dimen/spacing_md"
+            android:paddingBottom="@dimen/spacing_md">
 
-            <RadioGroup
-                android:id="@+id/radioGroupOptions"
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbOption1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:text="Opción A"
+                android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="12dp"
+                android:padding="16dp"
+                android:minHeight="64dp"
+                android:background="@drawable/radio_option_background"
+                android:button="@null"
+                android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+                android:drawableTint="@color/primary_brown" />
 
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/rbOption1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Opción A"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="8dp"
-                    android:padding="16dp"
-                    android:minHeight="56dp"
-                    android:background="@drawable/radio_option_background"
-                    app:useMaterialThemeColors="false"
-                   app:buttonTint="@color/white" />
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbOption2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Opción B"
+                android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="12dp"
+                android:padding="16dp"
+                android:minHeight="64dp"
+                android:background="@drawable/radio_option_background"
+                android:button="@null"
+                android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+                android:drawableTint="@color/primary_brown" />
 
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/rbOption2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Opción B"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="8dp"
-                    android:padding="16dp"
-                    android:minHeight="56dp"
-                    android:background="@drawable/radio_option_background"
-                    app:useMaterialThemeColors="false"
-                    app:buttonTint="@color/white" />
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbOption3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Opción C"
+                android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="12dp"
+                android:padding="16dp"
+                android:minHeight="64dp"
+                android:background="@drawable/radio_option_background"
+                android:button="@null"
+                android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+                android:drawableTint="@color/primary_brown" />
 
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/rbOption3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Opción C"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="8dp"
-                    android:padding="16dp"
-                    android:minHeight="56dp"
-                    android:background="@drawable/radio_option_background"
-                    app:useMaterialThemeColors="false"
-                    app:buttonTint="@color/white" />
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbOption4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Opción D"
+                android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="12dp"
+                android:padding="16dp"
+                android:minHeight="64dp"
+                android:background="@drawable/radio_option_background"
+                android:button="@null"
+                android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+                android:drawableTint="@color/primary_brown" />
 
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/rbOption4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Opción D"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    android:padding="16dp"
-                    android:minHeight="56dp"
-                    android:background="@drawable/radio_option_background"
-                    app:useMaterialThemeColors="false"
-                    app:buttonTint="@color/white" />
+        </RadioGroup>
+    </ScrollView>
 
-            </RadioGroup>
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <!-- Controles -->
+    <!-- Controles con Material Buttons -->
     <LinearLayout
         android:id="@+id/controlsLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/spacing_md"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:layout_marginEnd="@dimen/spacing_md"
         android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/tvTimeInfo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/optionsCard">
+        app:layout_constraintStart_toStartOf="parent">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSkip"
+            style="@style/Widget.EquusApp.Button.Secondary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginEnd="8dp"
-            android:backgroundTint="@color/warm_cream"
-            android:text="Saltar"
-            android:textColor="@android:color/black"
-            android:textSize="14sp" />
+            android:layout_marginEnd="@dimen/spacing_sm"
+            android:text="Saltar" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAnswer"
+            style="@style/Widget.EquusApp.Button.Primary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginStart="8dp"
-            android:backgroundTint="@color/primary_brown"
-            android:text="Responder"
-            android:textColor="@android:color/black"
-            android:textSize="14sp" />
+            android:layout_marginStart="@dimen/spacing_sm"
+            android:text="Responder" />
 
     </LinearLayout>
 
-    <!-- Información de tiempo (opcional) -->
+    <!-- Información de tiempo -->
     <TextView
         android:id="@+id/tvTimeInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tiempo: 00:30"
-        android:textColor="@android:color/black"
-        android:textSize="12sp"
-        android:layout_marginTop="16dp"
+        android:textAppearance="@style/TextAppearance.EquusApp.Caption"
+        android:textColor="@color/text_tertiary"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:layout_marginBottom="@dimen/spacing_md"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/controlsLayout" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

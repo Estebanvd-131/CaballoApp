@@ -6,93 +6,200 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".RegionToracica">
+    tools:context=".ui.region.RegionToracica">
 
-    <androidx.cardview.widget.CardView
+    <!-- Header Card Modernizado -->
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/headerCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:layout_marginStart="@dimen/spacing_md"
+        android:layout_marginEnd="@dimen/spacing_md"
         app:cardBackgroundColor="@color/primary_brown"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="4dp"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="@dimen/card_elevation_raised"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:padding="@dimen/spacing_md">
 
             <TextView
                 android:id="@+id/tvTitle"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_marginEnd="@dimen/spacing_sm"
                 android:gravity="center"
                 android:text="REGIÓN TORÁCICA"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textAppearance="@style/TextAppearance.EquusApp.Headline2"
+                android:textColor="@color/text_on_dark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnHome"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/btnHome"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_width="@dimen/nav_button_size"
+                android:layout_height="@dimen/nav_button_size"
+                android:background="@drawable/bg_button_navigation"
                 android:contentDescription="Ir al menú principal"
-                android:padding="12dp"
+                android:padding="@dimen/spacing_sm"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_home"
-                android:tint="@android:color/black" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/text_on_dark" />
 
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
-    <androidx.cardview.widget.CardView
+    <!-- Card de Imagen -->
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardImage"
         android:layout_width="0dp"
-        android:layout_height="400dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="16dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/spacing_md"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:layout_marginEnd="@dimen/spacing_md"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="@dimen/card_elevation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerCard">
+        app:layout_constraintTop_toBottomOf="@+id/headerCard"
+        app:layout_constraintHeight_percent="0.40">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <com.villalobos.caballoapp.ui.components.InteractiveAnatomyView
                 android:id="@+id/imgRegion"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitCenter"
-                android:src="@drawable/musculo_supraespinoso" />
+                android:scaleType="fitXY"
+                android:src="@drawable/musculo_supraespinoso"
+                android:padding="@dimen/spacing_sm"
+                android:contentDescription="@string/anatomia_interactiva_description" />
 
-            <!-- Hotspots (se crearán dinámicamente en el código) -->
+            <!-- Zona 4001: Escapular -->
+            <TextView
+                android:id="@+id/hotspotZona4001"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:background="#00000000"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="Zona Escapular"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.18"
+                app:layout_constraintVertical_bias="0.15" />
 
-        </RelativeLayout>
+            <!-- Zona 4002: Dorsal Escapular -->
+            <TextView
+                android:id="@+id/hotspotZona4002"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:background="#00000000"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="Zona Dorsal Escapular"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.35"
+                app:layout_constraintVertical_bias="0.08" />
 
-    </androidx.cardview.widget.CardView>
+            <!-- Zona 4003: Braquial -->
+            <TextView
+                android:id="@+id/hotspotZona4003"
+                android:layout_width="40dp"
+                android:layout_height="45dp"
+                android:background="#00000000"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="Zona Braquial"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.25"
+                app:layout_constraintVertical_bias="0.35" />
 
+            <!-- Zona 4004: Olecraneana -->
+            <TextView
+                android:id="@+id/hotspotZona4004"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="#00000000"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="Zona Olecraneana"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.12"
+                app:layout_constraintVertical_bias="0.45" />
+
+            <!-- Zona 4005: Antebraquial -->
+            <TextView
+                android:id="@+id/hotspotZona4005"
+                android:layout_width="35dp"
+                android:layout_height="50dp"
+                android:background="#00000000"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="Zona Antebraquial"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.22"
+                app:layout_constraintVertical_bias="0.62" />
+
+            <!-- Zona 4006: Metacarpiana -->
+            <TextView
+                android:id="@+id/hotspotZona4006"
+                android:layout_width="30dp"
+                android:layout_height="45dp"
+                android:background="#00000000"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="Zona Metacarpiana"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.28"
+                app:layout_constraintVertical_bias="0.85" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Título de instrucciones -->
     <TextView
         android:id="@+id/tvInstructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/spacing_md"
         android:text="Selecciona un músculo"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.EquusApp.Headline4"
+        android:textColor="@color/text_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardImage" />
@@ -101,42 +208,38 @@
         android:id="@+id/tvSubInstructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="@dimen/spacing_xs"
         android:text="Selecciona un músculo de la lista para ver sus detalles"
-        android:textColor="@android:color/black"
-        android:textSize="12sp"
+        android:textAppearance="@style/TextAppearance.EquusApp.Caption"
+        android:textColor="@color/text_tertiary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvInstructions" />
 
+    <!-- Lista de músculos -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMuscles"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnQuizRegion"
+        android:layout_marginStart="@dimen/spacing_md"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:layout_marginEnd="@dimen/spacing_md"
+        android:layout_marginBottom="@dimen/spacing_md"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSubInstructions" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSubInstructions"
+        app:layout_constraintBottom_toTopOf="@+id/btnQuizRegion" />
 
-    <!-- Botón de Quiz para esta región -->
-    <Button
+    <!-- Botón de Quiz modernizado -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnQuizRegion"
+        style="@style/Widget.EquusApp.Button.Primary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/primary_brown"
-        android:drawableStart="@android:drawable/ic_menu_sort_by_size"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:layout_marginStart="@dimen/spacing_md"
+        android:layout_marginEnd="@dimen/spacing_md"
+        android:layout_marginBottom="@dimen/spacing_md"
         android:text="🎯 QUIZ DE REGIÓN TORÁCICA"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
