@@ -1,6 +1,8 @@
 package com.villalobos.caballoapp
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -123,7 +125,16 @@ class SplashActivity : AppCompatActivity() {
             startActivity(intent)
 
             // Animación de transición suave
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                overrideActivityTransition(
+                    android.app.Activity.OVERRIDE_TRANSITION_OPEN,
+                    android.R.anim.fade_in,
+                    android.R.anim.fade_out
+                )
+            } else {
+                @Suppress("DEPRECATION")
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+            }
 
             finish() // Cerrar splash activity
 
@@ -138,10 +149,10 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
+    @SuppressLint("MissingSuperCall")
     override fun onBackPressed() {
         // Prevenir que el usuario salga del splash con back button
         // El splash debe completarse para continuar
-        // Llamar a super para cumplir con los requisitos de lint
-        super.onBackPressed()
     }
 }

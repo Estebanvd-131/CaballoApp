@@ -26,6 +26,7 @@ class DetalleMusculo : BaseNavigationActivity() {
     
     private lateinit var binding: ActivityDetalleMusculoBinding
     private var regionId: Int = 1 // Default to 1
+    private var imageOverrideFromZone: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +38,7 @@ class DetalleMusculo : BaseNavigationActivity() {
             // Obtener parámetros y cargar datos
             val musculoId = intent.getIntExtra("MUSCULO_ID", 0)
             regionId = intent.getIntExtra("REGION_ID", 1)
+            imageOverrideFromZone = intent.getStringExtra("IMAGE_OVERRIDE")
             
             viewModel.loadMusculo(musculoId, regionId)
 
@@ -81,12 +83,13 @@ class DetalleMusculo : BaseNavigationActivity() {
                     binding.tvFuncionTexto.text = viewModel.getFuncion()
 
                     // Configurar imagen
-                    configurarImagenMusculo(state.imageName)
+                    configurarImagenMusculo(imageOverrideFromZone ?: state.imageName)
                     
                     // Marcar como completado en el sistema de progresión
                     try {
                         val musclesInRegion = DatosMusculares.obtenerMusculosPorRegion(regionId)
                         val index = musclesInRegion.indexOfFirst { it.id == musculo.id }
+                        ProgressionManager.markMuscleAsCompleted(this, regionId, musculo.id)
                         if (index != -1) {
                             ProgressionManager.markAsCompleted(this, regionId, index)
                         }

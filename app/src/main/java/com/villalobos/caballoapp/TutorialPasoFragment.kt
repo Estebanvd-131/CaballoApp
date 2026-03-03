@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.os.BundleCompat
 import androidx.fragment.app.Fragment
 import com.villalobos.caballoapp.databinding.FragmentTutorialPasoBinding
 
@@ -37,7 +38,7 @@ class TutorialPasoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val paso = arguments?.getSerializable(ARG_PASO) as? TutorialPaso
+        val paso = arguments?.let { BundleCompat.getSerializable(it, ARG_PASO, TutorialPaso::class.java) }
         paso?.let { configurarPaso(it) }
     }
 

@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.drawable.GradientDrawable
 import android.util.Log
+import android.util.TypedValue
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -468,9 +469,11 @@ object AccesibilityHelper {
      */
     fun applyTextScale(context: Context, textView: TextView) {
         val config = getAccessibilityConfig(context)
-        val originalSize = textView.textSize / context.resources.displayMetrics.scaledDensity
-        val scaledSize = originalSize * config.textScale.scale
-        textView.textSize = scaledSize
+        val displayMetrics = context.resources.displayMetrics
+        val fontScale = context.resources.configuration.fontScale
+        val originalSizeSp = textView.textSize / (displayMetrics.density * fontScale)
+        val scaledSizeSp = originalSizeSp * config.textScale.scale
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, scaledSizeSp)
     }
 
     /**
@@ -1062,18 +1065,20 @@ if (inDaltonismArea) {
      */
     fun restoreOriginalColors(context: Context) {
         try {
+            val activity = context as Activity
+
             // Guardar temporalmente configuración normal para que los colores persistan
             val normalConfig = getAccessibilityConfig(context).copy(colorblindType = ColorblindType.NONE)
             saveAccessibilityConfig(context, normalConfig)
 
             // Aplicar gradiente normal
-            applyBackgroundGradient(context, (context as Activity).window.decorView, ColorblindType.NONE)
+            applyBackgroundGradient(context, activity.window.decorView, ColorblindType.NONE)
 
             // Aplicar colores normales
-            applySpecificColorblindColors(context, (context as Activity).window.decorView, ColorblindType.NONE)
+            applySpecificColorblindColors(context, activity.window.decorView, ColorblindType.NONE)
 
             // Forzar redibujado de todas las vistas
-            refreshAllViews((context as Activity).window.decorView)
+            refreshAllViews(activity.window.decorView)
 
             Log.d(TAG, "Colores originales restaurados inmediatamente")
         } catch (e: Exception) {

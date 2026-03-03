@@ -86,7 +86,6 @@
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
                 android:src="@drawable/grupa_miembro_posterior"
-                android:padding="@dimen/spacing_sm"
                 android:contentDescription="@string/anatomia_interactiva_description" />
 
             <!-- Zona 5001: Sacra -->

@@ -19,9 +19,11 @@
             android:id="@+id/headerContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:background="@color/primary_brown"
             android:gravity="center"
             android:orientation="vertical"
+            android:paddingTop="16dp"
+            android:paddingBottom="12dp"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView

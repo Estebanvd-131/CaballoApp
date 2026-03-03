@@ -22,6 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import android.widget.Toast
 import com.villalobos.caballoapp.data.source.DatosMusculares
 import com.villalobos.caballoapp.util.ProgressionManager
+import com.villalobos.caballoapp.util.DrawableNameResolver
 
 /**
  * Clase base abstracta para todas las actividades de región.
@@ -61,10 +62,9 @@ abstract class BaseRegionActivity : AccessibilityActivity() {
         observeViewModel()
 
         // Cargar datos de la región
-        // Cargar datos de la región
         regionViewModel.loadRegion(regionId)
-        
-        // Configuración de legacy hotspots (TextView overrides)
+
+        // Mantener también hotspots legacy de overlay como respaldo táctil.
         configurarHotspotsZonas()
     }
 
@@ -82,14 +82,13 @@ abstract class BaseRegionActivity : AccessibilityActivity() {
         val zona = zonasDeRegion.find { it.id == zonaId }
         
         if (zona != null) {
-            // Filtrar la lista de músculos para mostrar solo los de esta zona
-            val musculosZona = zona.musculos
-            if (musculosZona.isNotEmpty()) {
-                // Actualizar el adaptador con los músculos de la zona
-                if (::adaptadorMusculos.isInitialized) {
-                    adaptadorMusculos.actualizarMusculos(musculosZona)
-                }
-                Toast.makeText(this, "Zona: ${zona.nombre}", Toast.LENGTH_SHORT).show()
+            // Navegar al músculo más representativo de la zona.
+            val musculoPrincipalZona = zona.musculos.firstOrNull { musculo ->
+                zona.imagenMapa != null && musculo.imagen == zona.imagenMapa
+            } ?: zona.musculos.firstOrNull()
+
+            if (musculoPrincipalZona != null) {
+                irADetalleMusculo(musculoPrincipalZona, zona.imagenMapa)
             } else {
                 Toast.makeText(this, "Zona: ${zona.nombre} (Sin músculos)", Toast.LENGTH_SHORT).show()
             }
@@ -101,7 +100,22 @@ abstract class BaseRegionActivity : AccessibilityActivity() {
 
     override fun onResume() {
         super.onResume()
-        // Recargar datos si es necesario o verificar estado
+        // Refrescar lista para reflejar progresión actual (desbloqueos recientes)
+        if (musculos.isNotEmpty()) {
+            configurarRecyclerView()
+        }
+    }
+
+    private fun obtenerMusculosVisibles(): List<Musculo> {
+        return musculos.filterIndexed { index, _ ->
+            if (index == 0) {
+                true
+            } else {
+                val previousMuscle = musculos[index - 1]
+                ProgressionManager.isMuscleCompleted(this, regionId, previousMuscle.id) ||
+                    ProgressionManager.isCompleted(this, regionId, index - 1)
+            }
+        }
     }
 
     protected open fun observeViewModel() {
@@ -109,12 +123,17 @@ abstract class BaseRegionActivity : AccessibilityActivity() {
         regionViewModel.state.observe(this) { state ->
             state.region?.let { region ->
                 getTitleTextView().text = region.nombreCompleto.uppercase()
+
+                val regionImageRes = DrawableNameResolver.resolve(region.nombreImagen)
+                if (regionImageRes != 0) {
+                    getRegionImageView().setImageResource(regionImageRes)
+                }
             }
 
             // Actualizar si hay músculos O zonas
             if ((state.muscles.isNotEmpty() && state.muscles != musculos) || (state.zones.isNotEmpty() && state.zones != zones)) {
                 musculos = state.muscles
-                zones = state.zones
+                zones = state.zones.sortedBy { it.hotspotNumero }
                 configurarRecyclerView()
                 
                 // IMPORTANTE: Re-configurar hotspots cuando los datos se cargan
@@ -170,9 +189,10 @@ abstract class BaseRegionActivity : AccessibilityActivity() {
             errorMessage = "Error al configurar lista de músculos"
         ) {
             val recyclerView = getMusclesRecyclerView()
+            val musculosVisibles = obtenerMusculosVisibles()
 
             if (!::adaptadorMusculos.isInitialized) {
-                adaptadorMusculos = AdaptadorMusculos(musculos, regionId) { musculo ->
+                adaptadorMusculos = AdaptadorMusculos(musculosVisibles, regionId) { musculo ->
                     regionViewModel.navigateToMuscleDetail(musculo)
                 }
 
@@ -181,7 +201,7 @@ abstract class BaseRegionActivity : AccessibilityActivity() {
                 recyclerView.setHasFixedSize(true)
                 recyclerView.itemAnimator = null
             } else {
-                adaptadorMusculos.actualizarMusculos(musculos)
+                adaptadorMusculos.actualizarMusculos(musculosVisibles)
             }
 
             // Aplicar configuración de accesibilidad visual
@@ -211,6 +231,12 @@ abstract class BaseRegionActivity : AccessibilityActivity() {
                 android.util.Log.w("BaseRegionActivity", "⚠️ Lista de hotspots vacía")
             }
 
+            getRegionImageView().touchTolerance = when {
+                zones.size >= 8 -> 0.05f
+                zones.size <= 2 -> 0.09f
+                else -> InteractiveAnatomyView.DEFAULT_TOUCH_TOLERANCE
+            }
+
             getRegionImageView().setHotspots(itemsToShow) { item ->
                 if (item is com.villalobos.caballoapp.data.model.Zona) {
                     android.util.Log.d("BaseRegionActivity", "🎯 Zona seleccionada: ${item.nombre}")
@@ -223,7 +249,8 @@ abstract class BaseRegionActivity : AccessibilityActivity() {
         }
     }
 
-    protected open fun irADetalleMusculo(musculo: Musculo) {
+
+    protected open fun irADetalleMusculo(musculo: Musculo, imageOverride: String? = null) {
         ErrorHandler.safeExecute(
             context = this,
             errorType = ErrorHandler.ErrorType.NAVIGATION_ERROR,
@@ -237,6 +264,7 @@ abstract class BaseRegionActivity : AccessibilityActivity() {
             val intent = Intent(this, DetalleMusculo::class.java).apply {
                 putExtra("MUSCULO_ID", musculo.id)
                 putExtra("REGION_ID", regionId)
+                imageOverride?.let { putExtra("IMAGE_OVERRIDE", it) }
             }
 
             startActivity(intent)

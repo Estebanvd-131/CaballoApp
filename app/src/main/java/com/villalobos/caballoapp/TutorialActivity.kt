@@ -1,8 +1,8 @@
 package com.villalobos.caballoapp
 
+import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.villalobos.caballoapp.databinding.ActivityTutorialBinding
@@ -13,8 +13,6 @@ class TutorialActivity : BaseNavigationActivity() {
     private lateinit var tutorialAdapter: TutorialAdapter
     private lateinit var sharedPreferences: SharedPreferences
     private var pasoActual = 0
-
-    private lateinit var btnBackTutorial: Button
     
     // Preferencia para no mostrar más el tutorial
     private val PREF_NO_MOSTRAR_TUTORIAL = "no_mostrar_tutorial"
@@ -91,9 +89,6 @@ class TutorialActivity : BaseNavigationActivity() {
             // Configurar estado inicial
             actualizarInterfaz()
             
-            // Configurar el botón de inicio
-            setupHomeButton(enlace.btnHome)
-            
             // Aplicar colores de accesibilidad
             applyActivityAccessibilityColors()
             
@@ -134,12 +129,6 @@ class TutorialActivity : BaseNavigationActivity() {
             errorType = ErrorHandler.ErrorType.UNKNOWN_ERROR,
             errorMessage = "Error al configurar botones"
         ) {
-            // Bind back button
-            btnBackTutorial = enlace.btnBackTutorial
-            btnBackTutorial.setOnClickListener {
-                finish()
-            }
-
             // Botón anterior
             enlace.btnAnterior.setOnClickListener {
                 if (pasoActual > 0) {
@@ -205,6 +194,7 @@ class TutorialActivity : BaseNavigationActivity() {
     }
 
     @Deprecated("Deprecated in Java")
+    @SuppressLint("MissingSuperCall")
     override fun onBackPressed() {
         // Permitir retroceder en el tutorial o salir
         if (pasoActual > 0) {
@@ -212,7 +202,6 @@ class TutorialActivity : BaseNavigationActivity() {
         } else {
             finalizarTutorial()
         }
-        super.onBackPressed()
     }
     
     override fun applyActivityAccessibilityColors() {

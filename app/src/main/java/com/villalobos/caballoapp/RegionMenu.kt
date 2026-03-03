@@ -85,23 +85,23 @@ class RegionMenu : BaseNavigationActivity() {
     }
 
     // Funciones originales mantenidas por compatibilidad
-    fun btnRegionCabeza(view: View) {
+    fun btnRegionCabeza(@Suppress("UNUSED_PARAMETER") view: View) {
         irARegion(TipoRegion.CABEZA.id)
     }
     
-    fun btnRegionCuello(view: View) {
+    fun btnRegionCuello(@Suppress("UNUSED_PARAMETER") view: View) {
         irARegion(TipoRegion.CUELLO.id)
     }
 
-    fun btnRegionTronco(view: View) {
+    fun btnRegionTronco(@Suppress("UNUSED_PARAMETER") view: View) {
         irARegion(TipoRegion.TRONCO.id)
     }
     
-    fun btnRegionToracica(view: View) {
+    fun btnRegionToracica(@Suppress("UNUSED_PARAMETER") view: View) {
         irARegion(TipoRegion.MIEMBROS_TORACICOS.id)
     }
 
-    fun btnRegionPelvica(view: View) {
+    fun btnRegionPelvica(@Suppress("UNUSED_PARAMETER") view: View) {
         irARegion(TipoRegion.MIEMBROS_PELVICOS.id)
     }
 }

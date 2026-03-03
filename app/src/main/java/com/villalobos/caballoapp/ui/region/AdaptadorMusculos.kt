@@ -43,7 +43,13 @@ class AdaptadorMusculos(
         holder.tvDescripcion.text = musculo.descripcion
         
         // Check if this item is unlocked
-        val isUnlocked = ProgressionManager.isUnlocked(context, regionId, position)
+        val isUnlocked = if (position == 0) {
+            true
+        } else {
+            val previousMuscle = musculos[position - 1]
+            ProgressionManager.isMuscleCompleted(context, regionId, previousMuscle.id) ||
+                ProgressionManager.isCompleted(context, regionId, position - 1)
+        }
         
         if (isUnlocked) {
             holder.contenedor.alpha = 1.0f

@@ -98,22 +98,22 @@ class MainActivity : AccessibilityActivity() {
 
     //funcionamiento de llamado de ventanas de la App
     // Intent para iniciar la actividad y pasar a la siguiente ventana
-    fun btnIniciar(view: View) {
+    fun btnIniciar(@Suppress("UNUSED_PARAMETER") view: View) {
         val op = Intent(this, RegionMenu::class.java)
         startActivity(op)
     }
 
-    fun btnAccesibilidad(view: View) {
+    fun btnAccesibilidad(@Suppress("UNUSED_PARAMETER") view: View) {
         val op = Intent(this, Accesibilidad::class.java)
         startActivity(op)
     }
 
-    fun btnCreditos(view: View) {
+    fun btnCreditos(@Suppress("UNUSED_PARAMETER") view: View) {
         val op = Intent(this, Creditos::class.java)
         startActivity(op)
     }
 
-    fun btnSalir(view: View) {
+    fun btnSalir(@Suppress("UNUSED_PARAMETER") view: View) {
         finishAffinity()
     }
 }

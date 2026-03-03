@@ -68,6 +68,11 @@ class InteractiveAnatomyView @JvmOverloads constructor(
          * Radio de los círculos de debug en píxeles.
          */
         const val DEBUG_CIRCLE_RADIUS = 24f
+
+        /**
+         * Multiplicador del radio de tolerancia para fallback al hotspot más cercano.
+         */
+        const val NEAREST_FALLBACK_FACTOR = 2.6f
     }
 
     // ============ Configuración ============
@@ -289,7 +294,22 @@ class InteractiveAnatomyView @JvmOverloads constructor(
                 val normalized = screenToNormalizedCoordinates(event.x, event.y)
                 
                 if (normalized != null) {
-                    val item = findNearestHotspot(normalized.x, normalized.y)
+                    val strictItem = findNearestHotspot(normalized.x, normalized.y)
+                    val item = if (strictItem != null) {
+                        strictItem
+                    } else {
+                        val fallback = findNearestHotspotAnyDistance(normalized.x, normalized.y)
+                        val maxFallbackDistance = touchTolerance * NEAREST_FALLBACK_FACTOR
+                        if (fallback.second <= maxFallbackDistance) {
+                            Log.d(
+                                TAG,
+                                "👆 ACTION_UP - Fallback nearest hotspot: ${fallback.first?.nombre} (dist=${"%.4f".format(fallback.second)})"
+                            )
+                            fallback.first
+                        } else {
+                            null
+                        }
+                    }
                     
                     if (item != null) {
                         Log.d(TAG, "👆 ACTION_UP - Invocando listener para: ${item.nombre}")
@@ -418,6 +438,28 @@ class InteractiveAnatomyView @JvmOverloads constructor(
         }
 
         return nearestItem
+    }
+
+    /**
+     * Encuentra el hotspot más cercano sin aplicar filtro de tolerancia.
+     */
+    private fun findNearestHotspotAnyDistance(normalizedX: Float, normalizedY: Float): Pair<HotspotItem?, Float> {
+        var nearestItem: HotspotItem? = null
+        var nearestDistance = Float.MAX_VALUE
+
+        for (item in hotspots) {
+            val distance = hypot(
+                (normalizedX - item.hotspotX).toDouble(),
+                (normalizedY - item.hotspotY).toDouble()
+            ).toFloat()
+
+            if (distance < nearestDistance) {
+                nearestDistance = distance
+                nearestItem = item
+            }
+        }
+
+        return nearestItem to nearestDistance
     }
 
     // ============ Feedback Visual y Debug ============

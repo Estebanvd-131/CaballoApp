@@ -640,67 +640,67 @@ object DatosMusculares {
 
     // --- CABEZA ---
     // --- CABEZA: Coordenadas calibradas por análisis visual de zonas pintadas ---
-    val zonaParietoTemporal = Zona(1001, "Zona Parieto-Temporal", 1, 0.35f, 0.18f, 1, "Músculos superiores masticadores.", "regioncabezavistalateral_1_zonaparieto_temporal", listOf(mTemporal, mMasetero, mEsplenioCabeza))
-    val zonaAuricular = Zona(1002, "Zona Auricular", 1, 0.28f, 0.08f, 2, "Control orejas.", "regioncabezavistalateral_2_zonaauricular", listOf(mAuricularSuperior, mAuricularPosterior))
-    val zonaOrbital = Zona(1003, "Zona Orbital", 1, 0.52f, 0.22f, 3, "Ojos y párpados.", "orbicularcaballo", listOf(mOrbicularOjo, mCigomatico))
-    val zonaMentoniana = Zona(1004, "Zona Mentoniana", 1, 0.88f, 0.52f, 4, "Barbilla y labio inferior.", "regioncabezavistalateral_4_zonamentoniana", listOf(mMentalis, mDepresorLabioInferior, mMilohioideo, mGenihioideo))
-    val zonaMaxilar = Zona(1005, "Zona Maxilar", 1, 0.72f, 0.28f, 5, "Mandíbula superior y nariz.", "regioncabezavistalateral_5_zonamaxilar", listOf(mElevadorNasolabial, mCanino))
-    val zonaMandibular = Zona(1006, "Zona Mandibular", 1, 0.58f, 0.42f, 6, "Mandíbula inferior.", "regioncabezavistalateral_6_zonamandibular", listOf(mMasetero, mCutaneoCuelloMandibular, mEstilohioideo, mOccipitomandibular))
-    val zonaMeseterica = Zona(1007, "Zona Mesetérica", 1, 0.42f, 0.32f, 7, "Potencia masticatoria.", "regioncabezavistalateral_7_zonameseterica", listOf(mMasetero, mPterigoideoMedial, mPterigoideoLateral, mDigastrico))
-    val zonaBucal = Zona(1008, "Zona Bucal", 1, 0.65f, 0.38f, 8, "Mejillas y labios.", "regioncabezavistalateral_8_zonabucal", listOf(mBuccinador, mOrbicularLabios, mCanino))
+    val zonaParietoTemporal = Zona(1001, "Zona Parieto-Temporal", 1, 0.60f, 0.25f, 1, "Músculos superiores masticadores.", "regioncabezavistalateral_1_zonaparieto_temporal", listOf(mTemporal, mMasetero, mEsplenioCabeza))
+    val zonaAuricular = Zona(1002, "Zona Auricular", 1, 0.69f, 0.07f, 2, "Control orejas.", "regioncabezavistalateral_2_zonaauricular", listOf(mAuricularSuperior, mAuricularPosterior))
+    val zonaOrbital = Zona(1003, "Zona Orbital", 1, 0.75f, 0.38f, 3, "Ojos y párpados.", "orbicularcaballo", listOf(mOrbicularOjo, mCigomatico))
+    val zonaMentoniana = Zona(1004, "Zona Mentoniana", 1, 0.71f, 0.88f, 4, "Barbilla y labio inferior.", "regioncabezavistalateral_4_zonamentoniana", listOf(mMentalis, mDepresorLabioInferior, mMilohioideo, mGenihioideo))
+    val zonaMaxilar = Zona(1005, "Zona Maxilar", 1, 0.74f, 0.58f, 5, "Mandíbula superior y nariz.", "regioncabezavistalateral_5_zonamaxilar", listOf(mElevadorNasolabial, mCanino))
+    val zonaMandibular = Zona(1006, "Zona Mandibular", 1, 0.62f, 0.71f, 6, "Mandíbula inferior.", "regioncabezavistalateral_6_zonamandibular", listOf(mMasetero, mCutaneoCuelloMandibular, mEstilohioideo, mOccipitomandibular))
+    val zonaMeseterica = Zona(1007, "Zona Mesetérica", 1, 0.40f, 0.45f, 7, "Potencia masticatoria.", "regioncabezavistalateral_7_zonameseterica", listOf(mMasetero, mPterigoideoMedial, mPterigoideoLateral, mDigastrico))
+    val zonaBucal = Zona(1008, "Zona Bucal", 1, 0.82f, 0.88f, 8, "Mejillas y labios.", "regioncabezavistalateral_8_zonabucal", listOf(mBuccinador, mOrbicularLabios, mCanino))
 
     val subZonasCabeza = listOf(zonaOrbital, zonaMeseterica, zonaParietoTemporal, zonaAuricular, zonaMentoniana, zonaMaxilar, zonaMandibular, zonaBucal)
 
     // --- CUELLO ---
     // --- CUELLO: Coordenadas calibradas por análisis visual ---
-    val zonaCervicoLateral = Zona(2001, "Zona Cérvico Lateral", 2, 0.45f, 0.35f, 1, "Lateral del cuello.", "regioncuello_1_zonacervicolateral", listOf(mBraquiocefalico, mEsternocefalico, mEsplenioCuello, mSerratoVentralCuello, mTrapecioCervical))
+    val zonaCervicoLateral = Zona(2001, "Zona Cérvico Lateral", 2, 0.45f, 0.45f, 1, "Lateral del cuello.", "regioncuello_1_zonacervicolateral", listOf(mBraquiocefalico, mEsternocefalico, mEsplenioCuello, mSerratoVentralCuello, mTrapecioCervical))
     val zonaCervicoDorsal = Zona(2002, "Zona Cérvico Dorsal", 2, 0.38f, 0.18f, 2, "Parte superior cuello.", "regioncuello_2_zonacervicodorsal", listOf(mTrapecioCervical, mRomboidesCervical, mEsplenioCuello))
-    val zonaPreescapular = Zona(2003, "Zona Preescapular", 2, 0.62f, 0.28f, 3, "Delante de la escápula.", "regioncuello_group_1", listOf(mTrapecioCervical))
-    val zonaCervicoVentral = Zona(2004, "Zona Cérvico Ventral", 2, 0.52f, 0.55f, 4, "Parte inferior cuello.", "regioncuello_group_2", listOf(mCutaneoCuello, mEsternocefalico))
-    val zonaLaringea = Zona(2005, "Zona Laríngea", 2, 0.35f, 0.48f, 5, "Músculos de la laringe.", "regioncuello_group_1_1", listOf(mEsternotiroideo, mEsternohioideo, mOmohioideo))
-    val zonaFaringea = Zona(2006, "Zona Faríngea", 2, 0.28f, 0.42f, 6, "Músculos de la faringe.", "regioncuello_group_1", listOf(mEstilofaringeo, mConstrictoresFaringe, mPalatofaringeo))
+    val zonaPreescapular = Zona(2003, "Zona Preescapular", 2, 0.75f, 0.35f, 3, "Delante de la escápula.", "regioncuello_group_1", listOf(mTrapecioCervical))
+    val zonaCervicoVentral = Zona(2004, "Zona Cérvico Ventral", 2, 0.55f, 0.72f, 4, "Parte inferior cuello.", "regioncuello_group_2", listOf(mCutaneoCuello, mEsternocefalico))
+    val zonaLaringea = Zona(2005, "Zona Laríngea", 2, 0.15f, 0.65f, 5, "Músculos de la laringe.", "regioncuello_group_1_1", listOf(mEsternotiroideo, mEsternohioideo, mOmohioideo))
+    val zonaFaringea = Zona(2006, "Zona Faríngea", 2, 0.12f, 0.42f, 6, "Músculos de la faringe.", "regioncuello_group_1", listOf(mEstilofaringeo, mConstrictoresFaringe, mPalatofaringeo))
 
     val subZonasCuello = listOf(zonaCervicoLateral, zonaCervicoDorsal, zonaPreescapular, zonaCervicoVentral, zonaLaringea, zonaFaringea)
 
     // --- TRONCO ---
     // --- TRONCO: Coordenadas calibradas por análisis visual ---
-    val zonaInterescapular = Zona(3001, "Zona Interescapular Alta", 3, 0.32f, 0.15f, 1, "Cruz del caballo.", "cuello_y_torax", listOf(mTrapecioToracico, mRomboidesToracico))
-    val zonaVertebralToracica = Zona(3002, "Zona Vertebral Torácica", 3, 0.48f, 0.18f, 2, "Columna torácica.", "cuello_y_torax", listOf(mLongisimoDorso, mEspinalToracico))
-    val zonaLumbar = Zona(3003, "Zona Lumbar", 3, 0.65f, 0.20f, 3, "Región de los lomos.", "cuello_y_torax", listOf(mLongisimoDorso))
-    val zonaCostal = Zona(3004, "Zona Costal", 3, 0.42f, 0.38f, 4, "Costillas.", "flanco_torax", listOf(mIntercostalesExternos, mSerratoVentralToracico))
-    val zonaAbdominalLateral = Zona(3005, "Zona Abdominal Lateral", 3, 0.55f, 0.52f, 5, "Flanco.", "flanco_torax", listOf(mOblicuoExterno, mTransversoAbdomen))
-    val zonaEsternal = Zona(3006, "Zona Esternal", 3, 0.35f, 0.62f, 6, "Pecho/Esternón.", "pecho_ventral", listOf(mPectoralSuperficial, mPectoralProfundo, mRectoToracico))
-    val zonaXifoidea = Zona(3007, "Zona Xifoidea", 3, 0.48f, 0.68f, 7, "Ventral anterior.", "pecho_ventral", listOf(mRectoAbdomen, mDiafragma))
-    val zonaUmbilical = Zona(3008, "Zona Umbilical", 3, 0.58f, 0.65f, 8, "Ventral media.", "flanco_torax", listOf(mOblicuoInterno))
-    val zonaPubica = Zona(3009, "Zona Púbica", 3, 0.72f, 0.70f, 9, "Ventral posterior.", "flanco_torax", listOf(mRectoAbdomen, mOblicuoExterno, mOblicuoInterno, mTransversoAbdomen, mPectineo))
+    val zonaInterescapular = Zona(3001, "Zona Interescapular Alta", 3, 0.15f, 0.12f, 1, "Cruz del caballo.", "cuello_y_torax", listOf(mTrapecioToracico, mRomboidesToracico))
+    val zonaVertebralToracica = Zona(3002, "Zona Vertebral Torácica", 3, 0.42f, 0.12f, 2, "Columna torácica.", "cuello_y_torax", listOf(mLongisimoDorso, mEspinalToracico))
+    val zonaLumbar = Zona(3003, "Zona Lumbar", 3, 0.72f, 0.12f, 3, "Región de los lomos.", "cuello_y_torax", listOf(mLongisimoDorso))
+    val zonaCostal = Zona(3004, "Zona Costal", 3, 0.25f, 0.42f, 4, "Costillas.", "flanco_torax", listOf(mIntercostalesExternos, mSerratoVentralToracico))
+    val zonaAbdominalLateral = Zona(3005, "Zona Abdominal Lateral", 3, 0.68f, 0.48f, 5, "Flanco.", "flanco_torax", listOf(mOblicuoExterno, mTransversoAbdomen))
+    val zonaEsternal = Zona(3006, "Zona Esternal", 3, 0.15f, 0.78f, 6, "Pecho/Esternón.", "pecho_ventral", listOf(mPectoralSuperficial, mPectoralProfundo, mRectoToracico))
+    val zonaXifoidea = Zona(3007, "Zona Xifoidea", 3, 0.38f, 0.78f, 7, "Ventral anterior.", "pecho_ventral", listOf(mRectoAbdomen, mDiafragma))
+    val zonaUmbilical = Zona(3008, "Zona Umbilical", 3, 0.58f, 0.78f, 8, "Ventral media.", "flanco_torax", listOf(mOblicuoInterno))
+    val zonaPubica = Zona(3009, "Zona Púbica", 3, 0.82f, 0.78f, 9, "Ventral posterior.", "flanco_torax", listOf(mRectoAbdomen, mOblicuoExterno, mOblicuoInterno, mTransversoAbdomen, mPectineo))
 
     val subZonasTronco = listOf(zonaInterescapular, zonaVertebralToracica, zonaLumbar, zonaCostal, zonaAbdominalLateral, zonaEsternal, zonaXifoidea, zonaUmbilical, zonaPubica)
 
     // --- MIEMBROS TORÁCICOS ---
     // --- MIEMBROS TORÁCICOS: Coordenadas calibradas por análisis visual ---
-    val zonaEscapular = Zona(4001, "Zona Escapular", 4, 0.38f, 0.22f, 1, "Paleta.", "regiondemiembrostoracicos_2_musculosupraespinoso", listOf(mSupraespinoso, mInfraespinoso))
-    val zonaDorsalEscapular = Zona(4002, "Zona Dorsal Escapular", 4, 0.42f, 0.35f, 2, "Hombro externo.", "regiondemiembrostoracicos_1_cabezalargadeltricepsbraquial", listOf(mSupraespinoso, mInfraespinoso))
-    val zonaBraquial = Zona(4003, "Zona Braquial", 4, 0.35f, 0.48f, 3, "Brazo.", "regiondemiembrostoracicos_3_bicepsbraquial", listOf(mBicepsBraquial, mTricepsCabezaLarga))
-    val zonaOlecraneana = Zona(4004, "Zona Olecraneana", 4, 0.45f, 0.55f, 4, "Codo.", "regiondemiembrostoracicos_4_cabezalateraldeltricepsbraquial", listOf(mTricepsCabezaLarga, mTricepsCabezaLateral, mAnconeo))
-    val zonaAntebraquial = Zona(4005, "Zona Antebraquial", 4, 0.32f, 0.62f, 5, "Antebrazo.", "regiondemiembrostoracicos_6_musculoextensorradialdelcarpo", listOf(mExtensorRadialCarpo, mExtensorDigitalComun, mExtensorDigitalLateral, mExtensorCubitalCarpo))
-    val zonaMetacarpiana = Zona(4006, "Zona Metacarpiana", 4, 0.28f, 0.78f, 6, "Caña.", "regiondemiembrostoracicos_9_musculointeroseo", listOf(mSuspensorNudillo))
+    val zonaEscapular = Zona(4001, "Zona Escapular", 4, 0.18f, 0.15f, 1, "Paleta.", "regiondemiembrostoracicos_2_musculosupraespinoso", listOf(mSupraespinoso, mInfraespinoso))
+    val zonaDorsalEscapular = Zona(4002, "Zona Dorsal Escapular", 4, 0.35f, 0.08f, 2, "Hombro externo.", "regiondemiembrostoracicos_1_cabezalargadeltricepsbraquial", listOf(mSupraespinoso, mInfraespinoso))
+    val zonaBraquial = Zona(4003, "Zona Braquial", 4, 0.25f, 0.35f, 3, "Brazo.", "regiondemiembrostoracicos_3_bicepsbraquial", listOf(mBicepsBraquial, mTricepsCabezaLarga))
+    val zonaOlecraneana = Zona(4004, "Zona Olecraneana", 4, 0.12f, 0.45f, 4, "Codo.", "regiondemiembrostoracicos_4_cabezalateraldeltricepsbraquial", listOf(mTricepsCabezaLarga, mTricepsCabezaLateral, mAnconeo))
+    val zonaAntebraquial = Zona(4005, "Zona Antebraquial", 4, 0.22f, 0.62f, 5, "Antebrazo.", "regiondemiembrostoracicos_6_musculoextensorradialdelcarpo", listOf(mExtensorRadialCarpo, mExtensorDigitalComun, mExtensorDigitalLateral, mExtensorCubitalCarpo))
+    val zonaMetacarpiana = Zona(4006, "Zona Metacarpiana", 4, 0.28f, 0.85f, 6, "Caña.", "regiondemiembrostoracicos_9_musculointeroseo", listOf(mSuspensorNudillo))
 
     val subZonasToracicas = listOf(zonaEscapular, zonaDorsalEscapular, zonaBraquial, zonaOlecraneana, zonaAntebraquial, zonaMetacarpiana)
 
     // --- MIEMBROS PÉLVICOS (y Sacro) ---
     // --- MIEMBROS PÉLVICOS: Coordenadas calibradas por análisis visual ---
-    val zonaSacra = Zona(5001, "Zona Sacra", 5, 0.55f, 0.15f, 1, "Grupa dorsal.", "regionsacrocaudalyglutea_group_1", listOf(mSacrocaudalDorsal, mSacrocaudalLateral, mGluteoMedio))
-    val zonaPelvicaGlutea = Zona(5002, "Zona Glútea", 5, 0.48f, 0.28f, 2, "Grupa lateral.", "regionpelvica_2_musculogluteomedio", listOf(mGluteoAccesorio, mGluteoMedio, mGluteoSuperficial, mTensorFasciaLata))
-    val zonaIsquiatica = Zona(5003, "Zona Isquiática", 5, 0.62f, 0.45f, 3, "Nalga posterior.", "regionpelvica_6_musculosemitendinoso", listOf(mBicepsFemoral, mSemitendinoso, mSemimembranoso))
-    val zonaPierna = Zona(5004, "Zona Pierna/Gastrocnemio", 5, 0.55f, 0.58f, 4, "Pierna.", "regionpelvica_8_musculogastrocnemio", listOf(mGastrocnemio, mExtensorDigitalLargo))
-    val zonaCoccigea = Zona(5005, "Zona Coccígea", 5, 0.82f, 0.22f, 5, "Cola.", "regionsacrocaudalyglutea_group_1_1", listOf(mSacrocaudalDorsal, mSacrocaudalLateral))
+    val zonaSacra = Zona(5001, "Zona Sacra", 5, 0.85f, 0.08f, 1, "Grupa dorsal.", "regionsacrocaudalyglutea_group_1", listOf(mSacrocaudalDorsal, mSacrocaudalLateral, mGluteoMedio))
+    val zonaPelvicaGlutea = Zona(5002, "Zona Glútea", 5, 0.55f, 0.18f, 2, "Grupa lateral.", "regionpelvica_2_musculogluteomedio", listOf(mGluteoAccesorio, mGluteoMedio, mGluteoSuperficial, mTensorFasciaLata))
+    val zonaIsquiatica = Zona(5003, "Zona Isquiática", 5, 0.72f, 0.38f, 3, "Nalga posterior.", "regionpelvica_6_musculosemitendinoso", listOf(mBicepsFemoral, mSemitendinoso, mSemimembranoso))
+    val zonaPierna = Zona(5004, "Zona Pierna/Gastrocnemio", 5, 0.55f, 0.62f, 4, "Pierna.", "regionpelvica_8_musculogastrocnemio", listOf(mGastrocnemio, mExtensorDigitalLargo))
+    val zonaCoccigea = Zona(5005, "Zona Coccígea", 5, 0.92f, 0.25f, 5, "Cola.", "regionsacrocaudalyglutea_group_1_1", listOf(mSacrocaudalDorsal, mSacrocaudalLateral))
 
     val subZonasPelvicas = listOf(zonaSacra, zonaPelvicaGlutea, zonaIsquiatica, zonaPierna, zonaCoccigea)
 
     // --- DISTAL / CASCO ---
     // --- DISTAL/CASCO: Coordenadas calibradas por análisis visual ---
-    val zonaCascoPalmar = Zona(6001, "Vista Palmar", 6, 0.50f, 0.55f, 1, "Suela del casco.", "regiondistaldelosmiembrospalmar_2_coriondelapalma", listOf(eCorionRanilla, eLineaAlba))
-    val zonaCascoLateral = Zona(6002, "Vista Lateral", 6, 0.48f, 0.42f, 2, "Pared del casco.", "regiondistaldelosmiembroslateral_4_corona", listOf(eParedCasco))
+    val zonaCascoPalmar = Zona(6001, "Vista Palmar", 6, 0.25f, 0.45f, 1, "Suela del casco.", "regiondistaldelosmiembrospalmar_2_coriondelapalma", listOf(eCorionRanilla, eLineaAlba))
+    val zonaCascoLateral = Zona(6002, "Vista Lateral", 6, 0.75f, 0.45f, 2, "Pared del casco.", "regiondistaldelosmiembroslateral_4_corona", listOf(eParedCasco))
 
     val subZonasDistal = listOf(zonaCascoPalmar, zonaCascoLateral)
 
@@ -710,7 +710,7 @@ object DatosMusculares {
 
     fun obtenerSubZonasPorRegion(regionId: Int): List<Zona> {
 
-        return when (regionId) {
+        val zonas = when (regionId) {
             1 -> subZonasCabeza
             2 -> subZonasCuello
             3 -> subZonasTronco
@@ -719,6 +719,8 @@ object DatosMusculares {
             6 -> subZonasDistal
             else -> emptyList()
         }
+
+        return zonas.sortedBy { it.hotspotNumero }
     }
 
     fun obtenerMusculosPorRegion(regionId: Int): List<Musculo> {

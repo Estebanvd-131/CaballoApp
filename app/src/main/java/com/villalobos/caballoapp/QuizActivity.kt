@@ -1,5 +1,6 @@
 package com.villalobos.caballoapp
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -9,6 +10,7 @@ import com.google.android.material.radiobutton.MaterialRadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.villalobos.caballoapp.databinding.ActivityQuizBinding
+import java.util.Locale
 
 class QuizActivity : BaseNavigationActivity() {
 
@@ -224,7 +226,7 @@ class QuizActivity : BaseNavigationActivity() {
     private fun showAchievements() {
         val userStats = quizEngine.getUserStats()
         val unlockedAchievements = AchievementData.getUnlockedAchievements(userStats)
-        val newAchievements = unlockedAchievements.filter { achievement ->
+        val newAchievements = unlockedAchievements.filter { _ ->
             // Aquí podríamos verificar cuáles son nuevos comparando con logros previos
             true // Por simplicidad, mostrar todos desbloqueados
         }
@@ -262,7 +264,7 @@ class QuizActivity : BaseNavigationActivity() {
         // No cerrar esta actividad hasta que el usuario decida volver
     }
 
-    private fun checkForNewAchievements(result: QuizEngine.QuizResult) {
+    private fun checkForNewAchievements(@Suppress("UNUSED_PARAMETER") result: QuizEngine.QuizResult) {
         // Aquí podríamos implementar notificaciones push o celebraciones
         // Por ahora, solo guardamos las estadísticas que ya se hacen en QuizEngine
     }
@@ -305,7 +307,7 @@ class QuizActivity : BaseNavigationActivity() {
         val totalSeconds = milliseconds / 1000
         val minutes = totalSeconds / 60
         val seconds = totalSeconds % 60
-        return String.format("%02d:%02d", minutes, seconds)
+        return String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds)
     }
 
     override fun onDestroy() {
@@ -314,18 +316,20 @@ class QuizActivity : BaseNavigationActivity() {
         quizEngine.abandonQuiz()
     }
 
+    @Deprecated("Deprecated in Java")
+    @SuppressLint("MissingSuperCall")
     override fun onBackPressed() {
         if (quizEngine.isQuizActive()) {
             AlertDialog.Builder(this)
                 .setTitle("Abandonar Quiz")
                 .setMessage("¿Estás seguro de que quieres salir? Perderás el progreso actual.")
                 .setPositiveButton("Salir") { _, _ ->
-                    super.onBackPressed()
+                    finish()
                 }
                 .setNegativeButton("Continuar", null)
                 .show()
         } else {
-            super.onBackPressed()
+            finish()
         }
     }
     

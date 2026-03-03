@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.google.android.material.button.MaterialButton
 import com.villalobos.caballoapp.databinding.CustomNavigationBarBinding
 
 /**
@@ -16,17 +17,17 @@ import com.villalobos.caballoapp.databinding.CustomNavigationBarBinding
 abstract class BaseNavigationActivity : AppCompatActivity() {
 
     private lateinit var navigationBinding: CustomNavigationBarBinding
-    private lateinit var btnHome: ImageButton
+    private var btnHomeView: View? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         
         // Inflar la barra de navegación personalizada
         navigationBinding = CustomNavigationBarBinding.inflate(layoutInflater)
-        btnHome = navigationBinding.btnHome
+        btnHomeView = navigationBinding.btnHome
         
         // Configurar el clic del botón de inicio
-        btnHome.setOnClickListener {
+        btnHomeView?.setOnClickListener {
             goToMainActivity()
         }
         
@@ -46,9 +47,9 @@ abstract class BaseNavigationActivity : AppCompatActivity() {
     /**
      * Configura el botón de inicio en una vista específica
      */
-    protected fun setupHomeButton(homeButton: ImageButton) {
-        btnHome = homeButton
-        btnHome.setOnClickListener {
+    protected fun setupHomeButton(homeButton: View) {
+        btnHomeView = homeButton
+        btnHomeView?.setOnClickListener {
             goToMainActivity()
         }
         applyAccessibilityColors()
@@ -83,8 +84,10 @@ abstract class BaseNavigationActivity : AppCompatActivity() {
                 else -> ContextCompat.getColor(this, R.color.primary_brown)
             }
             
-            // Usar directamente el valor ARGB ya resuelto
-            btnHome.setColorFilter(colorTint)
+            when (val view = btnHomeView) {
+                is ImageButton -> view.setColorFilter(colorTint)
+                is MaterialButton -> view.setIconTint(android.content.res.ColorStateList.valueOf(colorTint))
+            }
         }
     }
 

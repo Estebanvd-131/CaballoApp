@@ -80,7 +80,6 @@
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
                 android:src="@drawable/miembro_distal"
-                android:padding="@dimen/spacing_sm"
                 android:contentDescription="@string/anatomia_interactiva_description" />
 
             <!-- Zona 6001: Vista Palmar -->

@@ -164,10 +164,10 @@ object AchievementData {
         return achievements.filter { achievement ->
             when (achievement.requirement) {
                 is AchievementRequirement.QuizCount -> {
-                    userStats.totalQuizzes >= (achievement.requirement as AchievementRequirement.QuizCount).count
+                    userStats.totalQuizzes >= achievement.requirement.count
                 }
                 is AchievementRequirement.QuizScore -> {
-                    val req = achievement.requirement as AchievementRequirement.QuizScore
+                    val req = achievement.requirement
                     val regionId = req.regionId
                     if (regionId != null) {
                         userStats.getRegionScore(regionId) >= req.minScore
@@ -176,16 +176,16 @@ object AchievementData {
                     }
                 }
                 is AchievementRequirement.MuscleStudied -> {
-                    userStats.musclesStudied >= (achievement.requirement as AchievementRequirement.MuscleStudied).count
+                    userStats.musclesStudied >= achievement.requirement.count
                 }
                 is AchievementRequirement.Streak -> {
-                    userStats.studyStreak >= (achievement.requirement as AchievementRequirement.Streak).days
+                    userStats.studyStreak >= achievement.requirement.days
                 }
                 is AchievementRequirement.PerfectQuiz -> {
                     userStats.perfectQuizzes >= 1 // Simplificado
                 }
                 is AchievementRequirement.SpeedQuiz -> {
-                    userStats.fastestQuizTime <= (achievement.requirement as AchievementRequirement.SpeedQuiz).timeLimit
+                    userStats.fastestQuizTime <= achievement.requirement.timeLimit
                 }
             }
         }
