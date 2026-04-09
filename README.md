@@ -8,7 +8,7 @@ EquusApp is an interdisciplinary mobile solution developed through a collaborati
 
 - Gamification: Interactive assessment modules (quizzes) that enhance knowledge retention.
 
-Ethical Impact: Promotes animal welfare by reducing dependence on laboratory specimens, complying with Colombian animal protection laws (Laws 84 of 1989 and 1774 of 2016).
+- Ethical Impact: Promotes animal welfare by reducing dependence on laboratory specimens, complying with Colombian animal protection laws (Laws 84 of 1989 and 1774 of 2016).
 
 ## 🚀 Key Features
 - Anatomical Exploration: Hierarchical navigation through anatomical regions and muscle zones.
