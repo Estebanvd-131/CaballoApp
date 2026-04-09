@@ -30,12 +30,12 @@ EquusApp is an interdisciplinary mobile solution developed through a collaborati
 
 ## 📸 Screenshots
 
-![PantallaCarga](https://github.com/user-attachments/assets/450ca04b-e16e-40e5-8596-fdf90888a795)
+<img src="https://github.com/user-attachments/assets/450ca04b-e16e-40e5-8596-fdf90888a795" width="300">
 
-![Tutorial](https://github.com/user-attachments/assets/ce391f14-d1e0-4100-8c38-70d54613bbe1)
+<img src="https://github.com/user-attachments/assets/ce391f14-d1e0-4100-8c38-70d54613bbe1" width="300">
 
-![SeleccionMuscular](https://github.com/user-attachments/assets/82dfe25b-88e4-49ba-9dd2-386b6713bbc2)
+<img src="https://github.com/user-attachments/assets/82dfe25b-88e4-49ba-9dd2-386b6713bbc2" width="300">
 
-![InformacioMusculo](https://github.com/user-attachments/assets/f331b3bf-bbc7-4895-99e0-0ebc8b2d5665)
+<img src="https://github.com/user-attachments/assets/f331b3bf-bbc7-4895-99e0-0ebc8b2d5665" width="300">
 
 
