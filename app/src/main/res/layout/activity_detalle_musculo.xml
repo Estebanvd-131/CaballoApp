@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".ui.detail.DetalleMusculo">
+
+    <!-- Header con título y botón home -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/headerCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_md"
+        android:layout_marginTop="@dimen/header_margin_top"
+        android:layout_marginEnd="@dimen/spacing_md"
+        app:cardBackgroundColor="@color/primary_brown"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="@dimen/card_elevation_raised"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_md">
+
+            <TextView
+                android:id="@+id/tvTituloMusculo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_sm"
+                android:gravity="center"
+                android:text="@string/detail_title_placeholder"
+                android:textAppearance="@style/TextAppearance.EquusApp.Headline3"
+                android:textColor="@color/text_on_dark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnHome"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btnHome"
+                android:layout_width="@dimen/nav_button_size"
+                android:layout_height="@dimen/nav_button_size"
+                android:background="@drawable/bg_button_navigation"
+                android:contentDescription="@string/home_description"
+                android:padding="@dimen/spacing_sm"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_home"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/text_on_dark" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Card de imagen del músculo -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardImageDetalle"
+        android:layout_width="0dp"
+        android:layout_height="280dp"
+        android:layout_marginStart="@dimen/spacing_md"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:layout_marginEnd="@dimen/spacing_md"
+        app:cardBackgroundColor="@color/card_background"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="@dimen/card_elevation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerCard">
+
+        <ImageView
+            android:id="@+id/imgMusculoDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/muscle_detail_image_description_placeholder"
+            android:scaleType="fitCenter"
+            android:padding="@dimen/spacing_sm" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Card de información del músculo -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/infoCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/spacing_md"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:layout_marginEnd="@dimen/spacing_md"
+        android:layout_marginBottom="@dimen/spacing_md"
+        app:cardBackgroundColor="@color/card_background"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="@dimen/card_elevation"
+        app:layout_constraintBottom_toTopOf="@+id/btnVolver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardImageDetalle">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/card_padding">
+
+                <!-- Sección Origen -->
+                <TextView
+                    android:id="@+id/tvOrigenTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_xs"
+                    android:text="@string/detail_origin_label"
+                    android:textAppearance="@style/TextAppearance.EquusApp.Label"
+                    android:textColor="@color/text_primary" />
+
+                <TextView
+                    android:id="@+id/tvOrigenTexto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_md"
+                    android:text="@string/detail_origin_placeholder"
+                    android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                    android:textColor="@color/text_primary" />
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_height"
+                    android:background="@color/divider"
+                    android:layout_marginBottom="@dimen/spacing_md" />
+
+                <!-- Sección Inserción -->
+                <TextView
+                    android:id="@+id/tvInsercionTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_xs"
+                    android:text="@string/detail_insertion_label"
+                    android:textAppearance="@style/TextAppearance.EquusApp.Label"
+                    android:textColor="@color/text_primary" />
+
+                <TextView
+                    android:id="@+id/tvInsercionTexto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_md"
+                    android:text="@string/detail_insertion_placeholder"
+                    android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                    android:textColor="@color/text_primary" />
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_height"
+                    android:background="@color/divider"
+                    android:layout_marginBottom="@dimen/spacing_md" />
+
+                <!-- Sección Función -->
+                <TextView
+                    android:id="@+id/tvFuncionTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_xs"
+                    android:text="@string/detail_function_label"
+                    android:textAppearance="@style/TextAppearance.EquusApp.Label"
+                    android:textColor="@color/text_primary" />
+
+                <TextView
+                    android:id="@+id/tvFuncionTexto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detail_function_placeholder"
+                    android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                    android:textColor="@color/text_primary" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Botón Volver con estilo mejorado -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnVolver"
+        style="@style/Widget.EquusApp.Button.Primary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_xl"
+        android:layout_marginEnd="@dimen/spacing_xl"
+        android:layout_marginBottom="@dimen/spacing_lg"
+        android:text="@string/action_back_upper"
+        app:icon="@drawable/ic_arrow_back"
+        app:iconGravity="textStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout> 

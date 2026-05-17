@@ -1,0 +1,83 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.EquusApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:colorBackground">@color/background</item>
+        
+        <!-- Primary Colors -->
+        <item name="colorPrimary">@color/primary_brown</item>
+        <item name="colorOnPrimary">@color/text_primary</item>
+        <item name="colorPrimaryContainer">@color/primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
+        
+        <!-- Secondary Colors -->
+        <item name="colorSecondary">@color/secondary_brown</item>
+        <item name="colorOnSecondary">@color/text_primary</item>
+        <item name="colorSecondaryContainer">@color/secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/on_secondary_container</item>
+        
+        <!-- Tertiary Colors -->
+        <item name="colorTertiary">@color/tertiary</item>
+        <item name="colorOnTertiary">@color/text_primary</item>
+        <item name="colorTertiaryContainer">@color/tertiary_container</item>
+        <item name="colorOnTertiaryContainer">@color/on_tertiary_container</item>
+        
+        <!-- Surface Colors -->
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/on_surface_variant</item>
+        
+        <!-- Error Colors -->
+        <item name="colorError">@color/error_red</item>
+        <item name="colorOnError">@color/text_primary</item>
+        
+        <!-- Text Colors -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_primary</item>
+        
+        <!-- Status Bar -->
+        <item name="android:statusBarColor">@color/primary_brown</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="Theme.EquusApp" parent="Base.Theme.EquusApp" />
+
+    <!-- Tema para Splash Screen -->
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@color/primary_brown</item>
+        <item name="android:statusBarColor">@color/primary_brown</item>
+        <item name="android:navigationBarColor">@color/primary_brown</item>
+    </style>
+
+    <!-- Estilos de texto (Legacy support) -->
+    <style name="TitleText">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">@dimen/text_size_h2</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    
+    <style name="SubtitleText">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">@dimen/text_size_body</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- Estilos de botones (Legacy support mapped to new styles) -->
+    <style name="ButtonPrimary" parent="Widget.EquusApp.Button.Primary"/>
+    
+    <style name="ButtonSecondary" parent="Widget.EquusApp.Button.Secondary"/>
+    
+    <style name="ButtonExit" parent="Widget.EquusApp.Button.Exit"/>
+    
+    <style name="ButtonVeterinary" parent="Widget.EquusApp.Button.Primary"/>
+    
+    <style name="ButtonTertiary" parent="Widget.EquusApp.Button.Outlined"/>
+</resources>

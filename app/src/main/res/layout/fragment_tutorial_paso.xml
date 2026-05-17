@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Sombra dorada suave (Glow) -->
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_glow_gold_soft"
+        app:layout_constraintTop_toTopOf="@id/cardImagen"
+        app:layout_constraintBottom_toBottomOf="@id/cardImagen"
+        app:layout_constraintStart_toStartOf="@id/cardImagen"
+        app:layout_constraintEnd_toEndOf="@id/cardImagen"
+        android:layout_margin="-12dp"
+        android:elevation="0dp"
+        tools:visibility="visible"/>
+
+    <!-- Imagen ilustrativa -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardImagen"
+        android:layout_width="0dp"
+        android:layout_height="240dp"
+        android:layout_marginBottom="24dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/card_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgPasoTutorial"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/tutorial_step_image_description_placeholder"
+            android:scaleType="centerCrop"
+            android:src="@drawable/miologiaequinocompleto" />
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Contenido del paso -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardImagen">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="24dp">
+
+            <!-- Título del paso -->
+            <TextView
+                android:id="@+id/tvTituloPaso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:text="@string/tutorial_placeholder_title"
+                android:textColor="@color/text_primary"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"/>
+
+            <!-- Descripción del paso -->
+            <TextView
+                android:id="@+id/tvDescripcionPaso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:text="@string/tutorial_placeholder_description"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp" />
+
+            <!-- Lista de características (opcional) -->
+            <LinearLayout
+                android:id="@+id/layoutCaracteristicas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:paddingHorizontal="8dp">
+
+                <!-- Items se agregan dinámicamente -->
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout> 

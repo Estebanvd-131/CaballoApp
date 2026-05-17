@@ -1,0 +1,102 @@
+<resources>
+    <string name="app_name">EquusApp</string>
+    <string name="anatomia_interactiva_description">Imagen anatómica interactiva con %d músculos. Toque para ver detalles.</string>
+    <string name="region_cabeza_title">REGIÓN DE LA CABEZA</string>
+    <string name="home_description">Ir al menú principal</string>
+    <string name="back_description">Volver</string>
+    <string name="instruction_select_muscle">Selecciona un músculo</string>
+    <string name="instruction_select_muscle_detail">Selecciona un músculo de la lista para ver sus detalles</string>
+    <string name="quiz_cabeza_button">🎯 QUIZ DE CABEZA</string>
+    <string name="main_hero_image_description">Ilustración anatómica principal del caballo</string>
+    <string name="muscle_detail_image_description_placeholder">Ilustración anatómica del músculo seleccionado</string>
+    <string name="muscle_detail_image_description">Ilustración del músculo %1$s</string>
+    <string name="tutorial_step_image_description_placeholder">Ilustración del paso actual del tutorial</string>
+    <string name="tutorial_step_image_description">Ilustración del paso del tutorial: %1$s</string>
+    <string name="tutorial_header_title">Tutorial</string>
+    <string name="tutorial_header_app_name">EquusApp</string>
+    <string name="tutorial_step_counter_placeholder">1/6</string>
+    <string name="tutorial_step_counter">%1$d/%2$d</string>
+    <string name="tutorial_skip">Saltar</string>
+    <string name="tutorial_do_not_show_again">No volver a mostrar este tutorial</string>
+    <string name="tutorial_previous">← Anterior</string>
+    <string name="tutorial_next">Siguiente →</string>
+    <string name="tutorial_start">¡Comenzar!</string>
+    <string name="tutorial_placeholder_title">Bienvenido a EquusApp</string>
+    <string name="tutorial_placeholder_description">Aprende anatomía muscular del Caballo Criollo Colombiano de forma interactiva y gratuita.</string>
+    <string name="tutorial_feature_bullet">• %1$s</string>
+    <string name="accessibility_title">Configuración de Accesibilidad</string>
+    <string name="accessibility_subtitle">Personaliza la experiencia visual</string>
+    <string name="accessibility_colorblind_title">Adaptación para Daltonismo</string>
+    <string name="accessibility_colorblind_description">Selecciona el modo de colores que mejor se adapte a tu visión:</string>
+    <string name="accessibility_standard_colors">Colores Estándar</string>
+    <string name="accessibility_protanopia">Protanopia (Dificultad con rojos)</string>
+    <string name="accessibility_deuteranopia">Deuteranopia (Dificultad con verdes)</string>
+    <string name="accessibility_tritanopia">Tritanopia (Dificultad con azules/amarillos)</string>
+    <string name="accessibility_acromatopsia">Acromatopsia (Visión en escala de grises)</string>
+    <string name="accessibility_preview">Vista previa:</string>
+    <string name="accessibility_high_contrast">Alto contraste</string>
+    <string name="accessibility_large_text">Texto grande</string>
+    <string name="accessibility_disable_colorblind_mode">Desactivar Daltonismo</string>
+    <string name="accessibility_tutorial_title">Tutorial de la Aplicación</string>
+    <string name="accessibility_tutorial_description">Vuelve a ver el tutorial interactivo para familiarizarte con todas las funciones de EquusApp.</string>
+    <string name="accessibility_restart_tutorial">🎓  Reiniciar Tutorial</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="action_save">Guardar</string>
+    <string name="main_title">ANATOMÍA MUSCULAR
+CABALLO CRIOLLO</string>
+    <string name="main_subtitle">ANATOMÍA VETERINARIA USC</string>
+    <string name="stats_level">NIVEL</string>
+    <string name="stats_xp">XP</string>
+    <string name="stats_streak">RACHA</string>
+    <string name="stats_default_level">1</string>
+    <string name="stats_default_value">0</string>
+    <string name="main_start_exploration">Iniciar Exploración</string>
+    <string name="main_accessibility">Accesibilidad</string>
+    <string name="main_credits">Créditos</string>
+    <string name="main_exit_application">Salir de la Aplicación</string>
+    <string name="quiz_title_placeholder">Quiz de Anatomía</string>
+    <string name="quiz_progress_placeholder">Pregunta 1 de 5</string>
+    <string name="quiz_question_placeholder">¿Cuál es la función del músculo X?</string>
+    <string name="quiz_option_a">Opción A</string>
+    <string name="quiz_option_b">Opción B</string>
+    <string name="quiz_option_c">Opción C</string>
+    <string name="quiz_option_d">Opción D</string>
+    <string name="quiz_skip_action">Saltar</string>
+    <string name="quiz_answer_action">Responder</string>
+    <string name="quiz_time_placeholder">Tiempo: 00:30</string>
+    <string name="credits_title">CRÉDITOS</string>
+    <string name="credits_description">Esta aplicación fue elaborada por los semilleros Equusnova e Informa, como aporte académico del estudio de la miología del caballo criollo colombiano.</string>
+    <string name="credits_developed_by">Colaboradores:</string>
+    <string name="credits_university_info">Semilleros Equusnova e Informa
+Universidad Santiago de Cali</string>
+    <string name="credits_collaborators">• Katherine Díaz
+
+• Luisa Fernanda Carabalí
+
+• Profesor Jorge Perilla
+
+• Profesor Diego Loaiza
+
+• Juan Esteban Morales
+
+• Esteban Villalobos
+
+• Ximena Osorio</string>
+    <string name="credits_version">Versión 1.0</string>
+    <string name="detail_title_placeholder">Músculo Orbicular de los Párpados</string>
+    <string name="detail_origin_label">Origen:</string>
+    <string name="detail_origin_placeholder">Porción orbital: borde orbitario. Porción palpebral: ligamento palpebral.</string>
+    <string name="detail_insertion_label">Inserción:</string>
+    <string name="detail_insertion_placeholder">Forma un anillo alrededor del ojo, las fibras musculares se insertan en la piel</string>
+    <string name="detail_function_label">Función:</string>
+    <string name="detail_function_placeholder">Cierre del ojo, protección, parpadeo</string>
+    <string name="action_back_upper">VOLVER</string>
+    <string name="correct_answers_title">Respuestas Correctas</string>
+    <string name="back_navigation_description">Volver atrás</string>
+    <string name="muscle_item_number_placeholder">1</string>
+    <string name="muscle_item_name_placeholder">Nombre del Músculo</string>
+    <string name="muscle_item_description_placeholder">Descripción del músculo</string>
+    <string name="correct_answer_question_number_placeholder">Pregunta 1</string>
+    <string name="correct_answer_question_text_placeholder">¿Cuál es la función principal del músculo glúteo medio?</string>
+    <string name="correct_answer_placeholder">Extensor potente de la cadera</string>
+</resources>

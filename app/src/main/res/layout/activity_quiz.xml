@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".ui.quiz.QuizActivity">
+
+    <!-- Header con progreso -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/headerCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_md"
+        app:cardBackgroundColor="@color/primary_brown"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tvQuizTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/quiz_title_placeholder"
+                android:textAppearance="@style/TextAppearance.EquusApp.Headline3"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:maxLines="2"
+                android:ellipsize="end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnHome"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/quiz_progress_placeholder"
+                android:textAppearance="@style/TextAppearance.EquusApp.Caption"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvQuizTitle" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="12dp"
+                android:progress="20"
+                android:max="100"
+                android:progressDrawable="@drawable/progress_tutorial"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvProgress" />
+
+            <ImageButton
+                android:id="@+id/btnHome"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_button_navigation"
+                android:contentDescription="@string/home_description"
+                android:padding="12dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_home"
+                app:tint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Card de pregunta -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/questionCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_md"
+        android:layout_marginTop="@dimen/spacing_md"
+        app:cardBackgroundColor="@color/card_background"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerCard">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:id="@+id/tvQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quiz_question_placeholder"
+                android:textAppearance="@style/TextAppearance.EquusApp.Headline4"
+                android:textColor="@color/text_primary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:lineSpacingMultiplier="1.2"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Opciones de respuesta -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/controlsLayout"
+        app:layout_constraintTop_toBottomOf="@+id/questionCard">
+
+        <RadioGroup
+            android:id="@+id/radioGroupOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/spacing_md"
+            android:paddingBottom="@dimen/spacing_md">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbOption1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quiz_option_a"
+                android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="12dp"
+                android:padding="16dp"
+                android:minHeight="64dp"
+                android:background="@drawable/radio_option_background"
+                android:button="@null"
+                android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+                android:drawableTint="@color/primary_brown" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbOption2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quiz_option_b"
+                android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="12dp"
+                android:padding="16dp"
+                android:minHeight="64dp"
+                android:background="@drawable/radio_option_background"
+                android:button="@null"
+                android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+                android:drawableTint="@color/primary_brown" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbOption3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quiz_option_c"
+                android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="12dp"
+                android:padding="16dp"
+                android:minHeight="64dp"
+                android:background="@drawable/radio_option_background"
+                android:button="@null"
+                android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+                android:drawableTint="@color/primary_brown" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rbOption4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quiz_option_d"
+                android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="12dp"
+                android:padding="16dp"
+                android:minHeight="64dp"
+                android:background="@drawable/radio_option_background"
+                android:button="@null"
+                android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
+                android:drawableTint="@color/primary_brown" />
+
+        </RadioGroup>
+    </ScrollView>
+
+    <!-- Controles con Material Buttons -->
+    <LinearLayout
+        android:id="@+id/controlsLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/spacing_md"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:layout_marginEnd="@dimen/spacing_md"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/tvTimeInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSkip"
+            style="@style/Widget.EquusApp.Button.Secondary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/spacing_sm"
+            android:text="@string/quiz_skip_action" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAnswer"
+            style="@style/Widget.EquusApp.Button.Primary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/spacing_sm"
+            android:text="@string/quiz_answer_action" />
+
+    </LinearLayout>
+
+    <!-- Información de tiempo -->
+    <TextView
+        android:id="@+id/tvTimeInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quiz_time_placeholder"
+        android:textAppearance="@style/TextAppearance.EquusApp.Caption"
+        android:textColor="@color/text_primary"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:layout_marginBottom="@dimen/spacing_md"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

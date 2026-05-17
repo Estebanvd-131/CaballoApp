@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- System - black/white stay same, cards use card_background -->
+
+    <!-- Material 3 surface -->
+    <color name="surface">#1E1E1E</color>
+    <color name="on_surface">#E6E1E5</color>
+    <color name="surface_variant">#2C2C2C</color>
+    <color name="on_surface_variant">#CAC4D0</color>
+    <color name="background">#1E1E1E</color>
+    <color name="on_background">#E6E1E5</color>
+
+    <!-- Material 3 on colors -->
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_primary_container">#FFFFFF</color>
+    <color name="on_secondary">#FFFFFF</color>
+    <color name="on_secondary_container">#FFFFFF</color>
+    <color name="on_tertiary">#FFFFFF</color>
+    <color name="on_tertiary_container">#FFFFFF</color>
+
+    <!-- Legacy brown theme -->
+    <color name="primary_brown">#A0784C</color>
+    <color name="secondary_brown">#8C6B4A</color>
+    <color name="accent_light_brown">#D2961E</color>
+    <color name="elegant_gray">#8B7D6B</color>
+    <color name="warm_cream">#2C2C2C</color>
+
+    <!-- Functional text -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#E6E1E5</color>
+    <color name="text_dark">#FFFFFF</color>
+    <color name="text_tertiary">#CAC4D0</color>
+    <color name="text_hint">#938F99</color>
+    <color name="text_on_dark">#FFFFFF</color>
+    <color name="surface_color">#1E1E1E</color>
+    <color name="card_background">#2C2C2C</color>
+    <color name="divider_color">#4A4A4A</color>
+
+    <!-- Light theme text -->
+    <color name="light_secondary_text">#CAC4D0</color>
+    <color name="light_primary_text">#FFFFFF</color>
+
+    <!-- Borders and dividers -->
+    <color name="border_light">#4A4A4A</color>
+    <color name="divider">#4A4A4A</color>
+
+    <!-- Status colors - brighter for dark bg -->
+    <color name="success_green">#4CAF50</color>
+    <color name="correct_green">#4CAF50</color>
+    <color name="warning_orange">#FFB74D</color>
+    <color name="error_red">#EF5350</color>
+    <color name="info_blue">#42A5F5</color>
+
+    <!-- Accents -->
+    <color name="accent_gold">#D4AF37</color>
+
+    <!-- Ripple -->
+    <color name="ripple_brown">#33A0784C</color>
+    <color name="ripple_cream">#338B7D6B</color>
+
+    <!-- Beige -->
+    <color name="beige_gradient">#2C2C2C</color>
+
+    <!-- Light theme -->
+    <color name="light_background">#1E1E1E</color>
+    <color name="light_primary">#8C7D6B</color>
+    <color name="light_secondary">#3C3C3C</color>
+
+    <!-- Dark theme -->
+    <color name="dark_primary">#8C7D6B</color>
+    <color name="dark_secondary">#3C3C3C</color>
+    <color name="dark_primary_text">#FFFFFF</color>
+    <color name="dark_secondary_text">#E6E1E5</color>
+    <color name="dark_background">#1E1E1E</color>
+
+    <!-- Containers -->
+    <color name="primary_container">#3C2A1A</color>
+    <color name="secondary_container">#3C3030</color>
+    <color name="tertiary_container">#3C2E1A</color>
+
+    <!-- Colorblind text - lighter for dark bg -->
+    <color name="protanopia_text_primary">#D4D4D4</color>
+    <color name="protanopia_text_secondary">#9E9E9E</color>
+    <color name="deuteranopia_text_primary">#D4D4D4</color>
+    <color name="deuteranopia_text_secondary">#9E9E9E</color>
+    <color name="tritanopia_text_primary">#D4D4D4</color>
+    <color name="tritanopia_text_secondary">#9E9E9E</color>
+
+    <!-- Outline -->
+    <color name="outline">#8B7D6B</color>
+    <color name="outline_variant">#6B5D4B</color>
+</resources>

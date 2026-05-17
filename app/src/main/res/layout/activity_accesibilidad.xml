@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutAccesibilidad"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".ui.accessibility.Accesibilidad">
+
+    <!-- Header moderno -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/headerCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/screen_margin_horizontal"
+        android:layout_marginTop="@dimen/header_margin_top"
+        android:layout_marginEnd="@dimen/screen_margin_horizontal"
+        app:cardBackgroundColor="@color/primary_brown"
+        app:cardCornerRadius="@dimen/card_corner_radius_large"
+        app:cardElevation="@dimen/card_elevation_raised"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/card_padding_large">
+
+            <TextView
+                android:id="@+id/tvTitleAccesibilidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/accessibility_title"
+                android:textAppearance="@style/TextAppearance.EquusApp.Headline2"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:gravity="center"
+                android:text="@string/accessibility_subtitle"
+                android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerCard">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/screen_margin_horizontal"
+            android:paddingBottom="@dimen/spacing_lg">
+
+            <!-- Sección de Daltonismo -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_md"
+                app:cardBackgroundColor="@color/card_background"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:strokeColor="@color/border_light"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/card_padding_large">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/accessibility_colorblind_title"
+                        android:textAppearance="@style/TextAppearance.EquusApp.Headline4"
+                        android:layout_marginBottom="@dimen/spacing_sm" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/accessibility_colorblind_description"
+                        android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                        android:layout_marginBottom="@dimen/spacing_md" />
+
+                    <RadioGroup
+                        android:id="@+id/rgModosDaltonismo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rbNormal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:padding="@dimen/spacing_md"
+                            android:minHeight="@dimen/button_height"
+                            android:background="@drawable/radio_option_background"
+                            android:text="@string/accessibility_standard_colors"
+                            android:textAppearance="@style/TextAppearance.EquusApp.Label"
+                            app:useMaterialThemeColors="false"
+                            app:buttonTint="@color/primary_brown" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rbProtanopia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/spacing_md"
+                            android:minHeight="@dimen/button_height"
+                            android:background="@drawable/radio_option_background"
+                            android:text="@string/accessibility_protanopia"
+                            android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                            app:useMaterialThemeColors="false"
+                            app:buttonTint="@color/primary_brown" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rbDeuteranopia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/spacing_md"
+                            android:minHeight="@dimen/button_height"
+                            android:background="@drawable/radio_option_background"
+                            android:text="@string/accessibility_deuteranopia"
+                            android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                            app:useMaterialThemeColors="false"
+                            app:buttonTint="@color/primary_brown" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rbTritanopia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/spacing_md"
+                            android:minHeight="@dimen/button_height"
+                            android:background="@drawable/radio_option_background"
+                            android:text="@string/accessibility_tritanopia"
+                            android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                            app:useMaterialThemeColors="false"
+                            app:buttonTint="@color/primary_brown" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rbAcromatopsia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/spacing_md"
+                            android:minHeight="@dimen/button_height"
+                            android:background="@drawable/radio_option_background"
+                            android:text="@string/accessibility_acromatopsia"
+                            android:textAppearance="@style/TextAppearance.EquusApp.Body"
+                            app:useMaterialThemeColors="false"
+                            app:buttonTint="@color/primary_brown" />
+                    </RadioGroup>
+
+                    <!-- Vista previa de colores -->
+                    <LinearLayout
+                        android:id="@+id/colorPreview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_md"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/spacing_sm"
+                            android:text="@string/accessibility_preview"
+                            android:textAppearance="@style/TextAppearance.EquusApp.Caption" />
+
+                        <View
+                            android:id="@+id/previewColor1"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_marginHorizontal="@dimen/spacing_xxs"
+                            android:background="@drawable/circle_shape" />
+
+                        <View
+                            android:id="@+id/previewColor2"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_marginHorizontal="@dimen/spacing_xxs"
+                            android:background="@drawable/circle_shape" />
+
+                        <View
+                            android:id="@+id/previewColor3"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_marginHorizontal="@dimen/spacing_xxs"
+                            android:background="@drawable/circle_shape" />
+
+                        <View
+                            android:id="@+id/previewColor4"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_marginHorizontal="@dimen/spacing_xxs"
+                            android:background="@drawable/circle_shape" />
+                    </LinearLayout>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchHighContrast"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_md"
+                        android:text="@string/accessibility_high_contrast"
+                        android:textAppearance="@style/TextAppearance.EquusApp.Body" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchLargeText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_sm"
+                        android:text="@string/accessibility_large_text"
+                        android:textAppearance="@style/TextAppearance.EquusApp.Body" />
+
+                    <!-- Botón para desactivar daltonismo -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDesactivarDaltonismo"
+                        style="@style/Widget.EquusApp.Button.Outlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/button_height_small"
+                        android:layout_marginTop="@dimen/spacing_md"
+                        android:text="@string/accessibility_disable_colorblind_mode"
+                        android:textAllCaps="false"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Botón Tutorial -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_lg"
+                app:cardBackgroundColor="@color/card_background"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:strokeColor="@color/border_light"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/card_padding_large">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_sm"
+                        android:text="@string/accessibility_tutorial_title"
+                        android:textAppearance="@style/TextAppearance.EquusApp.Headline4" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_md"
+                        android:text="@string/accessibility_tutorial_description"
+                        android:textAppearance="@style/TextAppearance.EquusApp.Body" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnReiniciarTutorial"
+                        style="@style/Widget.EquusApp.Button.Secondary"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/button_height"
+                        android:text="@string/accessibility_restart_tutorial"
+                        android:textAllCaps="false" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Botones de Acción -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnVolverAccesibilidad"
+                    style="@style/Widget.EquusApp.Button.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_marginEnd="@dimen/spacing_sm"
+                    android:layout_weight="1"
+                    android:text="@string/action_cancel"
+                    android:textAllCaps="false" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGuardarAccesibilidad"
+                    style="@style/Widget.EquusApp.Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_marginStart="@dimen/spacing_sm"
+                    android:layout_weight="1"
+                    android:text="@string/action_save"
+                    android:textAllCaps="false" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
